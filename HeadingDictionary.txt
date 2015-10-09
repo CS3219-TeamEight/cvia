@@ -1,5 +1,6 @@
 ;
 SUMMARY
+Profile
 About Me
 Summary
 ;
@@ -21,6 +22,7 @@ SKILLS
 Skill Set
 Skills
 Skill Sets
+Key Skills
 ;
 CERT
 Certifications
@@ -41,3 +43,9 @@ Volunteer Experience
 ;
 RECOMMENDATIONS
 Recommendations
+;
+CCA
+CCA Experience
+;
+Others
+Other Details
