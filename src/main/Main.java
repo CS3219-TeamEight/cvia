@@ -1,6 +1,9 @@
 package main;
 
+import parser.ResumeParser;
+
 import utilities.PDFConverter;
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -24,6 +27,11 @@ public class Main {
 		//String _stanley_pdf = "/Users/Stanley/Desktop/Test.pdf";
 		
 		converter.convertToText(inputPath, outputPath);
+		
+		File file = new File(outputPath);
+		ResumeParser parser = new ResumeParser(file);
+		parser.printAllCandidates();
+		
 	}
 
 }
