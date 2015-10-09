@@ -1,18 +1,23 @@
 package parser;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HeaderDictionary {
     
-    private ArrayList<ArrayList<String>> dictionary = new ArrayList<>();
+    private HashMap<String, type> dictionary = new HashMap<>();
     
+    public enum type {
+        WORK, EDUCATION, SKILL
+    }
 
     public HeaderDictionary() {
         
     }
     
-    public boolean contains(String headerCand, int index) {
-        return dictionary.get(index).contains(headerCand);
+    public type contains(String headerCand) {
+        return dictionary.get(headerCand);
     }
+    
+    
 
 }
