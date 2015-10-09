@@ -1,42 +1,43 @@
-Summary
+;
+SUMMARY
 About Me
 Summary
 ;
-Work Experience
+WORK
 Experience
 Work Experience
 Positions Held
 Past Experience
 ;
+PUB
 Publications
-Publications
-;s
+;
 Languages
 Languages
 Language
 Known Languages
 ;
-Skills
+SKILLS
 Skill Set
 Skills
 Skill Sets
 ;
-Certifications
+CERT
 Certifications
 Certificates
 ;
-Education
+EDU
 Education
 Educations
 Schools
 School
 Past Education
 ;
-Courses
+COURSES
 Courses
 ;
-Volunteer Experience
+VOLUNTEER
 Volunteer Experience
 ;
-Recommendations
+RECOMMENDATIONS
 Recommendations
