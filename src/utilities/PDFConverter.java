@@ -24,7 +24,7 @@ public class PDFConverter {
 
 		//To print the Text in the PDF file
 		String parsedText = pdfStripper.getText(pdDoc);
-		System.out.println(parsedText);
+		//System.out.println(parsedText);
 
 		//To output the text in the PDF into a plain text file
 		writer.write(outputPath, parsedText);

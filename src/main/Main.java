@@ -30,8 +30,7 @@ public class Main {
 		
 		File file = new File(outputPath);
 		ResumeParser parser = new ResumeParser(file);
-		parser.printAllCandidates();
-		
+		parser.printAllSections();
 	}
 
 }
