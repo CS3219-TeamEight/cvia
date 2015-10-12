@@ -1,20 +1,27 @@
 package parser;
 
+import qualification.WorkExp;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+/**
 import java.util.Iterator;
 import java.util.Map;
+**/
 
 public class WorkExpParser implements SectionParser {
 
-    ArrayList<String> lines;
-    HashMap<Integer, Double> dateLines; // line number, no. of years
-    ArrayList<String> months;
-    ArrayList<String> ongoing;
+    private ArrayList<String> lines;
+    private HashMap<Integer, WorkExp> dateLines; // line number, no. of years
+    /** private ArrayList<String> months;
+    private ArrayList<String> ongoing; **/
+    private ArrayList<WorkExp> workExp;
     
     public WorkExpParser(Section section) {
         lines = new ArrayList<>(section.getLines());
         dateLines = new HashMap<>();
+        workExp = new ArrayList<>();
         for (int i = 0; i < lines.size(); i++) {
             getDuration(i);
         }
@@ -124,8 +131,31 @@ public class WorkExpParser implements SectionParser {
         }
         Double exp = years*1.0 + months/12.0;
         if (exp > 0.0) {
-            System.out.println("Worked for " + exp + " years");
-            dateLines.put(lineNum, exp);
+            String desc = lines.get(lineNum-1);
+            ArrayList<String> job = parseWorkDesc(desc);
+            WorkExp work = new WorkExp(job.get(0), job.get(1), exp);
+            dateLines.put(lineNum, work);
+            workExp.add(work);
         }
     }
+    
+    public ArrayList<String> parseWorkDesc(String line) {
+        ArrayList<String> parts = new ArrayList<String>(Arrays.asList(line.split("  ")));
+        String position = parts.get(0).trim();
+        String job = parts.get(2).trim();
+        ArrayList<String> desc = new ArrayList<>();
+        desc.add(position);
+        desc.add(job);
+        
+        return desc;
+    }
+    
+    public void printAllWorkExp() {
+        for (WorkExp exp : workExp) {
+            System.out.println("Worked at " + exp.getCompany() + " as "
+                    + exp.getPosition() + " for " 
+                    + exp.getDuration() + " years\n");
+        }
+    }
+    
 }

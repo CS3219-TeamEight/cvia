@@ -3,7 +3,7 @@ package qualification;
 public class Qualification {
     
     protected String name;
-    protected float duration;
+    protected double duration;
     protected int score;
 
     public Qualification() {
