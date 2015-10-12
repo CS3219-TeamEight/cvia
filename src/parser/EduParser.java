@@ -8,12 +8,10 @@ import java.util.Map;
 public class EduParser implements SectionParser {
 
     ArrayList<String> lines;
-    HashMap<Integer, Double> dateLines; // line number, no. of years
     ArrayList<String> scoreList;
     
     public EduParser(Section section) {
         lines = new ArrayList<>(section.getLines());
-        dateLines = new HashMap<>();
         for (int i = 0; i < lines.size(); i++) {
             getScore(i);
         }
