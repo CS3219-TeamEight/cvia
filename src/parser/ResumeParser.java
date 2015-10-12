@@ -15,9 +15,9 @@ public class ResumeParser {
     
     HeaderDictionary dictionary;
     LinkedHashMap<String, ArrayList<HeaderCandidate>> candidates = new LinkedHashMap<>();
+    ArrayList<String> lines = new ArrayList<>();
     ArrayList<HeaderCandidate> headers = new ArrayList<>();
     ArrayList<Section> sections = new ArrayList<>();
-    ArrayList<String> lines = new ArrayList<>();
     File resume;
 
     public ResumeParser(File resume) {
@@ -48,7 +48,7 @@ public class ResumeParser {
     
     private void evaluateCandidate(String line, int lineNum) {
         if (line.endsWith(".")) return;
-        String headerType = dictionary.contains(line);
+        String headerType = dictionary.contains(line.toLowerCase());
         if (headerType == null) {
             return;
         } else {
