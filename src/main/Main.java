@@ -1,6 +1,7 @@
 package main;
 
 import parser.ResumeParser;
+import parser.Section;
 import parser.WorkExpParser;
 import utilities.PDFConverter;
 
@@ -32,6 +33,13 @@ public class Main {
 		
 		File file = new File(outputPath);
 		ResumeParser parser = new ResumeParser(file);
-		parser.printAllSections();
+		ArrayList<Section> sections = parser.getSections();
+		WorkExpParser workParser;
+		for (Section section : sections) {
+		    if (section.getType().equals("WORK")) {
+		        workParser = new WorkExpParser(section);
+		    }
+		}
+		
 	}
 }

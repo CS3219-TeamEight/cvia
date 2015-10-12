@@ -1,24 +1,25 @@
 package parser;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-
-import com.joestelmach.natty.DateGroup;
-import com.joestelmach.natty.Parser;
+import java.util.Iterator;
+import java.util.Map;
 
 public class WorkExpParser implements SectionParser {
 
     ArrayList<String> lines;
-    HashMap<Integer, Float> dateLines; // line number, no. of years
+    HashMap<Integer, Double> dateLines; // line number, no. of years
     ArrayList<String> months;
     ArrayList<String> ongoing;
     
     public WorkExpParser(Section section) {
         lines = new ArrayList<>(section.getLines());
         dateLines = new HashMap<>();
-        /** months.add("January");
+        for (int i = 0; i < lines.size(); i++) {
+            getDuration(i);
+        }
+        /**
+        months.add("January");
         months.add("February");
         months.add("March");
         months.add("April");
@@ -81,20 +82,50 @@ public class WorkExpParser implements SectionParser {
         }
         
         
+        
     }
     **/
     
-    private List<Date> parseDates(String line) {
-        Parser parser = new Parser();
-        List<DateGroup> groups = parser.parse(line);
-        List<Date> datesFound = new ArrayList<>();
-        for (DateGroup group : groups) {
-            List<Date> dates = group.getDates();
-            for (Date date : dates) {
-                datesFound.add(date);
+    // assumes LinkedIn format for now
+    private void getDuration(int lineNum) {
+        String line = lines.get(lineNum);
+        int years = 0;
+        int months = 0;
+        if (line.toLowerCase().contains("year")) {
+            // later account for cases where there are more than 1 occurrences of year&month
+            int yearIndex = line.indexOf("year");
+            int counter = 1;
+            for (int i = yearIndex-2; i>=0; i--) {
+                char c = line.charAt(i);
+                if (c >= '0' && c <= '9') {
+                    int num = Character.getNumericValue(c);
+                    years += num * counter;
+                    counter *= 10;
+                } else {
+                    break;
+                }
+            }
+            
+        }
+        
+        if (line.toLowerCase().contains("month")) {
+            int monthIndex = line.indexOf("month");
+            int counter = 1;
+            for (int i = monthIndex-2; i>=0; i--) {
+                char c = line.charAt(i);
+                if (c >= '0' && c <= '9') {
+                    int num = Character.getNumericValue(c);
+                    months += num * counter;
+                    counter *= 10;
+                } else {
+                    break;
+                }
             }
         }
-        return datesFound;
+        Double exp = years*1.0 + months/12.0;
+        if (exp > 0.0) {
+            System.out.println("Worked for " + exp + " years");
+            dateLines.put(lineNum, exp);
+        }
     }
-
 }

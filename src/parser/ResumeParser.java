@@ -28,6 +28,14 @@ public class ResumeParser {
         extractSections();
     }
     
+    public ArrayList<HeaderCandidate> getHeaders() {
+        return headers;
+    }
+    
+    public ArrayList<Section> getSections() {
+        return sections;
+    }
+    
     public void findHeaderCandidates() {
         try {
             FileReader fr = new FileReader(resume);

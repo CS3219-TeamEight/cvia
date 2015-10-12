@@ -5,6 +5,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/fontbox-1.8.10.jar"/>
-	<classpathentry kind="lib" path="lib/natty-0.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
