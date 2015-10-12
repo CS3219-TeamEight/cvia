@@ -1,51 +1,66 @@
 ;
 SUMMARY
-Profile
-About Me
-Summary
+profile
+about me
+summary
 ;
 WORK
-Experience
-Work Experience
-Positions Held
-Past Experience
+experience
+work experience
+positions held
+past experience
+industry
+industries
+job
+job experience
 ;
 PUB
-Publications
+publications
 ;
-Languages
-Languages
-Language
-Known Languages
+LANGUAGES
+languages
+language
+known languages
 ;
 SKILLS
-Skill Set
-Skills
-Skill Sets
-Key Skills
+skill set
+skills
+skill sets
+key skills
 ;
 CERT
-Certifications
-Certificates
+certifications
+certificates
 ;
 EDU
-Education
-Educations
-Schools
-School
-Past Education
+education
+educations
+schools
+school
+past education
 ;
 COURSES
-Courses
+courses
 ;
 VOLUNTEER
-Volunteer Experience
+volunteer experience
 ;
 RECOMMENDATIONS
-Recommendations
+recommendation
+recommendations
+testimonial
+testimonials
+reference
+references
+referee
+referees
 ;
 CCA
-CCA Experience
+cca experience
 ;
 Others
-Other Details
+others
+other details
+trivia
+miscellaneous
+miscellaneous information
