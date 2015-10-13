@@ -152,9 +152,9 @@ public class WorkExpParser implements SectionParser {
     
     public void printAllWorkExp() {
         for (WorkExp exp : workExp) {
-            System.out.println("Worked at " + exp.getCompany() + " as "
-                    + exp.getPosition() + " for " 
-                    + exp.getDuration() + " years\n");
+            System.out.println("Company: " + exp.getCompany()
+                    + "\nPosition: " + exp.getPosition()
+                    + "\nDuration: " + exp.getDuration() + " years\n");
         }
     }
     

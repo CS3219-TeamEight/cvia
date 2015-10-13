@@ -2,6 +2,7 @@ package main;
 
 import parser.ResumeParser;
 import parser.Section;
+import parser.EduParser;
 import parser.WorkExpParser;
 import utilities.PDFConverter;
 
@@ -20,27 +21,24 @@ public class Main {
 		Scanner sc = new Scanner (System.in);
         System.out.println("Please enter path for file:");
         String inputPath = sc.nextLine();
-        
-        System.out.println("Please enter output path for file:");
-        String outputPath = sc.nextLine();
-        
         sc.close();
         
-		//For testing my own pdf file
-		//String _stanley_pdf = "/Users/Stanley/Desktop/Test.pdf";
-		
+        String outputPath = "plaintext.txt";
 		converter.convertToText(inputPath, outputPath);
 		
 		File file = new File(outputPath);
 		ResumeParser parser = new ResumeParser(file);
 		//parser.printAllSections();
 		ArrayList<Section> sections = parser.getSections();
-		WorkExpParser workParser;
 		for (Section section : sections) {
 		    if (section.getType().equals("WORK")) {
-		        workParser = new WorkExpParser(section);
+		        WorkExpParser workParser = new WorkExpParser(section);
 		        workParser.printAllWorkExp();
+		    } else if (section.getType().equals("EDU")) {
+		        EduParser eduParser = new EduParser(section);
+		        eduParser.printEduDetails();
 		    }
+		    
 		}
 		
 	}

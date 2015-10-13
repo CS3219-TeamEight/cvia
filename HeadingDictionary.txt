@@ -23,10 +23,13 @@ language
 known languages
 ;
 SKILLS
-skill set
 skills
+skill set
 skill sets
 key skills
+skills & expertise
+expertise
+skills and expertise
 ;
 CERT
 certifications
@@ -44,6 +47,9 @@ courses
 ;
 VOLUNTEER
 volunteer experience
+volunteer
+volunteer work
+voluntary
 ;
 RECOMMENDATIONS
 recommendation
