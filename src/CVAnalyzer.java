@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class CVAnalyzer {
     
     private String content;
-    private ArrayList<String> sections = new ArrayList<>();
+    private ArrayList<String> sections = new ArrayList<String>();
 
     public CVAnalyzer(String content) {
         this.content = content;

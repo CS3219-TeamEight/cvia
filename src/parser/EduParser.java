@@ -42,7 +42,7 @@ public class EduParser implements SectionParser {
     **/
     
     public EduParser(Section section) {
-        lines = new ArrayList<>(section.getLines());
+        lines = new ArrayList<String>(section.getLines());
         getEduDetails();
     }
     

@@ -7,7 +7,7 @@ public class Education extends Qualification {
     private String degree;
     private String dept;
     private int duration;
-    private ArrayList<Module> modules = new ArrayList<>();
+    private ArrayList<Module> modules = new ArrayList<Module>();
     
     public Education(String instituteName, String degree, String dept, int duration) {
         this.name = instituteName;

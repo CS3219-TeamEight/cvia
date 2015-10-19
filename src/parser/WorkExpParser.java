@@ -5,6 +5,11 @@ import qualification.WorkExp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Date;
+import java.util.List;
+import java.util.Calendar;
+
+import com.joestelmach.natty.*;
 /**
 import java.util.Iterator;
 import java.util.Map;
@@ -14,34 +19,19 @@ public class WorkExpParser implements SectionParser {
 
     private ArrayList<String> lines;
     private HashMap<Integer, WorkExp> dateLines; // line number, no. of years
-    /** private ArrayList<String> months;
-    private ArrayList<String> ongoing; **/
+    private ArrayList<String> ongoing;
     private ArrayList<WorkExp> workExp;
     
     public WorkExpParser(Section section) {
-        lines = new ArrayList<>(section.getLines());
-        dateLines = new HashMap<>();
-        workExp = new ArrayList<>();
+        lines = new ArrayList<String>(section.getLines());
+        dateLines = new HashMap<Integer, WorkExp>();
+        workExp = new ArrayList<WorkExp>();
         for (int i = 0; i < lines.size(); i++) {
-            getDuration(i);
+            getWorkDuration(i);
         }
-        /**
-        months.add("January");
-        months.add("February");
-        months.add("March");
-        months.add("April");
-        months.add("May");
-        months.add("June");
-        months.add("July");
-        months.add("August");
-        months.add("September");
-        months.add("October");
-        months.add("November");
-        months.add("December");
         
-        ongoing.add("ongoing");
-        ongoing.add("present");
-        **/
+        // ongoing.add("ongoing");
+        // ongoing.add("present");
     }
     
     /**
@@ -139,11 +129,43 @@ public class WorkExpParser implements SectionParser {
         }
     }
     
+    private void getWorkDuration(int lineNum) {
+        String line = lines.get(lineNum);
+        Parser parser = new com.joestelmach.natty.Parser();
+        List<DateGroup> groups = parser.parse(line);
+        if (groups.size() > 0) {
+            DateGroup dateGroup = groups.get(0);
+            List<Date> dates = dateGroup.getDates();
+            
+            Date start = dates.get(0);
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(start);
+            int startYear = cal1.get(Calendar.YEAR);
+            int startMonth = cal1.get(Calendar.MONTH);
+            
+            Date end = new Date();
+            if (dates.size() == 2) {
+                end = dates.get(1);
+            }
+            Calendar cal2 = Calendar.getInstance();
+            cal2.setTime(end);
+            int endYear = cal2.get(Calendar.YEAR);
+            int endMonth = cal2.get(Calendar.MONTH);
+            
+            double duration = (endYear - startYear) + (endMonth - startMonth)/12.0;
+            String desc = lines.get(lineNum-1); // currently optimized for LinkedIn
+            ArrayList<String> job = parseWorkDesc(desc);
+            WorkExp work = new WorkExp(job.get(0), job.get(1), duration);
+            dateLines.put(lineNum, work);
+            workExp.add(work);
+        }
+    }
+    
     public ArrayList<String> parseWorkDesc(String line) {
         ArrayList<String> parts = new ArrayList<String>(Arrays.asList(line.split("  ")));
         String position = parts.get(0).trim();
         String job = parts.get(2).trim();
-        ArrayList<String> desc = new ArrayList<>();
+        ArrayList<String> desc = new ArrayList<String>();
         desc.add(position);
         desc.add(job);
         

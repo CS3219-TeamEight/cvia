@@ -14,10 +14,10 @@ import java.util.Map;
 public class ResumeParser {
     
     HeaderDictionary dictionary;
-    LinkedHashMap<String, ArrayList<HeaderCandidate>> candidates = new LinkedHashMap<>();
-    ArrayList<String> lines = new ArrayList<>();
-    ArrayList<HeaderCandidate> headers = new ArrayList<>();
-    ArrayList<Section> sections = new ArrayList<>();
+    LinkedHashMap<String, ArrayList<HeaderCandidate>> candidates = new LinkedHashMap<String, ArrayList<HeaderCandidate>>();
+    ArrayList<String> lines = new ArrayList<String>();
+    ArrayList<HeaderCandidate> headers = new ArrayList<HeaderCandidate>();
+    ArrayList<Section> sections = new ArrayList<Section>();
     File resume;
 
     public ResumeParser(File resume) {
@@ -85,7 +85,7 @@ public class ResumeParser {
             if (candidates.containsKey(headerType)) {
                 candidateList = candidates.get(headerType);
             } else {
-                candidateList = new ArrayList<>();
+                candidateList = new ArrayList<HeaderCandidate>();
             }
             candidateList.add(candidate);
             candidates.put(headerType, candidateList);
@@ -118,7 +118,7 @@ public class ResumeParser {
                 endLine = headers.get(i+1).getLineNum() - 1;
             }
             
-            ArrayList<String> sectionLines = new ArrayList<>();
+            ArrayList<String> sectionLines = new ArrayList<String>();
             for (int j = startLine; j < endLine; j++) {
                 sectionLines.add(lines.get(j));
             }
