@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Calendar;
 
 import com.joestelmach.natty.*;
+import org.apache.commons.lang.time.DateUtils;
 /**
 import java.util.Iterator;
 import java.util.Map;
@@ -17,119 +18,33 @@ import java.util.Map;
 
 public class WorkExpParser implements SectionParser {
 
-    private ArrayList<String> lines;
+    private ArrayList<String> lines; // contains lines relevant to work exp ONLY
     private HashMap<Integer, WorkExp> dateLines; // line number, no. of years
     private ArrayList<String> ongoing;
     private ArrayList<WorkExp> workExp;
+    private ArrayList<Integer> pointers;
+    private ArrayList<Double> durations;
+    private int offset;
     
     public WorkExpParser(Section section) {
         lines = new ArrayList<String>(section.getLines());
+        ongoing = new ArrayList<String>();
         dateLines = new HashMap<Integer, WorkExp>();
         workExp = new ArrayList<WorkExp>();
+        pointers = new ArrayList<Integer>();
+        durations = new ArrayList<Double>();
+        
+        ongoing.add("ongoing");
+        ongoing.add("present");
         for (int i = 0; i < lines.size(); i++) {
-            getWorkDuration(i);
+            splitWorkExperience(i);
         }
+        pointers.add(lines.size()); // dummy pointer to signify end of section
         
-        // ongoing.add("ongoing");
-        // ongoing.add("present");
+        storeWorkExp();
     }
     
-    /**
-    private ArrayList<Integer> findYears(String line) {
-        ArrayList<Integer> years = new ArrayList<>();
-        for (int i = 0; i < line.length(); i++) {
-            char c = line.charAt(i);
-            if (c >= '0' && c <= '9') {
-                int num = Character.getNumericValue(c);
-                int j;
-                for (j = i+1; j < line.length(); j++) {
-                    char c2 = line.charAt(j);
-                    if (c2 >= '0' && c2 <= '9') {
-                        num = num * 10 + Character.getNumericValue(c2);
-                    } else {
-                        break;
-                    }
-                }
-                if (num > 1900 && num < 2100) {
-                    years.add(num);
-                }
-                i = j+1;
-            }
-        }
-        return years;
-    }
-    
-    // likely that each job experience will have only one line containing date information
-    private void findDates(String line) {
-        ArrayList<Integer> monthsFound = new ArrayList<>();
-        for (int i = 0; i < months.size(); i++) {
-            if (line.contains(months.get(i))) {
-                // not compared with lowercase to minimize the likelihood of
-                // the verb "may" being mistaken as a month
-                monthsFound.add(i+1);
-            }
-        }
-        ArrayList<Integer> yearsFound = findYears(line);
-        boolean isOngoing = false;
-        for (String cont : ongoing) {
-            if (line.contains(cont)) {
-                isOngoing = true;
-                break;
-            }
-        }
-        
-        
-        
-    }
-    **/
-    
-    // assumes LinkedIn format for now
-    private void getDuration(int lineNum) {
-        String line = lines.get(lineNum);
-        int years = 0;
-        int months = 0;
-        if (line.toLowerCase().contains("year")) {
-            // later account for cases where there are more than 1 occurrences of year&month
-            int yearIndex = line.indexOf("year");
-            int counter = 1;
-            for (int i = yearIndex-2; i>=0; i--) {
-                char c = line.charAt(i);
-                if (c >= '0' && c <= '9') {
-                    int num = Character.getNumericValue(c);
-                    years += num * counter;
-                    counter *= 10;
-                } else {
-                    break;
-                }
-            }
-            
-        }
-        
-        if (line.toLowerCase().contains("month")) {
-            int monthIndex = line.indexOf("month");
-            int counter = 1;
-            for (int i = monthIndex-2; i>=0; i--) {
-                char c = line.charAt(i);
-                if (c >= '0' && c <= '9') {
-                    int num = Character.getNumericValue(c);
-                    months += num * counter;
-                    counter *= 10;
-                } else {
-                    break;
-                }
-            }
-        }
-        Double exp = years*1.0 + months/12.0;
-        if (exp > 0.0) {
-            String desc = lines.get(lineNum-1);
-            ArrayList<String> job = parseWorkDesc(desc);
-            WorkExp work = new WorkExp(job.get(0), job.get(1), exp);
-            dateLines.put(lineNum, work);
-            workExp.add(work);
-        }
-    }
-    
-    private void getWorkDuration(int lineNum) {
+    private void splitWorkExperience(int lineNum) {
         String line = lines.get(lineNum);
         Parser parser = new com.joestelmach.natty.Parser();
         List<DateGroup> groups = parser.parse(line);
@@ -146,29 +61,67 @@ public class WorkExpParser implements SectionParser {
             Date end = new Date();
             if (dates.size() == 2) {
                 end = dates.get(1);
+            } else if (dates.size() == 1) {
+                boolean isOngoing = false;
+                for (String ongoingString : ongoing) {
+                    if (line.contains(ongoingString)) {
+                        isOngoing = true;
+                        break;
+                    }
+                }
+                if (isOngoing) {
+                    end = DateUtils.truncate(new Date(), Calendar.DAY_OF_MONTH);
+                }
             }
             Calendar cal2 = Calendar.getInstance();
             cal2.setTime(end);
             int endYear = cal2.get(Calendar.YEAR);
             int endMonth = cal2.get(Calendar.MONTH);
             
-            double duration = (endYear - startYear) + (endMonth - startMonth)/12.0;
-            String desc = lines.get(lineNum-1); // currently optimized for LinkedIn
-            ArrayList<String> job = parseWorkDesc(desc);
-            WorkExp work = new WorkExp(job.get(0), job.get(1), duration);
-            dateLines.put(lineNum, work);
-            workExp.add(work);
+            double duration = (endYear - startYear) + (endMonth - (startMonth-1))/12.0;
+            // String desc = lines.get(lineNum-1); // currently optimized for LinkedIn
+            // ArrayList<String> job = parseWorkDesc(desc);
+            // WorkExp work = new WorkExp(job.get(0), job.get(1), duration);
+            // dateLines.put(lineNum, work);
+            // workExp.add(work);
+            System.out.println(duration + " years");
+            durations.add(duration);
+            if (pointers.size() == 0) {
+                offset = lineNum;
+            }
+            pointers.add(lineNum - offset);
+        }
+        
+        // assumption: uniform format. The work experience section can be split
+        // to individual jobs based on location of the date information
+    }
+    
+    public void storeWorkExp() {
+        for (int i = 0; i < pointers.size()-1; i++) {
+            double duration = durations.get(i);
+            ArrayList<String> expLines = new ArrayList<String>();
+            for (int j = pointers.get(i); j < pointers.get(i+1); j++) {
+                expLines.add(lines.get(j));
+                // find keywords and store whole list in WorkExp object
+            }
+            
         }
     }
     
+    // generalize this to all
     public ArrayList<String> parseWorkDesc(String line) {
-        ArrayList<String> parts = new ArrayList<String>(Arrays.asList(line.split("  ")));
-        String position = parts.get(0).trim();
-        String job = parts.get(2).trim();
         ArrayList<String> desc = new ArrayList<String>();
-        desc.add(position);
-        desc.add(job);
-        
+        try {
+            // LinkedIn format
+            ArrayList<String> parts = new ArrayList<String>(Arrays.asList(line.split("  ")));
+            String position = parts.get(0).trim();
+            String job = parts.get(2).trim();
+            desc.add(position);
+            desc.add(job);
+        } catch (Exception e) {
+            
+        }
+
         return desc;
     }
     
