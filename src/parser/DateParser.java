@@ -87,7 +87,7 @@ public class DateParser {
                     }
                     if (isOngoing) {
                         if (month != -1) {
-                            System.out.println("Ongoing from year " + year + " month " + month);
+                            //System.out.println("Ongoing from year " + year + " month " + month);
                             Calendar today = Calendar.getInstance();
                             int thisYear = today.get(Calendar.YEAR);
                             int thisMonth = today.get(Calendar.MONTH);
@@ -103,7 +103,7 @@ public class DateParser {
                         }
                         int month2 = getMonth(line, index);
                         if (month2 != -1) {
-                            System.out.println("From month " + month2 + " to month " + month + " in year " + year);
+                            //System.out.println("From month " + month2 + " to month " + month + " in year " + year);
                             duration = (month2 - month) / 12.0;
                         }
                     }
@@ -116,7 +116,7 @@ public class DateParser {
                 int month1 = getMonth(line, years.get(0).getIndex() - 2);
                 int month2 = getMonth(line, years.get(1).getIndex() - 2);
                 if (month1 != -1 && month2 != -1) {
-                    System.out.println("From year " + year1 + " month " + month1 + " to year " + year2 + " month " + month2);
+                    //System.out.println("From year " + year1 + " month " + month1 + " to year " + year2 + " month " + month2);
                     duration = (year2 - year1) + (month2 - month1) / 12.0;
                 }
                 
