@@ -1,5 +1,6 @@
 package main;
 
+import parser.DateParser;
 import parser.ResumeParser;
 import parser.Section;
 import parser.EduParser;
@@ -28,17 +29,16 @@ public class Main {
 		
 		File file = new File(outputPath);
 		ResumeParser parser = new ResumeParser(file);
+		DateParser dateParser = new DateParser();
 		//parser.printAllSections();
 		ArrayList<Section> sections = parser.getSections();
 		for (Section section : sections) {
 		    if (section.getType().equals("WORK")) {
-		        WorkExpParser workParser = new WorkExpParser(section);
-		        workParser.printAllWorkExp();
+		        WorkExpParser workParser = new WorkExpParser(section, dateParser);
 		    } else if (section.getType().equals("EDU")) {
-		        EduParser eduParser = new EduParser(section);
-		        eduParser.printEduDetails();
+		        // EduParser eduParser = new EduParser(section);
+		        //eduParser.printEduExperience();
 		    }
-		    
 		}
 		
 	}

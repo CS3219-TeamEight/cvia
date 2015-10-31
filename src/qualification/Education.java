@@ -4,40 +4,24 @@ import java.util.ArrayList;
 
 public class Education extends Qualification {
     
-    private String degree;
-    private String dept;
-    private int duration;
-    private ArrayList<Module> modules = new ArrayList<Module>();
+    private double duration;
+    private double cap;
     
-    public Education(String instituteName, String degree, String dept, int duration) {
-        this.name = instituteName;
-        this.degree = degree;
-        this.dept = dept;
+    public Education(double duration, double cap) {
         this.duration = duration;
-        //this.score = calculateScore();
+        this.cap = cap;
     }
     
-    public String getInstitute() {
-        return name;
+    public double getCap() {
+        return cap;
     }
     
-    public String getDegree() {
-        return degree;
-    }
-    
-    public String getDept() {
-        return dept;
-    }
-    
-    public int getDuration() {
+    public double getDuration() {
         return duration;
     }
     
     private int calculateScore() {
         int init = 0;
-        for(Module mod : modules) {
-            init += mod.getScore();
-        }
         return init;
     }
 
