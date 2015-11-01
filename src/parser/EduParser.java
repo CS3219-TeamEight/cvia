@@ -3,20 +3,13 @@ package parser;
 import qualification.Education;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
-import org.apache.commons.lang.time.DateUtils;
-
-import com.joestelmach.natty.*;
 
 public class EduParser implements SectionParser {
 
     DateParser dateParser;
     ArrayList<String> lines;
     private ArrayList<Integer> pointers;
-    private ArrayList<Double> durations;
+    private ArrayList<Duration> durations;
     private ArrayList<Education> education;
     private int offset;
     
@@ -24,7 +17,7 @@ public class EduParser implements SectionParser {
         this.dateParser = dateParser;
         lines = new ArrayList<String>(section.getLines());
         pointers = new ArrayList<Integer>();
-        durations = new ArrayList<Double>();
+        durations = new ArrayList<Duration>();
         education = new ArrayList<Education>();
         
         parseEducation();
@@ -34,8 +27,9 @@ public class EduParser implements SectionParser {
     private void parseEducation() {
         
         for (int i = 0; i < lines.size(); i++) {
-            double duration = dateParser.identifyDates(lines.get(i));
-            if (duration > 0) {
+            Duration duration = dateParser.identifyDates(lines.get(i));
+            double time = duration.getDuration();
+            if (time > 0) {
                 durations.add(duration);
                 if (pointers.size() == 0) {
                     offset = i;
@@ -90,19 +84,25 @@ public class EduParser implements SectionParser {
     }
     
     private Education storeEduExperience(int index, int start, int end) {
-        double duration = durations.get(index);
+        Duration duration = durations.get(index);
         double cap = -1;
         for (int i = start; i < end; i++) {
             cap = getCAP(i);
             if (cap > 0) break;
         }
-        Education edu = new Education(duration, cap);
+        Education edu = new Education(duration.getDuration(), cap, !duration.isOngoing());
         return edu;
     }
     
     public void printEduExperience() {
         for (Education edu : education) {
-            System.out.println("CAP: " + edu.getCap() + "\nDuration: " + edu.getDuration());
+            System.out.print("CAP: " + edu.getCap() + "\nDuration: " + edu.getDuration());
+            System.out.print(", ");
+            if (edu.isGraduate()) {
+                System.out.println("graduate");
+            } else {
+                System.out.println("undergraduate");
+            }
         }
     }
     

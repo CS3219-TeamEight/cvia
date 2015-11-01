@@ -27,7 +27,7 @@ public class WorkExpParser implements SectionParser {
     
     private void parseWorkSection() {
         for (int i = 0; i < lines.size(); i++) {
-            double duration = dateParser.identifyDates(lines.get(i));
+            double duration = dateParser.identifyDates(lines.get(i)).getDuration();
             if (duration > 0) {
                 WorkExp work = new WorkExp(duration);
                 workExp.add(work);

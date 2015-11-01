@@ -35,10 +35,10 @@ public class Main {
 		for (Section section : sections) {
 		    if (section.getType().equals("WORK")) {
 		        WorkExpParser workParser = new WorkExpParser(section, dateParser);
-		        //workParser.printWorkExperience();
+		        workParser.printWorkExperience();
 		    } else if (section.getType().equals("EDU")) {
 		        EduParser eduParser = new EduParser(section, dateParser);
-		        //eduParser.printEduExperience();
+		        eduParser.printEduExperience();
 		    }
 		}
 		

@@ -1,15 +1,15 @@
 package qualification;
 
-import java.util.ArrayList;
-
 public class Education extends Qualification {
     
     private double duration;
     private double cap;
+    private boolean graduated;
     
-    public Education(double duration, double cap) {
+    public Education(double duration, double cap, boolean graduated) {
         this.duration = duration;
         this.cap = cap;
+        this.graduated = graduated;
     }
     
     public double getCap() {
@@ -18,6 +18,10 @@ public class Education extends Qualification {
     
     public double getDuration() {
         return duration;
+    }
+    
+    public boolean isGraduate() {
+        return graduated;
     }
     
     private int calculateScore() {
