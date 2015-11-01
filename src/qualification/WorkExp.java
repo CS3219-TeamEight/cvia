@@ -1,7 +1,6 @@
 package qualification;
 
 public class WorkExp extends Qualification {
-
     
     double duration;
     

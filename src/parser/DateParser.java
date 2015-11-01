@@ -16,6 +16,7 @@ public class DateParser {
         ongoing.add("current");
         ongoing.add("present");
         ongoing.add("projected");
+        ongoing.add("now");
 
         months = new HashMap<String, Integer>();
         months.put("jan", 1);
@@ -52,7 +53,6 @@ public class DateParser {
         int startMonth = 0;
         boolean current = false;
         ArrayList<Year> years = new ArrayList<Year>();
-        
         if (line.contains("20") || line.contains("19")) {
             for (int i = 0; i < line.length(); i++) {
                 char c = line.charAt(i);
@@ -75,52 +75,53 @@ public class DateParser {
                 }
             }
             
-            boolean isOngoing = false;
-            for (String s : ongoing) {
-                if (line.toLowerCase().contains(s)) {
-                    isOngoing = true;
-                    // System.out.println("Is ongoing");
-                    break; 
-                }
-            }
-            
-            if (isOngoing) { // ongoing considered first, since line might include PROJECTED end
-                current = true;
+            if (years.size() > 0) {
                 startYear = years.get(0).getYear();
-                startMonth = getMonth(line, line.indexOf(Integer.toString(startYear)) - 2);
-                if (startMonth != -1) {
-                    Calendar today = Calendar.getInstance();
-                    int thisYear = today.get(Calendar.YEAR);
-                    int thisMonth = today.get(Calendar.MONTH);
-                    duration = (thisYear - startYear) + (thisMonth - startMonth) / 12.0;
+                startMonth = getMonth(line, years.get(0).getIndex() - 2);
+                boolean isOngoing = false;
+                for (String s : ongoing) {
+                    if (line.toLowerCase().contains(s)) {
+                        isOngoing = true;
+                        break; 
+                    }
                 }
-            } else {
-                if (years.size() == 1) {
-                 // started and ended in same year
-                    int index = years.get(0).getIndex() - 2;
-                    int spaceCount = 0;
-                    while (index <= 0 && spaceCount < 2) {
-                        if (line.charAt(index) == ' ' && line.charAt(index+1) != ' ') spaceCount++;
-                        index--;
+                
+                if (isOngoing) { // ongoing considered first, since line might include PROJECTED end
+                    // System.out.println("Is ongoing");
+                    current = true;
+                    if (startMonth != -1) {
+                        Calendar today = Calendar.getInstance();
+                        int thisYear = today.get(Calendar.YEAR);
+                        int thisMonth = today.get(Calendar.MONTH);
+                        duration = (thisYear - startYear) + (thisMonth - startMonth) / 12.0;
                     }
-                    int month2 = getMonth(line, index);
-                    if (month2 != -1) {
-                        //System.out.println("From month " + month2 + " to startMonth " + month + " in year " + startYear);
-                        duration = (month2 - startMonth) / 12.0;
-                    }
-                } else if (years.size() == 2) {
-                 // System.out.println("Found 2 years");
-                    // started and ended in different years, or just wrote same year twice
-                    startYear = years.get(0).getYear();
-                    int year2 = years.get(1).getYear();
-                    startMonth = getMonth(line, years.get(0).getIndex() - 2);
-                    int month2 = getMonth(line, years.get(1).getIndex() - 2);
-                    if (startMonth != -1 && month2 != -1) {
-                        //System.out.println("From year " + startYear + " month " + startMonth + " to year " + year2 + " month " + month2);
-                        duration = (year2 - startYear) + (month2 - startMonth) / 12.0;
-                    }
-                } // else something is wrong, disregard this line
-            }
+                } else {
+                    if (years.size() == 1) {
+                     // started and ended in same year
+                     // System.out.println("started and ended in same year");
+                        int index = years.get(0).getIndex() - 2;
+                        int spaceCount = 0;
+                        while (index >= 0 && spaceCount < 2) {
+                            if (line.charAt(index) == ' ' && line.charAt(index+1) != ' ') spaceCount++;
+                            index--;
+                        }
+                        int month2 = getMonth(line, index);
+                        if (month2 != -1) {
+                            //System.out.println("From month " + month2 + " to startMonth " + month + " in year " + startYear);
+                            duration = (startMonth - month2) / 12.0;
+                        }
+                    } else if (years.size() == 2) {
+                     // System.out.println("Found 2 years");
+                        // started and ended in different years, or just wrote same year twice
+                        int year2 = years.get(1).getYear();
+                        int month2 = getMonth(line, years.get(1).getIndex() - 2);
+                        if (startMonth != -1 && month2 != -1) {
+                            //System.out.println("From year " + startYear + " month " + startMonth + " to year " + year2 + " month " + month2);
+                            duration = (year2 - startYear) + (month2 - startMonth) / 12.0;
+                        }
+                    } // else something is wrong, disregard this line
+                }
+            } // no years found, completely disregard
         }
         
         return new Duration(duration, startYear, startMonth, current);

@@ -119,11 +119,11 @@ public class ResumeParser {
             }
             
             ArrayList<String> sectionLines = new ArrayList<String>();
-            for (int j = startLine; j < endLine; j++) {
+            for (int j = startLine; j <= endLine; j++) {
                 sectionLines.add(lines.get(j));
             }
             
-            Section section = new Section(header.getType(), sectionLines);
+            Section section = new Section(header.getType(), sectionLines, (endLine - startLine + 1));
             sections.add(section);
             
         }

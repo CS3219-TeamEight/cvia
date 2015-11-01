@@ -41,6 +41,5 @@ public class Main {
 		        eduParser.printEduExperience();
 		    }
 		}
-		
 	}
 }
