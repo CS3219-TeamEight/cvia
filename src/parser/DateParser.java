@@ -120,6 +120,7 @@ public class DateParser {
                             duration = (year2 - startYear) + (month2 - startMonth) / 12.0;
                         } else if (startMonth == -1 && month2 == -1) {
                             // assume that years are valid but months were not provided
+                            // also assume that started at beginning of first year and ended at end of second year
                             duration = (year2 - startYear + 1);
                         }
                     } // else something is wrong, disregard this line
