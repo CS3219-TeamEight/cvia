@@ -118,6 +118,9 @@ public class DateParser {
                         if (startMonth != -1 && month2 != -1) {
                             //System.out.println("From year " + startYear + " month " + startMonth + " to year " + year2 + " month " + month2);
                             duration = (year2 - startYear) + (month2 - startMonth) / 12.0;
+                        } else if (startMonth == -1 && month2 == -1) {
+                            // assume that years are valid but months were not provided
+                            duration = (year2 - startYear + 1);
                         }
                     } // else something is wrong, disregard this line
                 }
