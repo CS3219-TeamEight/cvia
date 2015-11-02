@@ -18,10 +18,8 @@ public class EduParser implements SectionParser {
     private HashMap<String, String> degreeTypes;
     private int offset;
     
-    public EduParser(Section section, DateParser dateParser) {
+    public EduParser(DateParser dateParser) {
         this.dateParser = dateParser;
-        lines = new ArrayList<String>(section.getLines());
-        lineCount = section.getLineCount();
         pointers = new ArrayList<Integer>();
         durations = new ArrayList<Duration>();
         education = new ArrayList<Education>();
@@ -46,11 +44,11 @@ public class EduParser implements SectionParser {
         degreeTypes.put("doctor of", "DOCTOR");
         degreeTypes.put("doctor in", "DOCTOR");
         
-        parseEducation();
-        
     }
     
-    private void parseEducation() {
+    public void parseEducation(Section section) {
+        lines = new ArrayList<String>(section.getLines());
+        lineCount = section.getLineCount();
         
         for (int i = 0; i < lineCount; i++) {
             Duration duration = dateParser.identifyDates(lines.get(i));
@@ -154,6 +152,8 @@ public class EduParser implements SectionParser {
             }
         }
         Education edu = new Education(duration.getDuration(), cap, !duration.isOngoing(), degree);
+        // although there are different types of institutes (university, high school, etc)
+        // catered to university only, due to difficulty in differentiating them
         return edu;
     }
     

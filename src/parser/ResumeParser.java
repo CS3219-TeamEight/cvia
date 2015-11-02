@@ -20,7 +20,11 @@ public class ResumeParser {
     ArrayList<Section> sections = new ArrayList<Section>();
     File resume;
 
-    public ResumeParser(File resume) {
+    public ResumeParser() {
+        
+    }
+    
+    public void initialize(File resume) {
         this.resume = resume;
         dictionary = new HeaderDictionary();
         findHeaderCandidates();

@@ -17,17 +17,16 @@ public class WorkExpParser implements SectionParser {
     private ArrayList<Integer> pointers;
     private int offset;
     
-    public WorkExpParser(Section section, DateParser dateParser) {
+    public WorkExpParser(DateParser dateParser) {
         this.dateParser = dateParser;
-        lines = new ArrayList<String>(section.getLines());
-        lineCount = section.getLineCount();
         workExp = new ArrayList<WorkExp>();
         pointers = new ArrayList<Integer>();
-        
-        parseWorkSection();
     }
     
-    private void parseWorkSection() {
+    public void parseWorkSection(Section section) {
+        lines = new ArrayList<String>(section.getLines());
+        lineCount = section.getLineCount();
+        
         for (int i = 0; i < lineCount; i++) {
             double duration = dateParser.identifyDates(lines.get(i)).getDuration();
             if (duration > 0) {
