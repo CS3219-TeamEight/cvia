@@ -18,6 +18,12 @@ public class EduParser implements SectionParser {
     private HashMap<String, String> degreeTypes;
     private int offset;
     
+    private static final String DEGREE_PHD = "Ph.D";
+    private static final String DEGREE_MASTER = "Master";
+    private static final String DEGREE_BACHELOR = "Bachelor";
+    private static final String DEGREE_DOCTOR = "Doctor";
+    private static final String DEGREE_UNKNOWN = "unknown";
+    
     public EduParser(DateParser dateParser) {
         this.dateParser = dateParser;
         pointers = new ArrayList<Integer>();
@@ -28,21 +34,27 @@ public class EduParser implements SectionParser {
         
         degreeNames.add("phd");
         degreeNames.add("ph.d");
+        degreeNames.add("doctor of philosophy");
         degreeNames.add("master of");
         degreeNames.add("master in");
+        degreeNames.add("master's");
         degreeNames.add("bachelor of");
         degreeNames.add("bachelor in");
+        degreeNames.add("bachelor's");
         degreeNames.add("doctor of");
         degreeNames.add("doctor in");
         
-        degreeTypes.put("phd", "PHD");
-        degreeTypes.put("ph.d", "PHD");
-        degreeTypes.put("master of", "MASTER");
-        degreeTypes.put("master in", "MASTER");
-        degreeTypes.put("bachelor of", "BACHELOR");
-        degreeTypes.put("bachelor in", "BACHELOR");
-        degreeTypes.put("doctor of", "DOCTOR");
-        degreeTypes.put("doctor in", "DOCTOR");
+        degreeTypes.put("phd", DEGREE_PHD);
+        degreeTypes.put("ph.d", DEGREE_PHD);
+        degreeTypes.put("doctor of philosophy", DEGREE_PHD);
+        degreeTypes.put("master of", DEGREE_MASTER);
+        degreeTypes.put("master in", DEGREE_MASTER);
+        degreeTypes.put("master's", DEGREE_MASTER);
+        degreeTypes.put("bachelor of", DEGREE_BACHELOR);
+        degreeTypes.put("bachelor in", DEGREE_BACHELOR);
+        degreeTypes.put("bachelor's", DEGREE_BACHELOR);
+        degreeTypes.put("doctor of", DEGREE_DOCTOR);
+        degreeTypes.put("doctor in", DEGREE_DOCTOR);
         
     }
     
@@ -80,7 +92,6 @@ public class EduParser implements SectionParser {
             }
         }
         if (found) {
-            System.out.println(degreeTypes.get(degree));
             return Optional.of(degreeTypes.get(degree));
         } else {
             return Optional.empty();
@@ -130,10 +141,10 @@ public class EduParser implements SectionParser {
     private Education storeEduExperience(int index, int start, int end) {
         Duration duration = durations.get(index);
         double cap = -1;
-        String degree = "UNSPECIFIED";
+        String degree = DEGREE_UNKNOWN;
         boolean capFound = false;
         boolean degFound = false;
-        for (int i = start; i < end && !capFound && degFound; i++) {
+        for (int i = start; i < end && !capFound && !degFound; i++) {
             cap = getCAP(i);
             if (cap > 0) break;
             if (!capFound) {

@@ -3,10 +3,6 @@ package parser;
 import qualification.WorkExp;
 
 import java.util.ArrayList;
-/**
-import java.util.Iterator;
-import java.util.Map;
-**/
 
 public class WorkExpParser implements SectionParser {
 
