@@ -30,7 +30,7 @@ public class ParseResultStorage {
     
     public void printEduExperience() {
         for (Education edu : education) {
-            System.out.println("CAP: " + edu.getCap() + "\nDuration: " + edu.getDuration() + "\nDegree: " + edu.getDegree());
+            System.out.println("Degree: " + edu.getDegree() + "\nField: " + edu.getField());
             if (edu.isGraduate()) {
                 System.out.println("graduate");
             } else {
@@ -41,7 +41,7 @@ public class ParseResultStorage {
     
     public void printWorkExperience() {
         for (WorkExp exp : workExp) {
-            System.out.println("Duration: " + exp.getDuration() + " years");
+            System.out.println("Duration: " + exp.getDuration() + " years\nPosition: " + exp.getTitle());
         }
     }
 

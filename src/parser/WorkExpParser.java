@@ -30,7 +30,7 @@ public class WorkExpParser implements SectionParser {
                 pointers.add(i - offset);
                 
                 ArrayList<String> beginningPart = new ArrayList<>();
-                for (int j = i - offset; j < i + 1; j++) {
+                for (int j = i - offset; j < i + 2; j++) {
                     beginningPart.add(lines.get(j));
                 }
                 
@@ -49,6 +49,6 @@ public class WorkExpParser implements SectionParser {
             info = info + line + " ";
         }
         
-        return jobTitleDictionary.contains(info);
+        return jobTitleDictionary.contains(info.toLowerCase());
     }
 }

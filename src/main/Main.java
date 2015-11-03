@@ -38,21 +38,24 @@ public class Main {
             
         }
 
-        try {
-            ArrayList<Section> sections = parser.getSections();
-            ParseResultStorage storage = new ParseResultStorage();
-            for (Section section : sections) {
-                if (section.getType().equals("WORK")) {
-                    storage.storeWorkExp(workParser.parseWorkSection(section));
-                    storage.printWorkExperience();
-                } else if (section.getType().equals("EDU")) {
-                    storage.storeEducation(eduParser.parseEducation(section));
-                    storage.printEduExperience();
-                }
+        ArrayList<Section> sections = parser.getSections();
+        ParseResultStorage storage = new ParseResultStorage();
+        for (Section section : sections) {
+            if (section.getType().equals("WORK")) {
+                storage.storeWorkExp(workParser.parseWorkSection(section));
+                storage.printWorkExperience();
+            } else if (section.getType().equals("EDU")) {
+                storage.storeEducation(eduParser.parseEducation(section));
+                storage.printEduExperience();
             }
+        }
+        /**
+        try {
+            
         } catch (Exception e) {
             System.out.println("Error: could not parse your resume."
                     + "An admin has been notified to manually parse it.");
         }
+        **/
 	}
 }
