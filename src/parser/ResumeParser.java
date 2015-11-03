@@ -64,7 +64,7 @@ public class ResumeParser {
     
     private void evaluateCandidate(String line, int lineNum) {
         if (line.endsWith(".")) return;
-        String headerType = headerDictionary.contains(line.toLowerCase());
+        String headerType = headerDictionary.matches(line.toLowerCase());
         if (headerType == null) {
             return;
         } else {
@@ -103,7 +103,7 @@ public class ResumeParser {
     public void determineHeaders() {
         Iterator itr = candidates.entrySet().iterator();
         while (itr.hasNext()) {
-            Map.Entry candidateSet = (Map.Entry)itr.next();
+            Map.Entry candidateSet = (Map.Entry) itr.next();
             HeaderCandidate header = new HeaderCandidate("", "", 0, 0); // dummy
             for (HeaderCandidate candidate : (ArrayList<HeaderCandidate>)candidateSet.getValue()) {
                 if (candidate.getScore() > header.getScore()) {

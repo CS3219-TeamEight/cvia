@@ -104,7 +104,7 @@ public class EduParser implements SectionParser {
             info = info + line + " ";
         }
         
-        return fosDictionary.contains(info);
+        return fosDictionary.contains(info.toLowerCase());
     }
     
     private double getCAP(String line) {
@@ -171,7 +171,7 @@ public class EduParser implements SectionParser {
         }
         
         ArrayList<String> beginningPart = new ArrayList<>();
-        for (int i = start; i < start+offset+1; i++) {
+        for (int i = start; i < start + offset + 2; i++) {
             beginningPart.add(lines.get(i));
         }
         

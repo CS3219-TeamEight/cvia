@@ -1,115 +1,119 @@
 Page1
-Donnabelle Embodo
-Project Manager at Holmusk
+Russell Ong
+Senior Software Engineer - iOS at ReQall PTE LTD
 Summary
-IT Service Management professional with 6 years industry experience specilizing in mobile & telecom support,
- network infrastructure, computer hardware/software troubleshooting, application support and event organising.
+- iOS and Android Application Development with app on the App Store - Various Smartwatches SDK
+ implementation - Web application development for various clients using Ruby on Rails. - Various Facebook
+ API integration - Various OAuth/OpenID integration  Specialties: Mobile/Web Application Development,
+ CMS/CRM/ERP Development, iOS/Android Development, Facebook/Twitter Application Development,
+ Ruby, Ruby on Rails, Objective-C, REST/SOAP Frameworks, OAuth/OpenID Integration
 Experience
-Project Manager  at   Holmusk
-September 2015  -  Present (2 months)
-Senior IT Specialist  at   McKinsey & Company
-January 2014  -  October 2014  (10 months)
-Key Responsibilities  Leads IT Operations and provide 1st and 2nd level end-user support on hardware and
- software applications. Conduct end user training for IT products and services. Coach and develop colleagues.
- Provide specialized support in organising end to end IT logistics for client events locally and overseas.
- Manage tickets to ensure SLA is met.
-IT Specialist  at   McKinsey & Company
-January 2011  -  December 2013  (3 years)
-Key Responsibilities  Provide end-user support on hardware and software applications, including Windows,
- Lotus Notes, Lotus Domino, Software Deployment, Blackberry, iOS and Android. Install, configure,
- maintain, and update IT hardware and software.   Collaborate with Global Help Desk and backend IT
- teams to provide technical support. Administer and improve LAN/WAN infrastructure. Support seamless
- operation of video and audio conferencing and other infrastructure services. Assist on-site presentation and
- events, as well as special IT requests from client teams.   Manage procurement, vendor relationship and  IT
- administration (e.g., asset management, documentation, workflow tracking). Collaborate with central IT and
- office IT to deploy projects locally and regionally. Monitor IT processes & services effectiveness.
-Contractor IT Specialist  at   McKinsey & Company
+Senior Software Engineer  at   ReQall Technologies PTE LTD
+March 2012  -  Present (3 years 8 months)
+- Mobile Applications development using native iOS and Android. - Integration with various smartwatch
+ SDKs (Pebble, Samsung Gear/Gear Fit, Qualcomm Toq, Sony SmartWatch, Android Wear, iWatch) -
+ Integration with Auto manufacturer SDKs (mySPIN)
+Assistant Professor  at   Chiang Kai Shek College
+June 2009  -  April 2012  (2 years 11 months)
+Senior Software Engineer  at   Rivereo
+January 2011  -  March 2012  (1 year 3 months)
+- Web/Mobile Application Development - Various API integration
+Software Engineer  at   Exist Global
 August 2010  -  December 2010  (5 months)
-Key Responsibilities  Managed the back-end IT operations. Configure and test printers for deployment.
- Imaged laptops for new and existing users. Performed quality test on all IT equipment prior to issuance.
- Tagged and upload assets to the CRM tool. Maintain IT storeroom and server room.
-Dell Technical Support Specialist  at   Stream Global Services - Dell Computers
-March 2008  -  July 2010  (2 years 5 months)
-Page2
-Key Responsibilities  Handled technical issues for Dell's corporate desktop and laptop users via phone,
- email and chat. Helped users resolved various computer issues such as blue screens, virus infection, slow
- performance and hardware related malfunctions. Performed preventive and maintenance solutions like
- upgrades, data back up & recovery, anti-virus installation and software updates. Evaluated computer systems
- for parts replacement and processed onsite technician dispatch if required.   Dell Certified System Expert
- (DCSE) and undergone training for  Microsoft Windows Vista,  Microsoft Windows 7 and computer system
- Tear down through Dell's Technical Training Program.   Received the 'Customer Experience 100 Club' by
- Dell Global Support Services, awarded to employees with high customer satisfaction score.
-AT&T Communications Network Support Technician  at   Sykes Asia Inc.
-April 2007  -  March 2008  (1 year)
-Key Responsibilities  Provided technical support for AT&T High Speed and Dial up subscribers in the US.
- Assisted end users on network connectivity issues, technical service inquiries and how-to¡¯s. Configured
- modem, router, switch and printer to setup basic home and office network. Coordinated with other
- departments within the organisation resulting to a timely issue resolution. Escalated problem tickets to
- approprieate software vendor and OEM.
-Volunteer Experience
-Volunteer  at   Singapore Red Cross
-November 2013  -  December 2013  (2 months)
-Assisted in repacking relief goods for typhoon victims. 
-Volunteer  at   Metropolitan YMCA Singapore
-Volunteered for Y Photo Club. A programme that aims to equip beneficiaries with photography skills through
- indoor theory and outdoor practical sessions. As an extension of the Y Arts Challenge programme, Y Photo
- Club hopes to provide beneficiaries with a new found wholesome hobby whilst helping them realise and
- showcase their undiscovered creativity, as they grow their self-confidence and enhance their social skills.
+Web Application Development
+Senior Software Engineer  at   Brewed Concepts Inc
+July 2006  -  August 2010  (4 years 2 months)
+Web Developer Team Management Systems Architect
+Web/Mobile Developer  at   E Commerce Percs
+April 2006  -  July 2006  (4 months)
+Mobile/Web Application Development
 Projects
-Office Renovation
-November 2011 to May 2012
-Members:Donnabelle Embodo
-The project covers renovation of existing office space and expansion.  I was involved in planning, design and
- implementation of Network and IT Infrastructure (e.g. server room, network cabling, workstation layout).
- Supervised and coordinated with various 3rd party vendors to carry out works.
-Asian Spider Event
-October 2012 to October 2013
-Members:Donnabelle Embodo
-Page3
-In charge of the overall IT Logistics which includes provisioning of AV equipment under standard cost.
- Worked with the organising team in drafting the event flow and gathering of IT requirements. Managed the
- event on the ground. 
+ZeroIN
+Page2
+April 2013 to Present
+Members:Russell O., Yat Pan Ng
+ZeroIN is the first context-aware, intelligent messaging app for the car. It uses your personal smartphone
+ to keep email distractions to a minimum, no matter what car you're in. Only messages that are important,
+ contain actionable content and merit attention are read out, and drivers can simply respond by voice ? to
+ keep their eyes on the road and  hands on the wheel.  Stay connected to what's important - ZeroIN restricts
+ incoming messages to just those from important contacts, and then distills the content to just the parts that
+ require your attention.   Take action safely ? reply to both incoming and pending action items via voice. 
+Recordr
+December 2012 to Present
+Members:Russell O., Grae Joquico
+Recordr is the easiest audio/sound/voice recorder you can find. You can have the recordings automatically
+ sync across your devices with iCloud. It even allows you to record and play in the background!  Other
+ features includes:  1. Sync files via your iTunes. 2. Share recordings via SoundCloud 3. Backup media files
+ to your Dropbox account 4. Upload to your Google Drive¢â Account 5. Send to friends via E-Mail.  Recordr
+ produces high quality recordings that can be used for interviews.
+SoFAB.com.ph
+September 2010 to Present
+Members:Russell O., Bryan Chan, Richard G., Grae Joquico
+CMG.com.ph
+December 2010 to Present
+Members:Russell O., Richard G., Bryan Chan, Grae Joquico
+SoFAB iPad Application
+January 2011 to Present
+Members:Russell O., Richard G., Bryan Chan
 Languages
-English (Full professional proficiency)
-Tagalog (Native or bilingual proficiency)
-Certifications
-ITIL Foundation Certificate in IT Service Management V3
-CSME, Inc.   License 100615051    December 2013
-Dell Certified Systems Expert
-Dell   License DCSE Tech ID: 518756    March 2008
+English
+Filipino
+Chinese
 Skills & Expertise
-XP
-Operating Systems
-Technical Support
-Microsoft Exchange
-Active Directory
-Windows 7
-Windows
-BMC Remedy
-Windows XP
-IT Service Management
-VPN
-System Administration
-Blackberry Enterprise Server
-Network Administration
-Troubleshooting
-Windows Server
-Software Installation
-Laptops
-Help Desk Support
-Computer Hardware
-Citrix
-ITIL Certified
+Ruby on Rails
+Ruby
+Facebook API
+Objective-C
+AJAX
+jQuery
+Web Services
+iOS Developer
+JavaScript
+Page3
+REST
+iOS
+Git
+Android
+PostgreSQL
+HTML 5
+JSON
+Titanium
+SOAP
 Education
-Ateneo de Davao University
-Bachelor's degree, Information Technology, 2003 - 2007
-Activities and Societies:  Microsoft Visual Studio Workshop by Lane Systems Inc., Multimedia X2 Experience,
- PSITE 3rd Mindanao Conference on IT Education
-Page4
+De La Salle University
+MSCS, IT, 2010 - 2012
+Chiang Kai Shek College
+BSCS, Computer Science, 2002 - 2006
 Interests
-Emerging technologies, Social Media marketing, Tech Start up, IT Service Management, Psychology, Travel,
- Yoga, Running
-Page5
-Donnabelle Embodo
-Project Manager at Holmusk
-Contact Donnabelle on LinkedIn
+Webdev, Photography, Scuba Diving, Travel
+Publications
+Qualcomm Developer of the month
+   July 1, 2014
+Authors: Russell O.
+Page4
+Russell Ong
+Senior Software Engineer - iOS at ReQall PTE LTD
+5 people have recommended Russell
+"It is great working with Russell! A very intuitive guy and knows where to punch and deliver codes. He
+seamlessly integrated Facebook with one of our big projects and cramped tons of AJAX functionality
+on another. On a different light, he is always eager to help and share his knowledge to others. And thirst
+to discover more, learn more tricks and experiment with new technology, approach, techniques and
+implementations."
+? Richard G., managed Russell at Rivereo
+"Russell was a very productive person?a colleague and friend who has a "can-do" attitude. It was my pleasure
+working with him for 2 years with him on major business projects and was impressed with the depth of
+knowledge he possesses. Russell is a careful and great software engineer. Self motivated and a proactive
+strategist. Deliver results all the time but make no mistake, the guy knows how to have fun. That's Russell's
+way. I strongly recommend him."
+? Jurgen Estanislao, UXC, Digital Projects Manager, Thousand Minds Social Media, worked with Russell
+at Brewed Concepts Inc
+"Russell is a great colleague! An excellent programmer/developer who has strong dedication and appreciation
+in all of the projects he handle. He is full of ideas and knowledge which he always share to his co-workers.
+Good job! :)"
+? Darryl Anne Gutierrez, worked directly with Russell at Brewed Concepts Inc
+"Russell is a great team-player, an excellent ROR geek, fast learner and a great buddy! ;-) Keep it up!"
+? Jeremy D., worked directly with Russell at Brewed Concepts Inc
+"Russell is unbeatable especially in programming techniques. He is self-motivated person. Also I really like
+the way he treated his co-worker... Just continue being YOU and keep it up!!!"
+? Jenilee S., worked directly with Russell at Brewed Concepts Inc
+Contact Russell on LinkedIn

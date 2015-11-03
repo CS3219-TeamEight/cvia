@@ -15,8 +15,26 @@ public class Dictionary {
         populate(filename);
     }
     
-    public String contains(String headerCand) {
-        return dictionary.get(headerCand);
+    public String matches(String line) {
+        return dictionary.get(line);
+    }
+    
+    public String contains(String line) {
+        ArrayList<String> keywords = new ArrayList<>(dictionary.keySet());
+        String position = "";
+        boolean found = false;
+        for (String keyword : keywords) {
+            if (line.contains(keyword)) {
+                position = keyword;
+                found = true;
+                break;
+            }
+        }
+        if (found) {
+            return dictionary.get(position);
+        } else {
+            return "UNKNOWN";
+        }
     }
     
     private void populate(String filename){
