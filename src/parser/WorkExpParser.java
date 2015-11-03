@@ -12,6 +12,7 @@ public class WorkExpParser implements SectionParser {
     private ArrayList<WorkExp> workExp;
     private ArrayList<Integer> pointers;
     private int offset;
+    private double totalWorkExp = 0;
     
     public WorkExpParser(DateParser dateParser) {
         this.dateParser = dateParser;
@@ -27,6 +28,7 @@ public class WorkExpParser implements SectionParser {
             double duration = dateParser.identifyDates(lines.get(i)).getDuration();
             if (duration > 0) {
                 WorkExp work = new WorkExp(duration);
+                totalWorkExp += work.getDuration();
                 workExp.add(work);
                 if (pointers.size() == 0) {
                     offset = i;
@@ -42,4 +44,8 @@ public class WorkExpParser implements SectionParser {
             System.out.println("Duration: " + exp.getDuration() + " years");
         }
     }
+
+	public double getTotalWorkExp() {
+		return totalWorkExp;
+	}    
 }
