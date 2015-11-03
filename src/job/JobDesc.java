@@ -1,6 +1,8 @@
 package job;
 
 import java.util.ArrayList;
+import java.lang.Double;
+import java.lang.Integer;
 
 public class JobDesc {
 	private double workDuration;
@@ -9,6 +11,7 @@ public class JobDesc {
 	private String educationTitle;
 	private String jobTitle;
 	private ArrayList<String> languages;
+	private ArrayList<String> skillSets;
 	private ArrayList<String> others;
 	
 	private int eduWeightage;
@@ -19,20 +22,20 @@ public class JobDesc {
 	public double getWorkDuration() {
 		return workDuration;
 	}
-	public void setWorkDuration(double workDuration) {
-		this.workDuration = workDuration;
+	public void setWorkDuration(String workDuration) {
+		this.workDuration = Double.parseDouble(workDuration);
 	}
 	public double getEducationCap() {
 		return educationCap;
 	}
-	public void setEducationCap(double educationCap) {
-		this.educationCap = educationCap;
+	public void setEducationCap(String educationCap) {
+		this.educationCap = Double.parseDouble(educationCap);
 	}
 	public int getEducationLevel() {
 		return educationLevel;
 	}
-	public void setEducationLevel(int educationLevel) {
-		this.educationLevel = educationLevel;
+	public void setEducationLevel(String educationLevel) {
+		this.educationLevel = Integer.parseInt(educationLevel);
 	}
 	public String getEducationTitle() {
 		return educationTitle;
@@ -56,6 +59,15 @@ public class JobDesc {
 			others.add(lang);
 		}
 	}
+	public ArrayList<String> getskillSets() {
+		return skillSets;
+	}
+	public void setSkillSets(String skillset) {
+		String[] skills = skillset.split(", ");
+		for(String skill : skills) {
+			skillSets.add(skill);
+		}
+	}
 	public ArrayList<String> getOthers() {
 		return others;
 	}
@@ -69,26 +81,26 @@ public class JobDesc {
 	public int getEduWeightage() {
 		return eduWeightage;
 	}
-	public void setEduWeightage(int eduWeightage) {
-		this.eduWeightage = eduWeightage;
+	public void setEduWeightage(String eduWeightage) {
+		this.eduWeightage = Integer.parseInt(eduWeightage);
 	}
 	public int getWorkWeightage() {
 		return workWeightage;
 	}
-	public void setWorkWeightage(int workWeightage) {
-		this.workWeightage = workWeightage;
+	public void setWorkWeightage(String workWeightage) {
+		this.workWeightage = Integer.parseInt(workWeightage);
 	}
 	public int getLanguageWeightage() {
 		return languageWeightage;
 	}
-	public void setLanguageWeightage(int languageWeightage) {
-		this.languageWeightage = languageWeightage;
+	public void setLanguageWeightage(String languageWeightage) {
+		this.languageWeightage = Integer.parseInt(languageWeightage);
 	}
 	public int getOtherWeightage() {
 		return otherWeightage;
 	}
-	public void setOtherWeightage(int otherWeightage) {
-		this.otherWeightage = otherWeightage;
+	public void setOtherWeightage(String otherWeightage) {
+		this.otherWeightage = Integer.parseInt(otherWeightage);
 	}
 	
 }
