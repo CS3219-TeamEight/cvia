@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import job.JobDesc;
+import parser.SkillsetParser;
 import main.ParseResultStorage;
 import qualification.Education;
 import qualification.WorkExp;
 
 public class Scorer {
+	
+	SkillsetParser skillset;
 	
 	public Scorer(JobDesc jobDesc, int count){
 	}
@@ -63,5 +66,14 @@ public class Scorer {
 	
 	private double computeWorkExpScore(JobDesc jobDesc, double workExp, double expectedExp){
 		return workExp / expectedExp * jobDesc.getWorkWeightage();
+	}
+	
+	private double computeSkillsetScore(JobDesc jobDesc) {
+		ArrayList<String> skills = new ArrayList<String>(skillset.getSkillsets());
+		double score= 0;
+		int base = jobDesc.getskillSets().size();
+		int numOfSkills = skills.size();
+		score = numOfSkills/base;
+		return score* (double) jobDesc.getSkillsetWeightage();
 	}
 }

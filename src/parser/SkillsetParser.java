@@ -43,4 +43,8 @@ public class SkillsetParser {
         }
 	}
 	
+	public ArrayList<String> getSkillsets () {
+		return skillsets;
+	}
+	
 }

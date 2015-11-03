@@ -18,6 +18,7 @@ public class JobDesc {
 	private int workWeightage;
 	private int languageWeightage;
 	private int otherWeightage;
+	private int skillsetWeightage;
 	
 	public double getWorkDuration() {
 		return workDuration;
@@ -101,6 +102,12 @@ public class JobDesc {
 	}
 	public void setOtherWeightage(String otherWeightage) {
 		this.otherWeightage = Integer.parseInt(otherWeightage);
+	}
+	public int getSkillsetWeightage() {
+		return skillsetWeightage;
+	}
+	public void setSkillsetWeightage(String skillsetWeightage) {
+		this.skillsetWeightage = Integer.parseInt(skillsetWeightage);
 	}
 	
 }
