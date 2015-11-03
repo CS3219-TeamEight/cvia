@@ -13,12 +13,15 @@ import java.util.Map;
 
 public class ResumeParser {
     
-    HeaderDictionary dictionary;
-    LinkedHashMap<String, ArrayList<HeaderCandidate>> candidates = new LinkedHashMap<String, ArrayList<HeaderCandidate>>();
-    ArrayList<String> lines = new ArrayList<String>();
-    ArrayList<HeaderCandidate> headers = new ArrayList<HeaderCandidate>();
-    ArrayList<Section> sections = new ArrayList<Section>();
-    File resume;
+    private Dictionary headerDictionary;
+    
+    private LinkedHashMap<String, ArrayList<HeaderCandidate>> candidates = new LinkedHashMap<String, ArrayList<HeaderCandidate>>();
+    private ArrayList<String> lines = new ArrayList<String>();
+    private ArrayList<HeaderCandidate> headers = new ArrayList<HeaderCandidate>();
+    private ArrayList<Section> sections = new ArrayList<Section>();
+    private File resume;
+    
+    private static final String FILENAME_DICTIONARY_HEADER = "./HeadingDictionary.txt";
 
     public ResumeParser() {
         
@@ -26,7 +29,9 @@ public class ResumeParser {
     
     public void initialize(File resume) {
         this.resume = resume;
-        dictionary = new HeaderDictionary();
+        headerDictionary = new Dictionary(FILENAME_DICTIONARY_HEADER);
+        
+        
         findHeaderCandidates();
         determineHeaders();
         extractSections();
@@ -60,7 +65,7 @@ public class ResumeParser {
     
     private void evaluateCandidate(String line, int lineNum) {
         if (line.endsWith(".")) return;
-        String headerType = dictionary.contains(line.toLowerCase());
+        String headerType = headerDictionary.contains(line.toLowerCase());
         if (headerType == null) {
             return;
         } else {
