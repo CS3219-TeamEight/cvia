@@ -34,7 +34,7 @@ public class WorkExpParser implements SectionParser {
                 pointers.add(i - offset);
             }
         }
-        pointers.add(-1); // dummy pointer to signify end of section
+        pointers.add(lineCount - 1); // dummy pointer to signify end of section
     }
     
     public void printWorkExperience() {

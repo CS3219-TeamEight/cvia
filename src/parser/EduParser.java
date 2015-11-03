@@ -73,9 +73,9 @@ public class EduParser implements SectionParser {
                 pointers.add(i - offset);
             }
         }
-        pointers.add(-1); // dummy pointer to signify end of section
+        pointers.add(lineCount - 1); // dummy pointer to signify end of section
         
-        for (int i = 0; i < pointers.size()-1; i++) {
+        for (int i = 0; i < pointers.size() - 1; i++) {
             education.add(storeEduExperience(i, pointers.get(i), pointers.get(i+1)));
         }
     }
@@ -144,12 +144,11 @@ public class EduParser implements SectionParser {
         String degree = DEGREE_UNKNOWN;
         boolean capFound = false;
         boolean degFound = false;
-        for (int i = start; i < end && !capFound && !degFound; i++) {
-            cap = getCAP(i);
-            if (cap > 0) break;
+        for (int i = start; i < end && (!capFound || !degFound); i++) {
             if (!capFound) {
-                cap = getCAP(i);
-                if (cap > 0) {
+                double val = getCAP(i);
+                if (val > 0) {
+                    cap = val;
                     capFound = true;
                 }
             }
