@@ -1,6 +1,6 @@
 package qualification;
 
-public class Education extends Qualification {
+public class Education {
     
     private double duration;
     private double cap;
@@ -29,10 +29,4 @@ public class Education extends Qualification {
     public String getDegree() {
         return degree;
     }
-    
-    private int calculateScore() {
-        int init = 0;
-        return init;
-    }
-
 }

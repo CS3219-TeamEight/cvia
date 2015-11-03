@@ -9,23 +9,18 @@ public class WorkExpParser implements SectionParser {
     private DateParser dateParser;
     private Dictionary jobTitleDictionary;
     
-    private ArrayList<String> lines; // contains lines relevant to work exp ONLY
-    private int lineCount;
-    private ArrayList<WorkExp> workExp;
-    private ArrayList<Integer> pointers;
-    private int offset;
-    private double totalWorkExp = 0;
-    
     public WorkExpParser(DateParser dateParser, Dictionary jobTitleDictionary) {
         this.dateParser = dateParser;
         this.jobTitleDictionary = jobTitleDictionary;
-        workExp = new ArrayList<>();
-        pointers = new ArrayList<>();
     }
     
-    public void parseWorkSection(Section section) {
-        lines = new ArrayList<>(section.getLines());
-        lineCount = section.getLineCount();
+    public ArrayList<WorkExp> parseWorkSection(Section section) {
+        ArrayList<String> lines = new ArrayList<>(section.getLines()); // contains lines relevant to work exp ONLY
+        int lineCount = section.getLineCount();
+        ArrayList<WorkExp> workExp = new ArrayList<>();
+        ArrayList<Integer> pointers = new ArrayList<>();
+        int offset = 0;
+        double totalWorkExp = 0;
         
         for (int i = 0; i < lineCount; i++) {
             double duration = dateParser.identifyDates(lines.get(i)).getDuration();
@@ -40,13 +35,6 @@ public class WorkExpParser implements SectionParser {
             }
         }
         pointers.add(lineCount - 1); // dummy pointer to signify end of section
+        return workExp;
     }
-
-	public double getTotalWorkDuration() {
-		return totalWorkExp;
-	}
-	
-	public ArrayList<WorkExp> getAllExp() {
-	    return workExp;
-	}
 }

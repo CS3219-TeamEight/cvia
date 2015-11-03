@@ -10,16 +10,9 @@ public class EduParser implements SectionParser {
 
     DateParser dateParser;
     Dictionary fosDictionary;
-    
-    ArrayList<String> lines;
-    int lineCount;
-    private ArrayList<Integer> pointers;
-    private ArrayList<Duration> durations;
-    private ArrayList<Education> education;
+
     private ArrayList<String> degreeNames;
     private HashMap<String, String> degreeTypes;
-    private int offset;
-    
     private static final String DEGREE_PHD = "Ph.D";
     private static final String DEGREE_MASTER = "Master";
     private static final String DEGREE_BACHELOR = "Bachelor";
@@ -29,13 +22,10 @@ public class EduParser implements SectionParser {
     public EduParser(DateParser dateParser, Dictionary fosDictionary) {
         this.dateParser = dateParser;
         this.fosDictionary = fosDictionary;
-        
-        pointers = new ArrayList<>();
-        durations = new ArrayList<>();
-        education = new ArrayList<>();
         degreeNames = new ArrayList<>();
         degreeTypes = new HashMap<>();
         
+        // later store this in separate dictionary
         degreeNames.add("phd");
         degreeNames.add("ph.d");
         degreeNames.add("doctor of philosophy");
@@ -62,9 +52,13 @@ public class EduParser implements SectionParser {
         
     }
     
-    public void parseEducation(Section section) {
-        lines = new ArrayList<>(section.getLines());
-        lineCount = section.getLineCount();
+    public ArrayList<Education> parseEducation(Section section) {
+        ArrayList<String> lines = new ArrayList<>(section.getLines());
+        int lineCount = section.getLineCount();
+        ArrayList<Integer> pointers = new ArrayList<>();
+        ArrayList<Duration> durations = new ArrayList<>();
+        ArrayList<Education> education = new ArrayList<>();
+        int offset = 0;
         
         for (int i = 0; i < lineCount; i++) {
             Duration duration = dateParser.identifyDates(lines.get(i));
@@ -78,14 +72,15 @@ public class EduParser implements SectionParser {
             }
         }
         pointers.add(lineCount - 1); // dummy pointer to signify end of section
-        
+         
         for (int i = 0; i < pointers.size() - 1; i++) {
-            education.add(storeEduExperience(i, pointers.get(i), pointers.get(i+1)));
+            education.add(storeEduExperience(lines, durations, i, pointers.get(i), pointers.get(i+1)));
         }
+        
+        return education;
     }
     
-    private Optional<String> getDegree(int lineNum) {
-        String line = lines.get(lineNum);
+    private Optional<String> getDegree(String line) {
         String degree = null;
         boolean found = false;
         for (String deg : degreeNames) {
@@ -103,8 +98,7 @@ public class EduParser implements SectionParser {
         
     }
     
-    private double getCAP(int lineNum) {
-        String line = lines.get(lineNum);
+    private double getCAP(String line) {
         double cap = 0;
         // assumption: CAP will be written with a decimal point, even if it is followed by only 0s
         for (int i = 0; i < line.length(); i++) {
@@ -142,22 +136,23 @@ public class EduParser implements SectionParser {
         return val;
     }
     
-    private Education storeEduExperience(int index, int start, int end) {
+    private Education storeEduExperience(ArrayList<String> lines, ArrayList<Duration> durations, int index, int start, int end) {
         Duration duration = durations.get(index);
         double cap = -1;
         String degree = DEGREE_UNKNOWN;
         boolean capFound = false;
         boolean degFound = false;
         for (int i = start; i < end && (!capFound || !degFound); i++) {
+            String line = lines.get(i);
             if (!capFound) {
-                double val = getCAP(i);
+                double val = getCAP(line);
                 if (val > 0) {
                     cap = val;
                     capFound = true;
                 }
             }
             if (!degFound) {
-                Optional<String> deg = getDegree(i);
+                Optional<String> deg = getDegree(line);
                 if (deg.isPresent()) {
                     // found degree
                     degree = deg.get();
@@ -165,14 +160,10 @@ public class EduParser implements SectionParser {
                 }
             }
         }
+        
         Education edu = new Education(duration.getDuration(), cap, !duration.isOngoing(), degree);
         // although there are different types of institutes (university, high school, etc)
         // catered to university only, due to difficulty in differentiating them
         return edu;
     }
-    
-    public ArrayList<Education> getAllEdu() {
-        return education;
-    }
-    
 }
