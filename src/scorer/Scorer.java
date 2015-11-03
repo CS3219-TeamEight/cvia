@@ -5,24 +5,17 @@ import java.util.Collections;
 
 import job.JobDesc;
 import main.ParseResultStorage;
+import qualification.Education;
+import qualification.WorkExp;
 
 public class Scorer {
-	ArrayList<ParseResultStorage> parsedData;
-	ArrayList<Candidate> topCandidates;
-	JobDesc jobDesc;
-	int wanted;
 	
 	public Scorer(JobDesc jobDesc, int count){
-		this.jobDesc = jobDesc;
-		wanted = count;
-		topCandidates = new ArrayList<>();
 	}
 	
-	public void feedParsedDate(ArrayList<ParseResultStorage> parsedData) {
-	    this.parsedData = parsedData;
-	}
-	
-	public void prepareTopCandidates() {
+	public ArrayList<Candidate> getTopCandidates(ArrayList<ParseResultStorage> parsedData, JobDesc jobDesc, int wanted) {
+	    
+	    
 	    ArrayList<Candidate> candidates = new ArrayList<>();
 	    
 	    for (ParseResultStorage data : parsedData) {
@@ -37,11 +30,17 @@ public class Scorer {
 	    for (int i = wanted; i < candidates.size(); i++) {
 	        candidates.remove(i);
 	    }
-	    topCandidates = candidates;
+	    
+	    return candidates;
 	}
 	
-	public ArrayList<Candidate> getTopCandidates() {
-	    return topCandidates;
+	public double computeWorkScore(ArrayList<WorkExp> workExp, double wanted) {
+	    double duration = 0;
+	    for (WorkExp work : workExp) {
+	        duration += work.getDuration();
+	    }
+	    
+	    return (duration / wanted);
 	}
 	
 	/**
@@ -62,7 +61,7 @@ public class Scorer {
 	}
 	**/
 	
-	private double computeWorkExpScore(double workExp, double expectedExp){
+	private double computeWorkExpScore(JobDesc jobDesc, double workExp, double expectedExp){
 		return workExp / expectedExp * jobDesc.getWorkWeightage();
 	}
 }
