@@ -10,7 +10,7 @@ public class Section {
 
     public Section(String type, ArrayList<String> lines, int num) {
         this.type = type;
-        this.lines = new ArrayList<String>(lines);
+        this.lines = new ArrayList<>(lines);
         this.lineCount = num; // for efficiency, to avoid having to run lines.size()
     }
     

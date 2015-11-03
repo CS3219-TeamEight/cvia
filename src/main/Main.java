@@ -17,6 +17,8 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
+	    // later divide each component to global(singleton) and local to each CV
+	    
 		ResumeParser parser = new ResumeParser();;
 		
 		try {

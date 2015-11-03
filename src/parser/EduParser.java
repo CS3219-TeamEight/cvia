@@ -30,11 +30,11 @@ public class EduParser implements SectionParser {
         this.dateParser = dateParser;
         this.fosDictionary = fosDictionary;
         
-        pointers = new ArrayList<Integer>();
-        durations = new ArrayList<Duration>();
-        education = new ArrayList<Education>();
-        degreeNames = new ArrayList<String>();
-        degreeTypes = new HashMap<String, String>();
+        pointers = new ArrayList<>();
+        durations = new ArrayList<>();
+        education = new ArrayList<>();
+        degreeNames = new ArrayList<>();
+        degreeTypes = new HashMap<>();
         
         degreeNames.add("phd");
         degreeNames.add("ph.d");
@@ -63,7 +63,7 @@ public class EduParser implements SectionParser {
     }
     
     public void parseEducation(Section section) {
-        lines = new ArrayList<String>(section.getLines());
+        lines = new ArrayList<>(section.getLines());
         lineCount = section.getLineCount();
         
         for (int i = 0; i < lineCount; i++) {

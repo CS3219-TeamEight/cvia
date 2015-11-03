@@ -11,14 +11,15 @@ public class DateParser {
     
     public DateParser() {
         
-        ongoing = new ArrayList<String>();
+        ongoing = new ArrayList<>();
         ongoing.add("ongoing");
         ongoing.add("current");
         ongoing.add("present");
         ongoing.add("projected");
         ongoing.add("now");
 
-        months = new HashMap<String, Integer>();
+        // extract to dictionary?
+        months = new HashMap<>();
         months.put("jan", 1);
         months.put("january", 1);
         months.put("feb", 2);
@@ -52,7 +53,7 @@ public class DateParser {
         int startYear = 0;
         int startMonth = 0;
         boolean current = false;
-        ArrayList<Year> years = new ArrayList<Year>();
+        ArrayList<Year> years = new ArrayList<>();
         if (line.contains("20") || line.contains("19")) {
             for (int i = 0; i < line.length(); i++) {
                 char c = line.charAt(i);

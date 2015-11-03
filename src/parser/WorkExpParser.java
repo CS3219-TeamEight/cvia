@@ -19,12 +19,12 @@ public class WorkExpParser implements SectionParser {
     public WorkExpParser(DateParser dateParser, Dictionary jobTitleDictionary) {
         this.dateParser = dateParser;
         this.jobTitleDictionary = jobTitleDictionary;
-        workExp = new ArrayList<WorkExp>();
-        pointers = new ArrayList<Integer>();
+        workExp = new ArrayList<>();
+        pointers = new ArrayList<>();
     }
     
     public void parseWorkSection(Section section) {
-        lines = new ArrayList<String>(section.getLines());
+        lines = new ArrayList<>(section.getLines());
         lineCount = section.getLineCount();
         
         for (int i = 0; i < lineCount; i++) {
