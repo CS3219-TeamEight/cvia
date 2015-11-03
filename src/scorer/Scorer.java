@@ -34,7 +34,7 @@ public class Scorer {
 	    return candidates;
 	}
 	
-	public double computeWorkScore(ArrayList<WorkExp> workExp, double wanted) {
+	private double computeWorkScore(ArrayList<WorkExp> workExp, double wanted) {
 	    double duration = 0;
 	    for (WorkExp work : workExp) {
 	        duration += work.getDuration();

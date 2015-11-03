@@ -6,12 +6,14 @@ public class Education {
     private double cap;
     private boolean graduated;
     private String degree;
+    private String field;
     
-    public Education(double duration, double cap, boolean graduated, String degree) {
+    public Education(double duration, double cap, boolean graduated, String degree, String field) {
         this.duration = duration;
         this.cap = cap;
         this.graduated = graduated;
         this.degree = degree;
+        this.field = field;
     }
     
     public double getCap() {
@@ -28,5 +30,9 @@ public class Education {
     
     public String getDegree() {
         return degree;
+    }
+    
+    public String getField() {
+        return field;
     }
 }

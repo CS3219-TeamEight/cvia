@@ -61,6 +61,7 @@ public class EduParser implements SectionParser {
         int offset = 0;
         
         for (int i = 0; i < lineCount; i++) {
+            // later remove duration from consideration
             Duration duration = dateParser.identifyDates(lines.get(i));
             double time = duration.getDuration();
             if (time > 0) {
@@ -74,7 +75,7 @@ public class EduParser implements SectionParser {
         pointers.add(lineCount - 1); // dummy pointer to signify end of section
          
         for (int i = 0; i < pointers.size() - 1; i++) {
-            education.add(storeEduExperience(lines, durations, i, pointers.get(i), pointers.get(i+1)));
+            education.add(storeEduExperience(lines, durations, i, pointers.get(i), pointers.get(i+1), offset));
         }
         
         return education;
@@ -95,7 +96,15 @@ public class EduParser implements SectionParser {
         } else {
             return Optional.empty();
         }
+    }
+    
+    private String getField(ArrayList<String> lines) {
+        String info = "";
+        for (String line : lines) {
+            info = info + line + " ";
+        }
         
+        return fosDictionary.contains(info);
     }
     
     private double getCAP(String line) {
@@ -136,7 +145,7 @@ public class EduParser implements SectionParser {
         return val;
     }
     
-    private Education storeEduExperience(ArrayList<String> lines, ArrayList<Duration> durations, int index, int start, int end) {
+    private Education storeEduExperience(ArrayList<String> lines, ArrayList<Duration> durations, int index, int start, int end, int offset) {
         Duration duration = durations.get(index);
         double cap = -1;
         String degree = DEGREE_UNKNOWN;
@@ -161,7 +170,12 @@ public class EduParser implements SectionParser {
             }
         }
         
-        Education edu = new Education(duration.getDuration(), cap, !duration.isOngoing(), degree);
+        ArrayList<String> beginningPart = new ArrayList<>();
+        for (int i = start; i < start+offset+1; i++) {
+            beginningPart.add(lines.get(i));
+        }
+        
+        Education edu = new Education(duration.getDuration(), cap, !duration.isOngoing(), degree, getField(beginningPart));
         // although there are different types of institutes (university, high school, etc)
         // catered to university only, due to difficulty in differentiating them
         return edu;

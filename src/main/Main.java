@@ -22,7 +22,6 @@ public class Main {
         ParserFactory factory = new ParserFactory();
         WorkExpParser workParser = factory.getWorkParser();
         EduParser eduParser = factory.getEduParser();
-        // update parsers to be truly global
         
         // for each CV
         try {

@@ -20,21 +20,35 @@ public class WorkExpParser implements SectionParser {
         ArrayList<WorkExp> workExp = new ArrayList<>();
         ArrayList<Integer> pointers = new ArrayList<>();
         int offset = 0;
-        double totalWorkExp = 0;
         
         for (int i = 0; i < lineCount; i++) {
             double duration = dateParser.identifyDates(lines.get(i)).getDuration();
             if (duration > 0) {
-                WorkExp work = new WorkExp(duration);
-                totalWorkExp += work.getDuration();
-                workExp.add(work);
                 if (pointers.size() == 0) {
                     offset = i;
                 }
                 pointers.add(i - offset);
+                
+                ArrayList<String> beginningPart = new ArrayList<>();
+                for (int j = i - offset; j < i + 1; j++) {
+                    beginningPart.add(lines.get(j));
+                }
+                
+                WorkExp work = new WorkExp(getJobTitle(beginningPart), duration);
+                workExp.add(work);
             }
         }
+        
         pointers.add(lineCount - 1); // dummy pointer to signify end of section
         return workExp;
+    }
+    
+    private String getJobTitle(ArrayList<String> lines) {
+        String info = "";
+        for (String line : lines) {
+            info = info + line + " ";
+        }
+        
+        return jobTitleDictionary.contains(info);
     }
 }
