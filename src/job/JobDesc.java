@@ -49,14 +49,22 @@ public class JobDesc {
 	public ArrayList<String> getLanguages() {
 		return languages;
 	}
-	public void setLanguages(ArrayList<String> languages) {
-		this.languages = languages;
+	public void setLanguages(String language) {
+		// this.languages = languages;
+		String[] languageList = language.split(", ");
+		for(String lang : languageList) {
+			others.add(lang);
+		}
 	}
 	public ArrayList<String> getOthers() {
 		return others;
 	}
-	public void setOthers(ArrayList<String> others) {
-		this.others = others;
+	public void setOthers(String others) {
+//		this.others = others;
+		String[] otherList = others.split(", ");
+		for(String random : otherList) {
+			languages.add(random);
+		}
 	}
 	public int getEduWeightage() {
 		return eduWeightage;
