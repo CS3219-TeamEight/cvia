@@ -17,30 +17,30 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
-	    // later divide each component to global(singleton) and local to each CV
-	    
+	    // global
 		ResumeParser parser = new ResumeParser();;
-		
-		try {
-		    Scanner sc = new Scanner (System.in);
-	        System.out.println("Please enter path for file:");
-	        String inputPath = sc.nextLine();
-	        sc.close();
-	        
-	        String outputPath = "plaintext.txt";
-	        converter.convertToText(inputPath, outputPath);
-	        File file = new File(outputPath);
-	        parser.initialize(file);
-		} catch (IOException e) {
-		    
-		}
-
-        ArrayList<Section> sections = parser.getSections();
         ParserFactory factory = new ParserFactory();
         WorkExpParser workParser = factory.getWorkParser();
         EduParser eduParser = factory.getEduParser();
+        // update parsers to be truly global
         
+        // for each CV
         try {
+            Scanner sc = new Scanner (System.in);
+            System.out.println("Please enter path for file:");
+            String inputPath = sc.nextLine();
+            sc.close();
+            
+            String outputPath = "plaintext.txt";
+            converter.convertToText(inputPath, outputPath);
+            File file = new File(outputPath);
+            parser.initialize(file);
+        } catch (IOException e) {
+            
+        }
+
+        try {
+            ArrayList<Section> sections = parser.getSections();
             ParseResultStorage storage = new ParseResultStorage();
             for (Section section : sections) {
                 if (section.getType().equals("WORK")) {

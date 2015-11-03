@@ -24,6 +24,10 @@ public class ParseResultStorage {
         this.workExp = new ArrayList<WorkExp>(workExp);
     }
     
+    public String getId() {
+        return id;
+    }
+    
     public void printEduExperience() {
         for (Education edu : education) {
             System.out.println("CAP: " + edu.getCap() + "\nDuration: " + edu.getDuration() + "\nDegree: " + edu.getDegree());
