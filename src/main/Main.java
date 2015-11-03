@@ -35,17 +35,17 @@ public class Main {
 
         ArrayList<Section> sections = parser.getSections();
         ParserFactory factory = new ParserFactory();
+        WorkExpParser workParser = factory.getWorkParser();
+        EduParser eduParser = factory.getEduParser();
         
         try {
             ParseResultStorage storage = new ParseResultStorage();
             for (Section section : sections) {
                 if (section.getType().equals("WORK")) {
-                    WorkExpParser workParser = factory.getWorkParser();
                     workParser.parseWorkSection(section);
                     storage.storeWorkExp(workParser.getAllExp());
                     storage.printWorkExperience();
                 } else if (section.getType().equals("EDU")) {
-                    EduParser eduParser = factory.getEduParser();
                     eduParser.parseEducation(section);
                     storage.storeEducation(eduParser.getAllEdu());
                     storage.printEduExperience();

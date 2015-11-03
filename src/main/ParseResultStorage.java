@@ -7,6 +7,7 @@ import qualification.WorkExp;
 
 public class ParseResultStorage {
     
+    String id = "";
     ArrayList<Education> education;
     ArrayList<WorkExp> workExp;
     
