@@ -7,6 +7,8 @@ import java.util.ArrayList;
 public class WorkExpParser implements SectionParser {
 
     private DateParser dateParser;
+    private Dictionary jobTitleDictionary;
+    
     private ArrayList<String> lines; // contains lines relevant to work exp ONLY
     private int lineCount;
     private ArrayList<WorkExp> workExp;
@@ -14,8 +16,9 @@ public class WorkExpParser implements SectionParser {
     private int offset;
     private double totalWorkExp = 0;
     
-    public WorkExpParser(DateParser dateParser) {
+    public WorkExpParser(DateParser dateParser, Dictionary jobTitleDictionary) {
         this.dateParser = dateParser;
+        this.jobTitleDictionary = jobTitleDictionary;
         workExp = new ArrayList<WorkExp>();
         pointers = new ArrayList<Integer>();
     }
@@ -38,14 +41,12 @@ public class WorkExpParser implements SectionParser {
         }
         pointers.add(lineCount - 1); // dummy pointer to signify end of section
     }
-    
-    public void printWorkExperience() {
-        for (WorkExp exp : workExp) {
-            System.out.println("Duration: " + exp.getDuration() + " years");
-        }
-    }
 
-	public double getTotalWorkExp() {
+	public double getTotalWorkDuration() {
 		return totalWorkExp;
-	}    
+	}
+	
+	public ArrayList<WorkExp> getAllExp() {
+	    return workExp;
+	}
 }

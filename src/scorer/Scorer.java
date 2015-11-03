@@ -3,36 +3,36 @@ package scorer;
 import java.util.ArrayList;
 
 import job.JobDesc;
-import parser.EduParser;
-import parser.SectionParser;
-import parser.WorkExpParser;
+import main.ParseResultStorage;
 
 public class Scorer {
-	ArrayList<SectionParser> parsedSections;
+	ArrayList<ParseResultStorage> parsedData;
 	JobDesc jobDesc;
 	
-	public Scorer(ArrayList<SectionParser> parsedSections, JobDesc jobDesc){
-		this.parsedSections = parsedSections;
+	public Scorer(ArrayList<ParseResultStorage> parsedData, JobDesc jobDesc){
+		this.parsedData = parsedData;
 		this.jobDesc = jobDesc;
 	}
 	
+	
+	
+	/**
 	public double computeScore(){
 		double score = 0;
 		
-		for (int i = 0; i < parsedSections.size(); i++){
-			if(parsedSections.get(i) instanceof WorkExpParser){
-				score += computeWorkExpScore(((WorkExpParser)parsedSections.get(i)).getTotalWorkExp(), jobDesc.getWorkDuration());
+		for (int i = 0; i < parsedData.size(); i++){
+			if(parsedData.get(i) instanceof ParseResultStorage){
+				score += computeWorkExpScore(((ParseResultStorage)parsedSections.get(i)).getTotalWorkExp(), jobDesc.getWorkDuration());
 			}
-			else if(parsedSections.get(i) instanceof EduParser){
-				score += computeCapScore((EduParser)parsedSections.get(i)).getTotalWorkExp());
-				score += computeEducationScore();
-			}
+				// score += computeCapScore((EduParser)parsedSections.get(i)).getTotalWorkExp());
+				// score += computeEducationScore();
 			
 		}
 		
 		
 		return score;
 	}
+	**/
 	
 	private double computeWorkExpScore(double workExp, double expectedExp){
 		return workExp / expectedExp * jobDesc.getWorkWeightage();

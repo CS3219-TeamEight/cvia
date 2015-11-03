@@ -1,6 +1,7 @@
 package main;
 
 import parser.DateParser;
+import parser.Dictionary;
 import parser.EduParser;
 import parser.WorkExpParser;
 
@@ -10,14 +11,24 @@ public class ParserFactory {
     EduParser eduParser;
     WorkExpParser workExpParser;
     
+    Dictionary fosDictionary;
+    Dictionary jobTitleDictionary;
+
+    private static final String FILENAME_DICTIONARY_FIELD = "./FieldsDictionary.txt";
+    private static final String FILENAME_DICTIONARY_JOB = "./JobsDictionary.txt";
+    
     public ParserFactory() {
         produceParsers();
     }
     
     private void produceParsers() {
         dateParser = new DateParser();
-        eduParser = new EduParser(dateParser);
-        workExpParser = new WorkExpParser(dateParser);
+        
+        fosDictionary = new Dictionary(FILENAME_DICTIONARY_FIELD);
+        eduParser = new EduParser(dateParser, fosDictionary);
+        
+        jobTitleDictionary = new Dictionary(FILENAME_DICTIONARY_JOB);
+        workExpParser = new WorkExpParser(dateParser, jobTitleDictionary);
         
     }
     

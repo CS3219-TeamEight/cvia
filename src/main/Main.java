@@ -37,15 +37,18 @@ public class Main {
         ParserFactory factory = new ParserFactory();
         
         try {
+            ParseResultStorage storage = new ParseResultStorage();
             for (Section section : sections) {
                 if (section.getType().equals("WORK")) {
                     WorkExpParser workParser = factory.getWorkParser();
                     workParser.parseWorkSection(section);
-                    workParser.printWorkExperience();
+                    storage.storeWorkExp(workParser.getAllExp());
+                    storage.printWorkExperience();
                 } else if (section.getType().equals("EDU")) {
                     EduParser eduParser = factory.getEduParser();
                     eduParser.parseEducation(section);
-                    eduParser.printEduExperience();
+                    storage.storeEducation(eduParser.getAllEdu());
+                    storage.printEduExperience();
                 }
             }
         } catch (Exception e) {

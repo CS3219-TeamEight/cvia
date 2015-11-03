@@ -9,6 +9,8 @@ import java.util.Optional;
 public class EduParser implements SectionParser {
 
     DateParser dateParser;
+    Dictionary fosDictionary;
+    
     ArrayList<String> lines;
     int lineCount;
     private ArrayList<Integer> pointers;
@@ -24,8 +26,10 @@ public class EduParser implements SectionParser {
     private static final String DEGREE_DOCTOR = "Doctor";
     private static final String DEGREE_UNKNOWN = "unknown";
     
-    public EduParser(DateParser dateParser) {
+    public EduParser(DateParser dateParser, Dictionary fosDictionary) {
         this.dateParser = dateParser;
+        this.fosDictionary = fosDictionary;
+        
         pointers = new ArrayList<Integer>();
         durations = new ArrayList<Duration>();
         education = new ArrayList<Education>();
@@ -167,15 +171,8 @@ public class EduParser implements SectionParser {
         return edu;
     }
     
-    public void printEduExperience() {
-        for (Education edu : education) {
-            System.out.println("CAP: " + edu.getCap() + "\nDuration: " + edu.getDuration() + "\nDegree: " + edu.getDegree());
-            if (edu.isGraduate()) {
-                System.out.println("graduate");
-            } else {
-                System.out.println("undergraduate");
-            }
-        }
+    public ArrayList<Education> getAllEdu() {
+        return education;
     }
     
 }
