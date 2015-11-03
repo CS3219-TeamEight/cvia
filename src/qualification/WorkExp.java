@@ -1,6 +1,6 @@
 package qualification;
 
-public class WorkExp extends Qualification {
+public class WorkExp {
     
     double duration;
     

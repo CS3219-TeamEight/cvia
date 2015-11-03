@@ -44,12 +44,10 @@ public class Main {
             ParseResultStorage storage = new ParseResultStorage();
             for (Section section : sections) {
                 if (section.getType().equals("WORK")) {
-                    workParser.parseWorkSection(section);
-                    storage.storeWorkExp(workParser.getAllExp());
+                    storage.storeWorkExp(workParser.parseWorkSection(section));
                     storage.printWorkExperience();
                 } else if (section.getType().equals("EDU")) {
-                    eduParser.parseEducation(section);
-                    storage.storeEducation(eduParser.getAllEdu());
+                    storage.storeEducation(eduParser.parseEducation(section));
                     storage.printEduExperience();
                 }
             }

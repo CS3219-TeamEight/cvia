@@ -12,11 +12,14 @@ public class Scorer {
 	JobDesc jobDesc;
 	int wanted;
 	
-	public Scorer(ArrayList<ParseResultStorage> parsedData, JobDesc jobDesc, int count){
-		this.parsedData = parsedData;
+	public Scorer(JobDesc jobDesc, int count){
 		this.jobDesc = jobDesc;
 		wanted = count;
 		topCandidates = new ArrayList<>();
+	}
+	
+	public void feedParsedDate(ArrayList<ParseResultStorage> parsedData) {
+	    this.parsedData = parsedData;
 	}
 	
 	public void prepareTopCandidates() {

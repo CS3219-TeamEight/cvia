@@ -12,16 +12,16 @@ public class ParseResultStorage {
     ArrayList<WorkExp> workExp;
     
     public ParseResultStorage() {
-        education = new ArrayList<Education>();
-        workExp = new ArrayList<WorkExp>();
+        education = new ArrayList<>();
+        workExp = new ArrayList<>();
     }
     
     public void storeEducation(ArrayList<Education> education) {
-        this.education = new ArrayList<Education>(education);
+        this.education = new ArrayList<>(education);
     }
     
     public void storeWorkExp(ArrayList<WorkExp> workExp) {
-        this.workExp = new ArrayList<WorkExp>(workExp);
+        this.workExp = new ArrayList<>(workExp);
     }
     
     public String getId() {
