@@ -55,11 +55,11 @@ public class Scorer {
 		// Loop through to find the number of languages that matches the Job Description
 		for (int i = 0; i < skills.size(); i++) {
 			if (jobDesc.getskillSets().contains(skills.get(i))){
-				numOfSkills++;
+				numOfSkills ++;
 			}
 		}
 		
-		int base = jobDesc.getskillSets().size();
+		double base = jobDesc.getskillSets().size();
 		score = numOfSkills/base;
 		
 		return score * (double) jobDesc.getSkillsetWeightage() / 100;
@@ -77,7 +77,7 @@ public class Scorer {
 			}
 		}
 		
-		int base = jobDesc.getLanguages().size();
+		double base = jobDesc.getLanguages().size();
 		score = numOfLanguage/base;
 		
 		return score * (double) jobDesc.getLanguageWeightage() / 100;
