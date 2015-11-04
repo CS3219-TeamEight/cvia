@@ -12,7 +12,6 @@ hs_err_pid*
 
 .idea/
 *.iml
-*.xml
 *.project
 *.settings/
 .idea/uiDesigner.xml

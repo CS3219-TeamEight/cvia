@@ -7,42 +7,32 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+import qualification.WorkExp;
 import job.JobDesc;
 
 public class LanguageParser {
 
-	JobDesc job;
-
-	private ArrayList<String> language = new ArrayList<String>();
-	private File resume;
-
-	public LanguageParser() {	
-	}
-
-	public void findLanguage (File resume) {
-		this.resume = resume;
-		determineLanguage();
-	}
-
-	private void determineLanguage() {
-		try {
-			FileReader fr = new FileReader(resume);
-			BufferedReader br = new BufferedReader(fr);
-			String line;
-			while((line = br.readLine()) != null) {
-				for (String lang : job.getskillSets()) {
-					if (Pattern.compile(lang).matcher(line).find())
-						language.add(lang);
-				}
-			}
-			fr.close();
-			br.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public ArrayList<String> getLanguage() {
-		return language;
-	}
+    private Dictionary languageDictionary;
+    
+    public LanguageParser(Dictionary languageDictionary) {
+        this.languageDictionary = languageDictionary;
+    }
+    
+    public ArrayList<String> parseLanguageSection(Section section) {
+        ArrayList<String> lines = new ArrayList<>(section.getLines()); // contains lines relevant to work exp ONLY
+        int lineCount = section.getLineCount();
+        ArrayList<String> languages = new ArrayList<>();
+        
+        for (int i = 0; i < lineCount; i++) {
+            String language = getLanguage(lines.get(i));
+            if (!language.equals("UNKNOWN"))
+            	languages.add(language);
+        }
+        
+        return languages;
+    }
+    
+    private String getLanguage(String line) {        
+        return languageDictionary.containsSingle(line.toLowerCase());
+    }
 }

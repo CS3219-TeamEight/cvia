@@ -1,5 +1,6 @@
 package main;
 
+import parser.LanguageParser;
 import parser.ResumeParser;
 import parser.Section;
 import parser.EduParser;
@@ -22,6 +23,7 @@ public class Main {
         ParserFactory factory = new ParserFactory();
         WorkExpParser workParser = factory.getWorkParser();
         EduParser eduParser = factory.getEduParser();
+        LanguageParser languageParser = factory.getLanguageParser();
         
         // for each CV
         try {
@@ -47,6 +49,10 @@ public class Main {
             } else if (section.getType().equals("EDU")) {
                 storage.storeEducation(eduParser.parseEducation(section));
                 storage.printEduExperience();
+            }
+            else if (section.getType().equals("LANGUAGES")) {
+                storage.storeLanguage(languageParser.parseLanguageSection(section));
+                storage.printLanguages();
             }
         }
         /**
