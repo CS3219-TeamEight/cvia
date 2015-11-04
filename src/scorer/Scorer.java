@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import job.JobDesc;
+import parser.LanguageParser;
 import parser.SkillsetParser;
 import main.ParseResultStorage;
 import qualification.Education;
@@ -12,7 +13,7 @@ import qualification.WorkExp;
 public class Scorer {
 	
 	SkillsetParser skillset;
-	
+	LanguageParser language;
 	public Scorer(JobDesc jobDesc, int count){
 	}
 	
@@ -74,6 +75,15 @@ public class Scorer {
 		int base = jobDesc.getskillSets().size();
 		int numOfSkills = skills.size();
 		score = numOfSkills/base;
-		return score* (double) jobDesc.getSkillsetWeightage();
+		return score * (double) jobDesc.getSkillsetWeightage() / 100;
+	}
+	
+	private double computeLanguageScore(JobDesc jobDesc) {
+		ArrayList<String> lang = new ArrayList<String>(language.getLanguage());
+		double score = 0;
+		int base = jobDesc.getLanguages().size();
+		int numOfLanguage = lang.size();
+		score = numOfLanguage/base;
+		return score * (double) jobDesc.getLanguageWeightage() / 100;
 	}
 }
