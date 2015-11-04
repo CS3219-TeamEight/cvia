@@ -10,10 +10,14 @@ public class ParseResultStorage {
     String id = "";
     ArrayList<Education> education;
     ArrayList<WorkExp> workExp;
+    ArrayList<String> languages;
+    ArrayList<String> skills;
     
     public ParseResultStorage() {
         education = new ArrayList<>();
         workExp = new ArrayList<>();
+        languages = new ArrayList<>();
+        skills = new ArrayList<>();
     }
     
     public void storeEducation(ArrayList<Education> education) {
@@ -24,6 +28,14 @@ public class ParseResultStorage {
         this.workExp = new ArrayList<>(workExp);
     }
     
+    public void storeLanguage(ArrayList<String> languages) {
+        this.languages = new ArrayList<>(languages);
+    }
+    
+    public void storeSkills(ArrayList<String> skills) {
+        this.skills = new ArrayList<>(skills);
+    }
+    
     public String getId() {
         return id;
     }
@@ -32,17 +44,50 @@ public class ParseResultStorage {
         for (Education edu : education) {
             System.out.println("Degree: " + edu.getDegree() + "\nField: " + edu.getField());
             if (edu.isGraduate()) {
-                System.out.println("graduate");
+                System.out.println("Graduate");
             } else {
-                System.out.println("undergraduate");
+                System.out.println("Undergraduate");
             }
+            System.out.println();
         }
+        System.out.println("=============================================");
     }
     
     public void printWorkExperience() {
         for (WorkExp exp : workExp) {
-            System.out.println("Duration: " + exp.getDuration() + " years\nPosition: " + exp.getTitle());
+            System.out.println("Position: " + exp.getTitle() + "\nDuration: " + exp.getDuration() + " years");
+            System.out.println();
         }
+        System.out.println("=============================================");
+    }
+    
+    public void printLanguages() {
+    	for (String language : languages){
+    		System.out.println("Languages: " + language);
+    	}
+    	System.out.println("=============================================");
+    }
+    
+    public void printSkills() {
+    	for (String skill : skills){
+    		System.out.println("Skills: " + skill);
+    	}
+    	System.out.println("=============================================");
     }
 
+	public ArrayList<String> getLanguages() {
+		return languages;
+	}
+	
+	public ArrayList<Education> getEducation() {
+		return education;
+	}
+
+	public ArrayList<WorkExp> getWorkExp(){
+		return workExp;
+	}
+
+	public ArrayList<String> getSkills() {
+		return skills;
+	}
 }

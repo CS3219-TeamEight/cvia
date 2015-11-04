@@ -4,64 +4,82 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import job.JobDesc;
+import parser.LanguageParser;
 import main.ParseResultStorage;
 import qualification.Education;
 import qualification.WorkExp;
+import main.ParseResultStorage;
 
 public class Scorer {
 	
-	public Scorer(JobDesc jobDesc, int count){
+	ParseResultStorage result;
+	JobDesc jobDesc;
+	
+	public Scorer(JobDesc jobDesc, ParseResultStorage result){
+		this.jobDesc = jobDesc;
+		this.result = result;
 	}
 	
-	public ArrayList<Candidate> getTopCandidates(ArrayList<ParseResultStorage> parsedData, JobDesc jobDesc, int wanted) {
-	    
-	    
-	    ArrayList<Candidate> candidates = new ArrayList<>();
-	    
-	    for (ParseResultStorage data : parsedData) {
-	        String id = data.getId();
-	        double score = 0;
-	        // calculate score here
-	        Candidate candidate = new Candidate(id, score);
-	        candidates.add(candidate);
-	    }
-	    
-	    Collections.sort(candidates);
-	    for (int i = wanted; i < candidates.size(); i++) {
-	        candidates.remove(i);
-	    }
-	    
-	    return candidates;
-	}
-	
-	private double computeWorkScore(ArrayList<WorkExp> workExp, double wanted) {
+	private double computeWorkScore() {
 	    double duration = 0;
-	    for (WorkExp work : workExp) {
+	    for (WorkExp work : result.getWorkExp()) {
 	        duration += work.getDuration();
 	    }
 	    
-	    return (duration / wanted);
+	    return (duration / jobDesc.getWorkDuration()) * jobDesc.getWorkWeightage();
 	}
 	
-	/**
 	public double computeScore(){
 		double score = 0;
-		
-		for (int i = 0; i < parsedData.size(); i++){
-			if(parsedData.get(i) instanceof ParseResultStorage){
-				score += computeWorkExpScore(((ParseResultStorage)parsedSections.get(i)).getTotalWorkExp(), jobDesc.getWorkDuration());
-			}
-				// score += computeCapScore((EduParser)parsedSections.get(i)).getTotalWorkExp());
-				// score += computeEducationScore();
-			
-		}
+		System.out.println("Resume Scores");
+		System.out.println("Work Score: " + computeWorkScore());
+		score += computeWorkScore();
+		System.out.println("Language Score: " + computeLanguageScore());
+		score += computeLanguageScore();
+		System.out.println("Skills Score: " + computeSkillsScore());
+		score += computeSkillsScore();
 		
 		
 		return score;
 	}
-	**/
 	
 	private double computeWorkExpScore(JobDesc jobDesc, double workExp, double expectedExp){
 		return workExp / expectedExp * jobDesc.getWorkWeightage();
+	}
+	
+	private double computeSkillsScore() {
+		double score= 0;
+		int numOfSkills = 0;
+		ArrayList<String> skills = result.getSkills();
+		
+		// Loop through to find the number of languages that matches the Job Description
+		for (int i = 0; i < skills.size(); i++) {
+			if (jobDesc.getskillSets().contains(skills.get(i))){
+				numOfSkills ++;
+			}
+		}
+		
+		double base = jobDesc.getskillSets().size();
+		score = numOfSkills/base;
+		
+		return score * (double) jobDesc.getSkillsetWeightage() / 100;
+	}
+	
+	private double computeLanguageScore() {
+		double score = 0;
+		int numOfLanguage = 0;
+		ArrayList<String> lang = result.getLanguages();
+
+		// Loop through to find the number of languages that matches the Job Description
+		for (int i = 0; i < lang.size(); i++) {
+			if (jobDesc.getLanguages().contains(lang.get(i))){
+				numOfLanguage++;
+			}
+		}
+		
+		double base = jobDesc.getLanguages().size();
+		score = numOfLanguage/base;
+		
+		return score * (double) jobDesc.getLanguageWeightage() / 100;
 	}
 }

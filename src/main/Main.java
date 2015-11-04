@@ -1,9 +1,12 @@
 package main;
 
+import parser.LanguageParser;
+import parser.SkillParser;
 import parser.ResumeParser;
 import parser.Section;
 import parser.EduParser;
 import parser.WorkExpParser;
+import scorer.Scorer;
 import utilities.PDFConverter;
 
 import java.io.File;
@@ -22,6 +25,8 @@ public class Main {
         ParserFactory factory = new ParserFactory();
         WorkExpParser workParser = factory.getWorkParser();
         EduParser eduParser = factory.getEduParser();
+        LanguageParser languageParser = factory.getLanguageParser();
+        SkillParser skillParser = factory.getSkillParser();
         
         // for each CV
         try {
@@ -40,6 +45,7 @@ public class Main {
 
         ArrayList<Section> sections = parser.getSections();
         ParseResultStorage storage = new ParseResultStorage();
+        System.out.println("=============================================");
         for (Section section : sections) {
             if (section.getType().equals("WORK")) {
                 storage.storeWorkExp(workParser.parseWorkSection(section));
@@ -48,7 +54,19 @@ public class Main {
                 storage.storeEducation(eduParser.parseEducation(section));
                 storage.printEduExperience();
             }
+            else if (section.getType().equals("LANGUAGES")) {
+                storage.storeLanguage(languageParser.parseLanguageSection(section));
+                storage.printLanguages();
+            }
+            else if (section.getType().equals("SKILLS")) {
+                storage.storeSkills(skillParser.parseSkillsSection(section));
+                storage.printSkills();
+            }
         }
+        
+        ExampleJob ej = new ExampleJob(factory);
+        Scorer scorer = new Scorer(ej.getExample(), storage);
+        System.out.println("Total Score: " + scorer.computeScore());
         /**
         try {
             
