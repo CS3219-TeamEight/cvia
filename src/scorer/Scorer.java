@@ -26,7 +26,7 @@ public class Scorer {
 	        duration += work.getDuration();
 	    }
 	    
-	    return (duration / jobDesc.getWorkDuration()) * jobDesc.getWorkWeightage();
+	    return (duration / jobDesc.getWorkDuration()) * jobDesc.getWorkWeightage() / 10;
 	}
 	
 	public double computeScore(){
@@ -44,7 +44,7 @@ public class Scorer {
 	}
 	
 	private double computeWorkExpScore(JobDesc jobDesc, double workExp, double expectedExp){
-		return workExp / expectedExp * jobDesc.getWorkWeightage();
+		return workExp / expectedExp * jobDesc.getWorkWeightage() / 10;
 	}
 	
 	private double computeSkillsScore() {
@@ -62,7 +62,7 @@ public class Scorer {
 		double base = jobDesc.getskillSets().size();
 		score = numOfSkills/base;
 		
-		return score * (double) jobDesc.getSkillsetWeightage() / 100;
+		return score * (double) jobDesc.getSkillsetWeightage() / 10;
 	}
 	
 	private double computeLanguageScore() {
@@ -80,6 +80,6 @@ public class Scorer {
 		double base = jobDesc.getLanguages().size();
 		score = numOfLanguage/base;
 		
-		return score * (double) jobDesc.getLanguageWeightage() / 100;
+		return score * (double) jobDesc.getLanguageWeightage() / 10;
 	}
 }
