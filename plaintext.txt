@@ -1,119 +1,80 @@
-Page1
-Russell Ong
-Senior Software Engineer - iOS at ReQall PTE LTD
-Summary
-- iOS and Android Application Development with app on the App Store - Various Smartwatches SDK
- implementation - Web application development for various clients using Ruby on Rails. - Various Facebook
- API integration - Various OAuth/OpenID integration  Specialties: Mobile/Web Application Development,
- CMS/CRM/ERP Development, iOS/Android Development, Facebook/Twitter Application Development,
- Ruby, Ruby on Rails, Objective-C, REST/SOAP Frameworks, OAuth/OpenID Integration
-Experience
-Senior Software Engineer  at   ReQall Technologies PTE LTD
-March 2012  -  Present (3 years 8 months)
-- Mobile Applications development using native iOS and Android. - Integration with various smartwatch
- SDKs (Pebble, Samsung Gear/Gear Fit, Qualcomm Toq, Sony SmartWatch, Android Wear, iWatch) -
- Integration with Auto manufacturer SDKs (mySPIN)
-Assistant Professor  at   Chiang Kai Shek College
-June 2009  -  April 2012  (2 years 11 months)
-Senior Software Engineer  at   Rivereo
-January 2011  -  March 2012  (1 year 3 months)
-- Web/Mobile Application Development - Various API integration
-Software Engineer  at   Exist Global
-August 2010  -  December 2010  (5 months)
-Web Application Development
-Senior Software Engineer  at   Brewed Concepts Inc
-July 2006  -  August 2010  (4 years 2 months)
-Web Developer Team Management Systems Architect
-Web/Mobile Developer  at   E Commerce Percs
-April 2006  -  July 2006  (4 months)
-Mobile/Web Application Development
-Projects
-ZeroIN
-Page2
-April 2013 to Present
-Members:Russell O., Yat Pan Ng
-ZeroIN is the first context-aware, intelligent messaging app for the car. It uses your personal smartphone
- to keep email distractions to a minimum, no matter what car you're in. Only messages that are important,
- contain actionable content and merit attention are read out, and drivers can simply respond by voice ? to
- keep their eyes on the road and  hands on the wheel.  Stay connected to what's important - ZeroIN restricts
- incoming messages to just those from important contacts, and then distills the content to just the parts that
- require your attention.   Take action safely ? reply to both incoming and pending action items via voice. 
-Recordr
-December 2012 to Present
-Members:Russell O., Grae Joquico
-Recordr is the easiest audio/sound/voice recorder you can find. You can have the recordings automatically
- sync across your devices with iCloud. It even allows you to record and play in the background!  Other
- features includes:  1. Sync files via your iTunes. 2. Share recordings via SoundCloud 3. Backup media files
- to your Dropbox account 4. Upload to your Google Drive¢â Account 5. Send to friends via E-Mail.  Recordr
- produces high quality recordings that can be used for interviews.
-SoFAB.com.ph
-September 2010 to Present
-Members:Russell O., Bryan Chan, Richard G., Grae Joquico
-CMG.com.ph
-December 2010 to Present
-Members:Russell O., Richard G., Bryan Chan, Grae Joquico
-SoFAB iPad Application
-January 2011 to Present
-Members:Russell O., Richard G., Bryan Chan
-Languages
-English
-Filipino
-Chinese
-Skills & Expertise
-Ruby on Rails
-Ruby
-Facebook API
-Objective-C
-AJAX
-jQuery
-Web Services
-iOS Developer
-JavaScript
-Page3
-REST
-iOS
-Git
-Android
-PostgreSQL
-HTML 5
-JSON
-Titanium
-SOAP
-Education
-De La Salle University
-MSCS, IT, 2010 - 2012
-Chiang Kai Shek College
-BSCS, Computer Science, 2002 - 2006
-Interests
-Webdev, Photography, Scuba Diving, Travel
-Publications
-Qualcomm Developer of the month
-   July 1, 2014
-Authors: Russell O.
-Page4
-Russell Ong
-Senior Software Engineer - iOS at ReQall PTE LTD
-5 people have recommended Russell
-"It is great working with Russell! A very intuitive guy and knows where to punch and deliver codes. He
-seamlessly integrated Facebook with one of our big projects and cramped tons of AJAX functionality
-on another. On a different light, he is always eager to help and share his knowledge to others. And thirst
-to discover more, learn more tricks and experiment with new technology, approach, techniques and
-implementations."
-? Richard G., managed Russell at Rivereo
-"Russell was a very productive person?a colleague and friend who has a "can-do" attitude. It was my pleasure
-working with him for 2 years with him on major business projects and was impressed with the depth of
-knowledge he possesses. Russell is a careful and great software engineer. Self motivated and a proactive
-strategist. Deliver results all the time but make no mistake, the guy knows how to have fun. That's Russell's
-way. I strongly recommend him."
-? Jurgen Estanislao, UXC, Digital Projects Manager, Thousand Minds Social Media, worked with Russell
-at Brewed Concepts Inc
-"Russell is a great colleague! An excellent programmer/developer who has strong dedication and appreciation
-in all of the projects he handle. He is full of ideas and knowledge which he always share to his co-workers.
-Good job! :)"
-? Darryl Anne Gutierrez, worked directly with Russell at Brewed Concepts Inc
-"Russell is a great team-player, an excellent ROR geek, fast learner and a great buddy! ;-) Keep it up!"
-? Jeremy D., worked directly with Russell at Brewed Concepts Inc
-"Russell is unbeatable especially in programming techniques. He is self-motivated person. Also I really like
-the way he treated his co-worker... Just continue being YOU and keep it up!!!"
-? Jenilee S., worked directly with Russell at Brewed Concepts Inc
-Contact Russell on LinkedIn
+ Kim Hyung Jon 
+9 Bukit Batok Central, The Jade Condominium, #14-07, Singapore, 658074 
+Telephone: 65 9207 8192 
+Email: hyungjon.kim@gmail.com 
+a0115864@u.nus.edu 
+Profile 
+I am a highly motivated student with passion in software development. Equipped with good working habits such as 
+thoroughness and a willingness to go beyond fulfilling the minimum requirements of my assignments, I have the 
+experience and ability of handling group software projects, even with very high level or using unfamiliar tools. 
+Having lived abroad for more than half my life, I am also capable of thriving overseas and cooperating with 
+teammates of any nationality. I excel at logical thinking and explaining the reasoning to others, as well as listening 
+to others¡¯ reasoning with healthy respect. 
+Objective 
+I seek an opportunity to experience business strategies and actions in a startup business, to learn skills such as 
+designing payment models that turn just well-made software products to actually successful products, for both the 
+company¡¯s profit and my aspiration of becoming a successful software entrepreneur. 
+Key skills 
+? Java programming with 2 years of experience. 
+? Software engineering, having achieved A- in relevant module. 
+? Team working ability and group discussion skill, with eagerness to share ideas, often leading discussions. 
+Work Experience 
+HubTurbo June 2015 ~ ongoing 
+Role: Development team member 
+GitHub issue tracker project led by Professor Damith Rajapakse. 
+Developed various functions including major features spanning both front-end 
+user interface and back-end data storage in a project using very high-level 
+functions and new libraries. 
+Promoted from contributor to regular member. 
+ 
+Private tuition Mid 2013 ~ Mid 2014 
+Unofficially taught physics and chemistry to an O-level student, raising his 
+grades in both subjects from E to B through an education heavily emphasizing 
+comprehension and application, thus contributing to his admission in Anderson 
+Junior College in 2013. 
+ 
+ Education 
+? National University  
+of Singapore 
+August 2013 ~ ongoing, projected graduation May 2017 
+Computer Science, year 3. 
+CAP 3.79 (after 2014-2015 Special Term, not yet reflected in unofficial transcript) 
+Relevant modules include: 
+? CS2103T Software Engineering (A-) 
+? CS2107 Introduction to Information Security (A-) 
+? CS2020 Data Structures and Algorithms, Accelerated (B) 
+? CS1010 Programming Methodology (A-) 
+? CS3230 Design and Analysis of Algorithms (B) 
+? IS1103 Computing and Society (A) 
+? CS2101 Effective Communication for Computing Professionals (B) 
+? GEM2027 Introduction to Public Speaking (B) 
+ 
+? A-level 
+Temasek Junior College 
+January 2011 ~ December 2012 
+? Physics H2 (B) 
+? Mathematics H2 (B) 
+? Knowledge and Inquiry H2 (B) 
+? Economics H2 (E) 
+? Chemistry H1 (C) 
+? Project Work (B) 
+CCA Experience 
+Temasek Junior College 
+Entrepreneur Club 
+February 2011 ~ June 2012 
+Attended talks by successful entrepreneurs such as Mr. Joseph Wong.  
+Led students as facilitator in entrepreneurship experience events held by the 
+school and NUS, such as LEAD and Youth Entrepreneurship Symposium.  
+Other Details 
+? Lived in India from 2004 to 2010, staying in Singapore from 2010. 
+ 
+Interests 
+? Philosophy of learning, reasoning and ethics. 
+? Imagination and creativity. 
+o Works of creativity in literature, cinema and games. 
+? Various business models of successful software products. 
+ 
+Hobbies 
+? Practicing simple software development. 
+? Experiencing successful computer games, particularly thinking games. 
+? Licensed open water diving as a form of experiencing challenges. 

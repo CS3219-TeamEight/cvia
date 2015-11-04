@@ -103,6 +103,7 @@ public class EduParser implements SectionParser {
         for (String line : lines) {
             info = info + line + " ";
         }
+        System.out.println(info);
         
         return fosDictionary.contains(info.toLowerCase());
     }
@@ -147,7 +148,6 @@ public class EduParser implements SectionParser {
     
     private Education storeEduExperience(ArrayList<String> lines, ArrayList<Duration> durations, int index, int start, int end, int offset) {
         Duration duration = durations.get(index);
-        double cap = -1;
         String degree = DEGREE_UNKNOWN;
         boolean capFound = false;
         boolean degFound = false;
@@ -156,7 +156,6 @@ public class EduParser implements SectionParser {
             if (!capFound) {
                 double val = getCAP(line);
                 if (val > 0) {
-                    cap = val;
                     capFound = true;
                 }
             }
@@ -171,11 +170,16 @@ public class EduParser implements SectionParser {
         }
         
         ArrayList<String> beginningPart = new ArrayList<>();
-        for (int i = start; i < start + offset + 2; i++) {
-            beginningPart.add(lines.get(i));
+        if (offset == 0) {
+            beginningPart.add(lines.get(start));
+            beginningPart.add(lines.get(start + 1));
+        } else {
+            for (int i = start; i <= start + offset + 1; i++) {
+                beginningPart.add(lines.get(i));
+            }
         }
         
-        Education edu = new Education(duration.getDuration(), cap, !duration.isOngoing(), degree, getField(beginningPart));
+        Education edu = new Education(duration.getDuration(), !duration.isOngoing(), degree, getField(beginningPart));
         // although there are different types of institutes (university, high school, etc)
         // catered to university only, due to difficulty in differentiating them
         return edu;

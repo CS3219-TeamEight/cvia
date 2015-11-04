@@ -26,12 +26,19 @@ public class WorkExpParser implements SectionParser {
             if (duration > 0) {
                 if (pointers.size() == 0) {
                     offset = i;
+                    System.out.println("Offset = " + offset);
                 }
                 pointers.add(i - offset);
                 
                 ArrayList<String> beginningPart = new ArrayList<>();
-                for (int j = i - offset; j < i + 2; j++) {
-                    beginningPart.add(lines.get(j));
+                if (offset == 0) {
+                    beginningPart.add(lines.get(i));
+                    beginningPart.add(lines.get(i + 1));
+                } else {
+                    for (int j = i - offset; j < i; j++) {
+                        System.out.println(lines.get(j));
+                        beginningPart.add(lines.get(j));
+                    }
                 }
                 
                 WorkExp work = new WorkExp(getJobTitle(beginningPart), duration);
