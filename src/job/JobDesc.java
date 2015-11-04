@@ -21,6 +21,11 @@ public class JobDesc {
 	private int languageWeightage;
 	private int otherWeightage;
 	private int skillsetWeightage;
+	
+	public JobDesc(){
+		languages = new HashSet<String>();
+		skillSets = new HashSet<String>();
+	}
 
 	public void workExp(String workExp) {
 		String[] work = workExp.split("[,\\s]+");

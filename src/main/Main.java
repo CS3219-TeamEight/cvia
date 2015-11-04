@@ -6,6 +6,7 @@ import parser.ResumeParser;
 import parser.Section;
 import parser.EduParser;
 import parser.WorkExpParser;
+import scorer.Scorer;
 import utilities.PDFConverter;
 
 import java.io.File;
@@ -62,6 +63,10 @@ public class Main {
                 storage.printSkills();
             }
         }
+        
+        ExampleJob ej = new ExampleJob();
+        Scorer scorer = new Scorer(ej.getExample(), storage);
+        System.out.println("Total Score: " + scorer.computeScore());
         /**
         try {
             

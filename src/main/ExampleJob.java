@@ -3,7 +3,7 @@ package main;
 import job.JobDesc;
 
 public class ExampleJob {
-	JobDesc exampleDesc;
+	JobDesc exampleDesc = new JobDesc();
 	
 	public ExampleJob(){
 		exampleDesc.setEduWeightage("2");
@@ -17,5 +17,9 @@ public class ExampleJob {
 		exampleDesc.setJobTitle("Software Engineer");
 		exampleDesc.setEducationLevel("2");
 		exampleDesc.setEducationTitle("Computer Science");
+	}
+	
+	public JobDesc getExample(){
+		return exampleDesc;
 	}
 }
