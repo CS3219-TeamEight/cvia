@@ -9,11 +9,13 @@ import parser.SkillsetParser;
 import main.ParseResultStorage;
 import qualification.Education;
 import qualification.WorkExp;
+import main.ParseResultStorage;
 
 public class Scorer {
 	
 	SkillsetParser skillset;
-	LanguageParser language;
+	ParseResultStorage result;
+	
 	public Scorer(JobDesc jobDesc, int count){
 	}
 	
@@ -79,11 +81,22 @@ public class Scorer {
 	}
 	
 	private double computeLanguageScore(JobDesc jobDesc) {
-		ArrayList<String> lang = new ArrayList<String>(language.getLanguage());
 		double score = 0;
+		int numOfLanguage = 0;
+		ArrayList<String> lang = new ArrayList<String>(result.getLanguages());
+		
+		//Loop through to find the number of languages that matches the Job Description
+		for (String language : jobDesc.getLanguages()) {
+			for (int i=0; i<lang.size(); i++) {
+				if (language.equals(lang.get(i))) {
+					numOfLanguage ++ ;
+				}
+			}
+		}
+		
 		int base = jobDesc.getLanguages().size();
-		int numOfLanguage = lang.size();
 		score = numOfLanguage/base;
+		
 		return score * (double) jobDesc.getLanguageWeightage() / 100;
 	}
 }
