@@ -11,6 +11,7 @@ public class ParseResultStorage {
     ArrayList<Education> education;
     ArrayList<WorkExp> workExp;
     ArrayList<String> languages;
+    ArrayList<String> skills;
     
     public ParseResultStorage() {
         education = new ArrayList<>();
@@ -28,6 +29,10 @@ public class ParseResultStorage {
     
     public void storeLanguage(ArrayList<String> languages) {
         this.languages = new ArrayList<>(languages);
+    }
+    
+    public void storeSkills(ArrayList<String> skills) {
+        this.skills = new ArrayList<>(skills);
     }
     
     public String getId() {
@@ -58,6 +63,13 @@ public class ParseResultStorage {
     public void printLanguages() {
     	for (String language : languages){
     		System.out.println("Languages: " + language);
+    	}
+    	System.out.println("=============================================");
+    }
+    
+    public void printSkills() {
+    	for (String skill : skills){
+    		System.out.println("Skills: " + skill);
     	}
     	System.out.println("=============================================");
     }

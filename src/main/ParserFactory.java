@@ -4,6 +4,7 @@ import parser.DateParser;
 import parser.Dictionary;
 import parser.EduParser;
 import parser.LanguageParser;
+import parser.SkillParser;
 import parser.WorkExpParser;
 
 public class ParserFactory {
@@ -12,14 +13,17 @@ public class ParserFactory {
     EduParser eduParser;
     WorkExpParser workExpParser;
     LanguageParser languageParser;
+    SkillParser skillParser;
     
     Dictionary fosDictionary;
     Dictionary jobTitleDictionary;
     Dictionary languageDictionary;
+    Dictionary skillDictionary;
 
     private static final String FILENAME_DICTIONARY_FIELD = "./FieldsDictionary.txt";
     private static final String FILENAME_DICTIONARY_JOB = "./JobsDictionary.txt";
     private static final String FILENAME_DICTIONARY_LANGUAGE = "./LanguageDictionary.txt";
+    private static final String FILENAME_DICTIONARY_SKILL = "./SkillDictionary.txt";
     
     public ParserFactory() {
         produceParsers();
@@ -37,6 +41,9 @@ public class ParserFactory {
         languageDictionary = new Dictionary(FILENAME_DICTIONARY_LANGUAGE);
         languageParser = new LanguageParser(languageDictionary);
         
+        skillDictionary = new Dictionary(FILENAME_DICTIONARY_SKILL);
+        skillParser = new SkillParser(skillDictionary);
+        
     }
     
     public DateParser getDateParser() {
@@ -53,6 +60,10 @@ public class ParserFactory {
     
     public LanguageParser getLanguageParser() {
         return languageParser;
+    }
+    
+    public SkillParser getSkillParser() {
+        return skillParser;
     }
 
 }

@@ -37,15 +37,13 @@ public class Dictionary {
         }
     }
     
-    public String containsSingle(String line) {
-        ArrayList<String> keywords = new ArrayList<>(dictionary.keySet());
-        for (String keyword : keywords) {
-            if (line.contains(keyword)) {
-                return line;
-            }
-        }
-        return "UNKNOWN";
-    }
+	public String containsSingle(String line) {
+
+		if (dictionary.containsKey(line)) {
+			return line;
+		}
+		return "UNKNOWN";
+	}
     
     private void populate(String filename){
         BufferedReader br = null;
