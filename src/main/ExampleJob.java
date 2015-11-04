@@ -8,8 +8,8 @@ public class ExampleJob {
 	public ExampleJob(){
 		exampleDesc.setEduWeightage("2");
 		exampleDesc.setWorkWeightage("3");
-		exampleDesc.setLanguageWeightage("2");
-		exampleDesc.setSkillsetWeightage("5");
+		exampleDesc.setLanguageWeightage("1");
+		exampleDesc.setSkillsetWeightage("4");
 		
 		exampleDesc.workExp("2 years");
 		exampleDesc.setLanguages("english, chinese");
