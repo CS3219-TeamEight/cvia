@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 import java.lang.Double;
 import java.lang.Integer;
 
+import main.ParserFactory;
+
 public class JobDesc {
 	private double workDuration;
 	private double educationCap;
@@ -22,9 +24,12 @@ public class JobDesc {
 	private int otherWeightage;
 	private int skillsetWeightage;
 	
-	public JobDesc(){
+	private ParserFactory parserFactory;
+	
+	public JobDesc(ParserFactory parserFactory){
 		languages = new HashSet<String>();
 		skillSets = new HashSet<String>();
+		this.parserFactory = parserFactory;
 	}
 
 	public void workExp(String workExp) {
@@ -120,13 +125,15 @@ public class JobDesc {
 		return jobTitle;
 	}
 	public void setJobTitle(String jobTitle) {
-		this.jobTitle = jobTitle;
+		jobTitle = jobTitle.toLowerCase();
+		this.jobTitle = parserFactory.getJobTitleDictionary().contains(jobTitle);
 	}
 	public HashSet<String> getLanguages() {
 		return languages;
 	}
 	public void setLanguages(String language) {
 		// this.languages = languages;
+		language = language.toLowerCase();
 		String[] languageList = language.split("[,\\s]+");
 		for(String lang : languageList) {
 			languages.add(lang);
@@ -136,6 +143,7 @@ public class JobDesc {
 		return skillSets;
 	}
 	public void setSkillSets(String skillset) {
+		skillset = skillset.toLowerCase();
 		String[] skills = skillset.split("[,\\s]+");
 		for(String skill : skills) {
 			skillSets.add(skill);
