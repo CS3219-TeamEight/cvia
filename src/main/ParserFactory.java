@@ -15,10 +15,42 @@ public class ParserFactory {
     LanguageParser languageParser;
     SkillParser skillParser;
     
-    Dictionary fosDictionary;
-    Dictionary jobTitleDictionary;
-    Dictionary languageDictionary;
-    Dictionary skillDictionary;
+    public Dictionary getFosDictionary() {
+		return fosDictionary;
+	}
+
+	public void setFosDictionary(Dictionary fosDictionary) {
+		this.fosDictionary = fosDictionary;
+	}
+
+	public Dictionary getJobTitleDictionary() {
+		return jobTitleDictionary;
+	}
+
+	public void setJobTitleDictionary(Dictionary jobTitleDictionary) {
+		this.jobTitleDictionary = jobTitleDictionary;
+	}
+
+	public Dictionary getLanguageDictionary() {
+		return languageDictionary;
+	}
+
+	public void setLanguageDictionary(Dictionary languageDictionary) {
+		this.languageDictionary = languageDictionary;
+	}
+
+	public Dictionary getSkillDictionary() {
+		return skillDictionary;
+	}
+
+	public void setSkillDictionary(Dictionary skillDictionary) {
+		this.skillDictionary = skillDictionary;
+	}
+
+	protected Dictionary fosDictionary;
+    protected Dictionary jobTitleDictionary;
+    protected Dictionary languageDictionary;
+    protected Dictionary skillDictionary;
 
     private static final String FILENAME_DICTIONARY_FIELD = "./FieldsDictionary.txt";
     private static final String FILENAME_DICTIONARY_JOB = "./JobsDictionary.txt";

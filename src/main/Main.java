@@ -64,7 +64,7 @@ public class Main {
             }
         }
         
-        ExampleJob ej = new ExampleJob();
+        ExampleJob ej = new ExampleJob(factory);
         Scorer scorer = new Scorer(ej.getExample(), storage);
         System.out.println("Total Score: " + scorer.computeScore());
         /**
