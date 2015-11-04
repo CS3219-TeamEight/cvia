@@ -35,21 +35,22 @@ public class EduParser implements SectionParser {
         degreeNames.add("bachelor of");
         degreeNames.add("bachelor in");
         degreeNames.add("bachelor's");
+        degreeNames.add("bscs");
         degreeNames.add("doctor of");
         degreeNames.add("doctor in");
         
         degreeTypes.put("phd", DEGREE_PHD);
         degreeTypes.put("ph.d", DEGREE_PHD);
         degreeTypes.put("doctor of philosophy", DEGREE_PHD);
+        degreeTypes.put("doctor of", DEGREE_DOCTOR);
+        degreeTypes.put("doctor in", DEGREE_DOCTOR);
         degreeTypes.put("master of", DEGREE_MASTER);
         degreeTypes.put("master in", DEGREE_MASTER);
         degreeTypes.put("master's", DEGREE_MASTER);
         degreeTypes.put("bachelor of", DEGREE_BACHELOR);
         degreeTypes.put("bachelor in", DEGREE_BACHELOR);
         degreeTypes.put("bachelor's", DEGREE_BACHELOR);
-        degreeTypes.put("doctor of", DEGREE_DOCTOR);
-        degreeTypes.put("doctor in", DEGREE_DOCTOR);
-        
+        degreeTypes.put("bscs", DEGREE_BACHELOR);        
     }
     
     public ArrayList<Education> parseEducation(Section section) {

@@ -41,7 +41,7 @@ public class ParseResultStorage {
     
     public void printWorkExperience() {
         for (WorkExp exp : workExp) {
-            System.out.println("Duration: " + exp.getDuration() + " years\nPosition: " + exp.getTitle());
+            System.out.println("Position: " + exp.getTitle() + "\nDuration: " + exp.getDuration() + " years");
         }
     }
 
