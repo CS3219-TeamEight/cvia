@@ -17,6 +17,7 @@ public class ParseResultStorage {
         education = new ArrayList<>();
         workExp = new ArrayList<>();
         languages = new ArrayList<>();
+        skills = new ArrayList<>();
     }
     
     public void storeEducation(ArrayList<Education> education) {
@@ -84,5 +85,9 @@ public class ParseResultStorage {
 
 	public ArrayList<WorkExp> getWorkExp(){
 		return workExp;
+	}
+
+	public ArrayList<String> getSkills() {
+		return skills;
 	}
 }

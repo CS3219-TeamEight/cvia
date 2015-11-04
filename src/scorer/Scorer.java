@@ -36,6 +36,9 @@ public class Scorer {
 		score += computeWorkScore();
 		System.out.println("Language Score: " + computeLanguageScore());
 		score += computeLanguageScore();
+		System.out.println("Skills Score: " + computeSkillsScore());
+		score += computeSkillsScore();
+		
 		
 		return score;
 	}
@@ -44,8 +47,21 @@ public class Scorer {
 		return workExp / expectedExp * jobDesc.getWorkWeightage();
 	}
 	
-	private double computeSkillsetScore(JobDesc jobDesc) {
+	private double computeSkillsScore() {
 		double score= 0;
+		int numOfSkills = 0;
+		ArrayList<String> skills = result.getSkills();
+		
+		// Loop through to find the number of languages that matches the Job Description
+		for (int i = 0; i < skills.size(); i++) {
+			if (jobDesc.getskillSets().contains(skills.get(i))){
+				numOfSkills++;
+			}
+		}
+		
+		int base = jobDesc.getskillSets().size();
+		score = numOfSkills/base;
+		
 		return score * (double) jobDesc.getSkillsetWeightage() / 100;
 	}
 	
