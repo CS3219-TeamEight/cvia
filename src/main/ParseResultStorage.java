@@ -74,4 +74,15 @@ public class ParseResultStorage {
     	System.out.println("=============================================");
     }
 
+	public ArrayList<String> getLanguages() {
+		return languages;
+	}
+	
+	public ArrayList<Education> getEducation() {
+		return education;
+	}
+
+	public ArrayList<WorkExp> getWorkExp(){
+		return workExp;
+	}
 }
