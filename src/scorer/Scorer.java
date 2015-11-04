@@ -83,14 +83,12 @@ public class Scorer {
 	private double computeLanguageScore(JobDesc jobDesc) {
 		double score = 0;
 		int numOfLanguage = 0;
-		ArrayList<String> lang = new ArrayList<String>(result.getLanguages());
-		
-		//Loop through to find the number of languages that matches the Job Description
-		for (String language : jobDesc.getLanguages()) {
-			for (int i=0; i<lang.size(); i++) {
-				if (language.equals(lang.get(i))) {
-					numOfLanguage ++ ;
-				}
+		ArrayList<String> lang = result.getLanguages();
+
+		// Loop through to find the number of languages that matches the Job Description
+		for (int i = 0; i < lang.size(); i++) {
+			if (jobDesc.getLanguages().contains(lang.get(i))){
+				numOfLanguage++;
 			}
 		}
 		

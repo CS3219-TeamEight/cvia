@@ -1,6 +1,7 @@
 package job;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.regex.Pattern;
 import java.lang.Double;
 import java.lang.Integer;
@@ -11,8 +12,8 @@ public class JobDesc {
 	private int educationLevel;
 	private String educationTitle;
 	private String jobTitle;
-	private ArrayList<String> languages;
-	private ArrayList<String> skillSets;
+	private HashSet<String> languages;
+	private HashSet<String> skillSets;
 	private ArrayList<String> others;
 
 	private int eduWeightage;
@@ -116,7 +117,7 @@ public class JobDesc {
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
-	public ArrayList<String> getLanguages() {
+	public HashSet<String> getLanguages() {
 		return languages;
 	}
 	public void setLanguages(String language) {
@@ -126,7 +127,7 @@ public class JobDesc {
 			languages.add(lang);
 		}
 	}
-	public ArrayList<String> getskillSets() {
+	public HashSet<String> getskillSets() {
 		return skillSets;
 	}
 	public void setSkillSets(String skillset) {
