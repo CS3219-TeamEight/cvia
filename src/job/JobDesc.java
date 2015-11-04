@@ -1,6 +1,7 @@
 package job;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import java.lang.Double;
 import java.lang.Integer;
 
@@ -13,18 +14,83 @@ public class JobDesc {
 	private ArrayList<String> languages;
 	private ArrayList<String> skillSets;
 	private ArrayList<String> others;
-	
+
 	private int eduWeightage;
 	private int workWeightage;
 	private int languageWeightage;
 	private int otherWeightage;
 	private int skillsetWeightage;
-	
+
+	public void workExp(String workExp) {
+		String[] work = workExp.split("[,\\s]+");
+		StringBuilder sb = new StringBuilder();
+		String yearString;
+		boolean numFlag = false;
+		double years = 0;
+		boolean found = false;
+
+		//To determine work experience
+		for (int i = 0; i<work.length; i++) {
+			if (Pattern.compile("year|years").matcher(work[i]).find()) { //Located year or years in word[i]
+				for (char c : work[i].toCharArray()) {
+					if (Character.isDigit(c)) {
+						sb.append(c);
+						found = true;
+						numFlag = true;
+					} else if (found) {
+						sb.append(" ");
+						found = false;
+					}
+
+					if (numFlag) {
+						yearString = sb.toString().trim();
+
+						//years of experience if only 1 number provided. Eg 2years
+						if (yearString.split("[,\\s]+").length == 1) {
+							years = Double.parseDouble(yearString); 
+						} else if (yearString.split("[,\\s]+").length > 1) {       //Average years of experience if 2 numbers are provided. Eg 2or3years
+							String [] yearStringArray =yearString.split("[,\\s]+");
+							for (int j = 0; j<yearStringArray.length; j++) {
+								years += Double.parseDouble(yearStringArray[j]);
+							}
+							years /= yearStringArray.length;
+						}
+					} else {
+						for (char ch : work[i-1].toCharArray()) {
+							if (Character.isDigit(ch)) {
+								sb.append(ch);
+								found = true;
+								numFlag = true;
+							} else if (found) {
+								sb.append(" ");
+								found = false;
+							}
+						}
+						yearString = sb.toString().trim();
+						//years of experience if only 1 number provided. Eg 2years
+						if (yearString.split("[,\\s]+").length == 1) {
+							years = Double.parseDouble(yearString); 
+						} else if (yearString.split("[,\\s]+").length > 1) {       //Average years of experience if 2 numbers are provided. Eg 2or3years
+							String [] yearStringArray =yearString.split("[,\\s]+");
+							for (int j = 0; j<yearStringArray.length; j++) {
+								years += Double.parseDouble(yearStringArray[j]);
+							}
+							years /= yearStringArray.length;
+						}
+					}
+				}
+			}
+			
+			setWorkDuration (years);
+		}
+
+	}
+
 	public double getWorkDuration() {
 		return workDuration;
 	}
-	public void setWorkDuration(String workDuration) {
-		this.workDuration = Double.parseDouble(workDuration);
+	public void setWorkDuration(Double workDuration) {
+		this.workDuration = workDuration;
 	}
 	public double getEducationCap() {
 		return educationCap;
@@ -55,16 +121,16 @@ public class JobDesc {
 	}
 	public void setLanguages(String language) {
 		// this.languages = languages;
-		String[] languageList = language.split(", ");
+		String[] languageList = language.split("[,\\s]+");
 		for(String lang : languageList) {
-			others.add(lang);
+			languages.add(lang);
 		}
 	}
 	public ArrayList<String> getskillSets() {
 		return skillSets;
 	}
 	public void setSkillSets(String skillset) {
-		String[] skills = skillset.split(", ");
+		String[] skills = skillset.split("[,\\s]+");
 		for(String skill : skills) {
 			skillSets.add(skill);
 		}
@@ -72,11 +138,11 @@ public class JobDesc {
 	public ArrayList<String> getOthers() {
 		return others;
 	}
-	public void setOthers(String others) {
-//		this.others = others;
-		String[] otherList = others.split(", ");
+	public void setOthers(String other) {
+		//		this.others = others;
+		String[] otherList = other.split("[,\\s]+");
 		for(String random : otherList) {
-			languages.add(random);
+			others.add(random);
 		}
 	}
 	public int getEduWeightage() {
@@ -109,5 +175,5 @@ public class JobDesc {
 	public void setSkillsetWeightage(String skillsetWeightage) {
 		this.skillsetWeightage = Integer.parseInt(skillsetWeightage);
 	}
-	
+
 }
