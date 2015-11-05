@@ -48,6 +48,7 @@ public class ParserFactory {
 	}
 
 	protected Dictionary fosDictionary;
+	protected Dictionary lvlDictionary;
     protected Dictionary jobTitleDictionary;
     protected Dictionary languageDictionary;
     protected Dictionary skillDictionary;
@@ -56,6 +57,7 @@ public class ParserFactory {
     private static final String FILENAME_DICTIONARY_JOB = "./JobsDictionary.txt";
     private static final String FILENAME_DICTIONARY_LANGUAGE = "./LanguageDictionary.txt";
     private static final String FILENAME_DICTIONARY_SKILL = "./SkillDictionary.txt";
+    private static final String FILENAME_DICTIONARY_LEVEL = "./LvlDictionary.txt";
     
     public ParserFactory() {
         produceParsers();
@@ -65,7 +67,8 @@ public class ParserFactory {
         dateParser = new DateParser();
         
         fosDictionary = new Dictionary(FILENAME_DICTIONARY_FIELD);
-        eduParser = new EduParser(dateParser, fosDictionary);
+        lvlDictionary = new Dictionary(FILENAME_DICTIONARY_LEVEL);
+        eduParser = new EduParser(dateParser, fosDictionary, lvlDictionary);
         
         jobTitleDictionary = new Dictionary(FILENAME_DICTIONARY_JOB);
         workExpParser = new WorkExpParser(dateParser, jobTitleDictionary);

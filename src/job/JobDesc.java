@@ -66,6 +66,7 @@ public class JobDesc {
 		}
 		
 	}
+	
 	public double getEducationCap() {
 		return educationCap;
 	}

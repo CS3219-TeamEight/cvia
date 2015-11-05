@@ -1,0 +1,20 @@
+;
+Ph.D
+phd
+ph.d
+doctor of philosophy
+;
+Master
+master in
+master of
+master's
+;
+Honors
+honors
+honours
+;
+Bachelor
+bachelor of
+bachelor in
+bachelor's
+bscs
