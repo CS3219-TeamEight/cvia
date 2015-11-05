@@ -36,8 +36,29 @@ public class JobDesc {
 	public double getWorkDuration() {
 		return workDuration;
 	}
-	public void setWorkDuration(Double workDuration) {
-		this.workDuration = workDuration;
+	public void setWorkDuration(String workDuration) {
+		String [] duration = workDuration.split("[,\\s]+");
+		String durationString;
+		double totalDuration = 0;
+		StringBuilder sb = new StringBuilder();
+
+		for (int i = 0; i<duration.length; i++) {
+			for (char c : duration[i].toCharArray()) {
+				if (Character.isDigit(c)) {
+					sb.append(c);
+				} else {
+					sb.append(" ");
+				}
+			}
+		}
+		durationString = sb.toString().trim();
+		String durationStringArray [] = durationString.split("[,\\s]+");
+		for (String data : durationStringArray) {
+			totalDuration += Double.parseDouble(data);
+		}
+
+		this.workDuration = totalDuration / durationStringArray.length;
+
 	}
 	public double getEducationCap() {
 		return educationCap;
