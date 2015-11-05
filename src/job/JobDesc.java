@@ -52,13 +52,19 @@ public class JobDesc {
 			}
 		}
 		durationString = sb.toString().trim();
-		String durationStringArray [] = durationString.split("[,\\s]+");
-		for (String data : durationStringArray) {
-			totalDuration += Double.parseDouble(data);
+		if (!durationString.equals("")) {
+			String durationStringArray [] = durationString.split("[,\\s]+");
+			for (String data : durationStringArray) {
+				totalDuration += Double.parseDouble(data);
+			}
+		
+			this.workDuration = totalDuration / durationStringArray.length;
+			System.out.println("Work Duration: " + this.workDuration);
+		} else {
+			this.workDuration = 0;
+			System.out.println("Work Duration: " + this.workDuration);
 		}
-
-		this.workDuration = totalDuration / durationStringArray.length;
-
+		
 	}
 	public double getEducationCap() {
 		return educationCap;

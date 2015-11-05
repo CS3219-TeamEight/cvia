@@ -12,7 +12,7 @@ public class ExampleJob {
 		exampleDesc.setLanguageWeightage("1");
 		exampleDesc.setSkillsetWeightage("4");
 		
-		exampleDesc.workExp("2 years");
+		exampleDesc.setWorkDuration("2 years");
 		exampleDesc.setLanguages("enGlish, chinese");
 		exampleDesc.setSkillSets("java, python, ruby, ajax");
 		exampleDesc.setJobTitle("Software Engineer");
