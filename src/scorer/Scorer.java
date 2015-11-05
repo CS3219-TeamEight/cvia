@@ -17,27 +17,38 @@ public class Scorer {
 	}
 
 	private double computeWorkScore() {
-		double duration = 0;
-		double workExpScore = 0;
-		int jobCount = 0;
+	    double duration = 0;
+	    double workExpScore = 0;
+	    double jobCount = 0;
+	    
+	    if (jobDesc.getWorkDuration() != 0) {
+	    	for (WorkExp work : result.getWorkExp()) {
+	    		if (work.getTitle().equalsIgnoreCase(jobDesc.getJobTitle())) {
+	    			duration += work.getDuration();
+	    		} else {
+	    			duration += work.getDuration() / 2;
+	    		}
+	    	}
+	    	workExpScore = duration / jobDesc.getWorkDuration() * jobDesc.getWorkWeightage() / 10;
+	    	
+	    	if (workExpScore > (jobDesc.getWorkWeightage()/10)) 
+	    		workExpScore = jobDesc.getWorkWeightage() / 10;
+	    	return workExpScore;
+	    } else {
+	    	for (WorkExp work : result.getWorkExp()) {
+	    		if (work.getTitle().equalsIgnoreCase(jobDesc.getJobTitle())) {
+	    			jobCount ++;
+	    		} 
+	    	}
+	    	
+	    	if(jobCount > 0) {
+	    		workExpScore = jobDesc.getWorkWeightage() / 10;
+	    	}
+	    	
+	    	return workExpScore;
+	    }
+	    
 
-		for (WorkExp work : result.getWorkExp()) {
-			if (work.getTitle().equalsIgnoreCase(jobDesc.getJobTitle())) {
-				duration += work.getDuration();
-				jobCount ++;
-			}
-		}
-		
-		if (jobCount > 0)
-			workExpScore = duration / jobDesc.getWorkDuration();
-		else 
-			workExpScore = 0;
-		
-		if(jobDesc.getWorkDuration() != 0) { 
-			return workExpScore * jobDesc.getWorkWeightage() / 10;
-		} else {
-			return jobDesc.getWorkWeightage() / 10;
-		}
 	}
 
 	public double computeScore(){
@@ -52,10 +63,6 @@ public class Scorer {
 
 
 		return score;
-	}
-
-	private double computeWorkExpScore(JobDesc jobDesc, double workExp, double expectedExp){
-		return workExp / expectedExp * jobDesc.getWorkWeightage() / 10;
 	}
 
 	private double computeSkillsScore() {
