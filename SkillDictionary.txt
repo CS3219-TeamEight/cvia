@@ -1,18 +1,78 @@
-ruby on rails
-ruby
-facebook api
-objective-c
+active directory
 ajax
-jquery
-web services
-ios developer
-javascript
-rest
-ios
-git
 android
-postgresql
+android development
+badminton
+biomaterials
+biomedical engineering
+blackberry enterprise server
+bmc remedy
+characterization
+citrix
+common lisp
+computer hardware
+data analysis
+data mining
+debugging
+eclipse
+embedded software
+facebook api
+git
+github
+help desk support
 html 5
+image processing
+ion milling
+ios
+ios developer
+it service management
+itil certified
+java
+javascript
+jquery
 json
-titanium
+labview
+laptops
+matlab
+medical devices
+medical research
+microsoft excel
+microsoft exchange
+microsoft office
+mobile devices
+molecular biology
+motion capture
+nanofabrication
+network administration
+object oriented design
+objective-c
+operating systems
+photolithography
+photoshop
+postgresql
+programming
+python
+qualysis
+real-time data acquisition
+rest
+ruby
+ruby on rails
 soap
+software design
+software development
+software engineering
+software installation
+sputtering
+statistics
+system administration
+technical support
+titanium
+troubleshooting
+vpn
+web development
+web services
+windows
+windows 7
+windows server
+windows xp
+xp
