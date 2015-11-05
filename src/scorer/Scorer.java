@@ -31,20 +31,21 @@ public class Scorer {
 	    			duration += work.getDuration() / 2;
 	    		}
 	    	}
-	    	workExpScore = duration / jobDesc.getWorkDuration() * jobDesc.getWorkWeightage() / 10;
+	    	workExpScore = duration / jobDesc.getWorkDuration() * jobDesc.getWorkWeightage();
 	    	
-	    	if (workExpScore > (jobDesc.getWorkWeightage()/10) * 2) 
-	    		workExpScore = jobDesc.getWorkWeightage() / 10 * 2;
+	    	if (workExpScore > (jobDesc.getWorkWeightage()) * 2) 
+	    		workExpScore = jobDesc.getWorkWeightage() * 2;
 	    	return workExpScore;
 	    } else {
 	    	for (WorkExp work : result.getWorkExp()) {
+	    		
 	    		if (work.getTitle().equalsIgnoreCase(jobDesc.getJobTitle())) {
 	    			jobCount ++;
 	    		} 
 	    	}
 	    	
 	    	if(jobCount > 0) {
-	    		workExpScore = jobDesc.getWorkWeightage() / 10;
+	    		workExpScore = jobDesc.getWorkWeightage();
 	    	}
 	    	
 	    	return workExpScore;
@@ -62,6 +63,8 @@ public class Scorer {
 		score += computeLanguageScore();
 		System.out.println("Skills Score: " + computeSkillsScore());
 		score += computeSkillsScore();
+		System.out.println("Skills Score: " + computeEduScore());
+		score += computeEduScore();
 
 
 		return score;
@@ -82,7 +85,7 @@ public class Scorer {
 		double base = jobDesc.getskillSets().size();
 		score = numOfSkills/base;
 
-		return score * (double) jobDesc.getSkillsetWeightage() / 10;
+		return score * (double) jobDesc.getSkillsetWeightage();
 	}
 
 	private double computeLanguageScore() {
@@ -100,19 +103,19 @@ public class Scorer {
 		double base = jobDesc.getLanguages().size();
 		score = numOfLanguage/base;
 
-		return score * (double) jobDesc.getLanguageWeightage() / 10;
+		return score * (double) jobDesc.getLanguageWeightage();
 	}
 	
-	private double computeEducationScore() {
+	private double computeEduScore() {
 		double eduScore = 0;
 		double tempEduScore;
 			
 		for(Education edu : result.getEducation()) {
-			tempEduScore = 0;
+			tempEduScore = 0.0;
 			
 			if(edu.getField().equalsIgnoreCase(jobDesc.getEducationTitle())) {
 				if (edu.isGraduate()) {
-					tempEduScore = 1;
+					tempEduScore = 1.0;
 				} else {
 					tempEduScore = 0.75;
 				}
@@ -129,7 +132,8 @@ public class Scorer {
 			}
 		}
 		
-		eduScore = eduScore * jobDesc.getEduWeightage() / 10;
+		eduScore = eduScore * jobDesc.getEduWeightage();
+		
 		return eduScore;
 	}
 }
