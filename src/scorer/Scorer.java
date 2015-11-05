@@ -101,4 +101,34 @@ public class Scorer {
 
 		return score * (double) jobDesc.getLanguageWeightage() / 10;
 	}
+	
+	private double computeEducationScore() {
+		double eduScore = 0;
+		double tempEduScore;
+			
+		for(Education edu : result.getEducation()) {
+			tempEduScore = 0;
+			
+			if(edu.getField().equalsIgnoreCase(jobDesc.getEducationTitle())) {
+				if (edu.isGraduate()) {
+					tempEduScore = 1;
+				} else {
+					tempEduScore = 0.75;
+				}
+			} else {
+				if (edu.isGraduate()) {
+					tempEduScore = 0.5;
+				} else {
+					tempEduScore = 0.25;
+				}
+			}
+		
+			if (tempEduScore > eduScore) {
+				eduScore = tempEduScore;
+			}
+		}
+		
+		eduScore = eduScore * jobDesc.getEduWeightage() / 10;
+		return eduScore;
+	}
 }
