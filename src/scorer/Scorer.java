@@ -1,6 +1,7 @@
 package scorer;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import job.JobDesc;
@@ -9,15 +10,24 @@ import qualification.WorkExp;
 import qualification.Education;
 
 public class Scorer {
-
+	
+	Map<String, Double> degreeMultiplyer = new HashMap<String, Double>();
 	ParseResultStorage result;
 	JobDesc jobDesc;
 
 	public Scorer(JobDesc jobDesc, ParseResultStorage result){
 		this.jobDesc = jobDesc;
 		this.result = result;
+		setDegreeMultiplyer();
 	}
-
+	
+	private void setDegreeMultiplyer() {
+		degreeMultiplyer.put("Ph.D", 2.5);
+		degreeMultiplyer.put("Master", 2.0);
+		degreeMultiplyer.put("Honors", 1.5);
+		degreeMultiplyer.put("Bachelor", 1.0);
+	}
+	
 	private double computeWorkScore() {
 	    double duration = 0;
 	    double workExpScore = 0;
@@ -63,7 +73,7 @@ public class Scorer {
 		score += computeLanguageScore();
 		System.out.println("Skills Score: " + computeSkillsScore());
 		score += computeSkillsScore();
-		System.out.println("Skills Score: " + computeEduScore());
+		System.out.println("Education Score: " + computeEduScore());
 		score += computeEduScore();
 
 
@@ -126,10 +136,19 @@ public class Scorer {
 					tempEduScore = 0.25;
 				}
 			}
-		
+			
+			tempEduScore *= degreeMultiplyer.get(edu.getDegree());
+			
 			if (tempEduScore > eduScore) {
 				eduScore = tempEduScore;
 			}
+			
+			/** Test Statements
+			System.out.println(edu.getDegree());
+			System.out.println(edu.getField());
+			System.out.println(edu.isGraduate());
+			System.out.println(tempEduScore);
+			**/
 		}
 		
 		eduScore = eduScore * jobDesc.getEduWeightage();
