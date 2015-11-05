@@ -1,6 +1,332 @@
+administrative
+adobe illustrator
+adobe indesign
+adobe photoshop
+advertising
+advising
+analysis
+analytical
+analytics
+analyzing
+android
+answering telephones
+apis
+appointment setting
+art design
+articulating
+artistic
+assembling apparatus
+attention to detail
+auditing
+autocad
+backup management
+being artistic/creative
+being thorough
+billing
+bookkeeping
+brainstorming
+budgeting
+business correspondence
+business storytelling
+c/c++
+calculating
+calculations
+calendar & docketing
+calling clients
+certifications
+challenging employees
+checking for accuracy
+clarity
+classifying
+classifying records
+clerical
+client relations
+client server
+client support
+coaching individuals
+collaboration
+collect information
+communication
+comparing
+compiling
+compiling statistics
+computer
+computer skills list
+computing
+concision
+conducting meetings
+confidence
+configuration
+conflict management
+conflict resolution
+confronting others
+construction
+consultation
+content management
+content management systems (cms)
+content managment
+content strategy
+convincing
+corel draw
+corel word perfect
+correspondence
+cost analysis
+counseling
+counting
+courteous
+creating ideas
+creating innovation
+creating new procedures
+creating new solutions
+creative thinking
+critical thinking
+css
+customer service
+data analysis
+data analytics
+data collection
+decision making
+deductive reasoning
+defining performance standards
+defining problems
+delivering mail
+demonstrations
+design
+desktop publishing
+detail management
+diagnosis
+diagnostics
+diplomacy
+directing clients
+dispensing information
+displaying ideas
+document management
+documentation
+editing
+email
+emailing
+emotional control
+empathy
+employee relations
+encouragement
+end user support
+engineering
+entertainment
+equipment operation
+evaluating
+event coordination
+examining
+excel
+explaining
+expression
+expression of feelings
+faxing
+filemaker pro
+filing
+financial analysis
+financial management
+financial recording
+financial report auditing
+fortran
+friendliness
+fundraising
+goal setting
+graphic design
+greeting clients
+greeting employees
+greeting visitors
+h - m
+handling complaints
+hardware
+help desk
+html
+human resources
+imagination
+implementation
+independent action
+information search
+innovation
+installation
+internet
+interpersonal
+interviews
+inventing new ideas
+inventory
+investigating
+investigation
+involvement
+ios
+iphone
+java
+javascript
+judgment
+knowledge of current governmental affairs
+language translation
+leadership
+legal familiarity
+linux
+listening
+locating missing documents/information
+logical thinking
+mac
+maintaining high levels of activity
+maintaining office records
+maintenance
+making appointments
+management
+managing finances
+marketing
+matlab
+maya
+measuring boundaries
+medical assistance
+meeting deadlines
+meeting planning
+metrics
+microsoft excel
+microsoft office
+microsoft outlook
+microsoft publisher
+microsoft visual
+microsoft word
+mobile
+monetary collection
+motivation
+multi-tasking
+multilingual
+multitasking
+mysql
+n - s
+n – s
+negotiating
+negotiation
+networking
+networks
+nonverbal communication
+numerical analysis
+office administration
+office equipment
+office management
+open mindedness
+open source software
+oracle
+oral communication
+oration
+order processing
+ordering office supplies
+organizational
+organizational management
+organizational tasks
+organizing
+outlook
+overseeing meetings
+overseeing operation
+perl
+personal interaction
+persuasive
+php
+plan development
+planning
+prediction
+preparing written documents
+presentation
+presentations
+principal concept knowledge
+prioritization
+prioritizing
+problem solving
+processing
+programming
+promoting
+promotions
+proofreading
+proposal writing
+proposals
+pt modeler
+public relations
+public speaking
+publications
+python
+qualitative analysis
+quantitative analysis
+questioning others
+quick thinking
+quickbooks
+reading volumes
+reasoning
+receptionist
+recommendations
+record keeping
+recording facts
+regulating rules
+rehabilitating others
+remembering facts
+report writing
+reporting
+research
+resolution
+responsibility
+ruby
+running office machines
+scheduling
+screening calls
+self motivation
+service
+shade
+sketching
+social media
+software
+sorting mail
+speaking
+speech writing
+spreadsheet
+spreadsheets
+sql
+stenography
+supervising
+supervision
+support
+surveying
+swot
+synthesizing
+systems administration
+t - z
+taking inventory
+team building
+teamwork
+tech support
+technical
+technical support
+technical writing
+technology
+telephone
+time & billing
+time management
+toleration
+training
+transcription
+transferable
+travel arrangements
+troubleshooting
+typing
+typing from dictation
+ui / ux
+unix
+updating files
+verbal communication
+videoconference preparation
+visualizing
+voicemail
+web page design
+windows
+word processing
+work processing
+writing
+written communication
+xhtml
+xml
 active directory
 ajax
-android
 android development
 badminton
 biomaterials
@@ -11,7 +337,6 @@ characterization
 citrix
 common lisp
 computer hardware
-data analysis
 data mining
 debugging
 eclipse
@@ -23,22 +348,16 @@ help desk support
 html 5
 image processing
 ion milling
-ios
 ios developer
 it service management
 itil certified
-java
-javascript
 jquery
 json
 labview
 laptops
-matlab
 medical devices
 medical research
-microsoft excel
 microsoft exchange
-microsoft office
 mobile devices
 molecular biology
 motion capture
@@ -50,12 +369,9 @@ operating systems
 photolithography
 photoshop
 postgresql
-programming
-python
 qualysis
 real-time data acquisition
 rest
-ruby
 ruby on rails
 soap
 software design
@@ -65,13 +381,10 @@ software installation
 sputtering
 statistics
 system administration
-technical support
 titanium
-troubleshooting
 vpn
 web development
 web services
-windows
 windows 7
 windows server
 windows xp
