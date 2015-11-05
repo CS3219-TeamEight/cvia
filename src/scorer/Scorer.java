@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import job.JobDesc;
 import main.ParseResultStorage;
 import qualification.WorkExp;
+import qualification.Education;
 
 public class Scorer {
 
@@ -31,8 +32,8 @@ public class Scorer {
 	    	}
 	    	workExpScore = duration / jobDesc.getWorkDuration() * jobDesc.getWorkWeightage() / 10;
 	    	
-	    	if (workExpScore > (jobDesc.getWorkWeightage()/10)) 
-	    		workExpScore = jobDesc.getWorkWeightage() / 10;
+	    	if (workExpScore > (jobDesc.getWorkWeightage()/10) * 2) 
+	    		workExpScore = jobDesc.getWorkWeightage() / 10 * 2;
 	    	return workExpScore;
 	    } else {
 	    	for (WorkExp work : result.getWorkExp()) {
