@@ -1,9 +1,167 @@
 ;
 RESEARCH
 research
+research associate
+researcher
+research intern
 ;
 IT
+business analyst
+business-to-business marketer
+computer operator
+computer programmer
+database administrator
+database designer
+datawarehouse designer
+erp
+help desk specialist
+network administrator
+network architect
+network engineer
+network installer
+project manager
+quality assurance specialist
 software engineer
+system administrator
+system engineer
+tech writers
+technical recruiter
+technical recruiter consultant
+technical trainer
+telecomm specialist
+tester
+web developer
+webmaster
 software developer
 it specialist
+associate engineer
+technical support specialist
+communications network support technician
+;
+MANAGEMENT AND BUSINESS
+administrative services manager
+advertising manager
+assistant director
+chief communications officer
+chief executive office
+chief financial officer
+chief information officer
+chief marketing officer
+chief operations office
+chief resources officer
+chief security officer
+chief technology officer
+compensation & benefits manager
+construction manager
+director
+distribution manager
+engineering manager
+executive director
+executive vice president
+financial manager
+food service manager
+gaming manager
+general counsel
+general manager
+government service executive
+human resources manager
+industrial production manager
+information technology manager
+management trainee
+manager
+managing director
+marketing manager
+medical & health services manager
+operations manager
+partner
+president
+principal
+program manager
+project manager
+public relations manager
+real estate manager
+regional/multi-unit manager
+restaurant management
+revenue management
+sales manager
+security management
+senior vice president
+supervisor
+training & development manager
+transportation manager
+vice president
+;
+SALES AND SALES MANAGEMENT
+advertising sales agent
+agricultural sales representative
+biotechnical equipment sales represent...
+cashier
+chemical sales representative
+computer hardware sales representative
+counter clerk
+demonstrator
+door-to-door sales worker
+financial services sales agent
+food service sales agent
+instrument sales representative
+insurance sales agent
+mechanical equipment sales representat...
+medical sales representative
+non-retail sales supervisor
+parts salesperson
+pharmaceutical sales representative
+product promoter
+real estate sales agent
+retail sales representative
+retail sales supervisor
+sales & sales management
+sales engineer position
+software sales representative
+telecommunications sales agent
+telemarketer
+vendor
+;
+ENGINEERING AND ARCHITECTURE
+aerospace engineer
+agricultural engineer
+architect
+architectural drafter
+automotive engineer
+biomedical engineer
+cad engineer
+chemical engineer
+civil drafter
+civil engineer
+computer hardware engineer
+drafter
+electrical drafter
+electrical engineer
+electronic drafter
+electronics engineer
+engineer
+engineering manager
+engineering technician
+environmental engineer
+fire-prevention & protection engineer
+industrial engineer
+industrial safety & health engineer
+landscape architect
+marine architect
+marine engineer
+materials engineer
+mechanical drafter
+mechanical engineer
+mining & geological engineer
+nuclear engineer
+petroleum engineer
+plastics engineer
+process engineer
+product design engineer
+product safety engineer
+rail engineer
+sales engineer
+satellite engineer
+surveyor
+urban planning engineer
+wireless engineer
 ;
