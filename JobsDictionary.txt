@@ -14,6 +14,7 @@ database administrator
 database designer
 datawarehouse designer
 erp
+enterprise resource planning
 help desk specialist
 network administrator
 network architect
