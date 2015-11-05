@@ -23,22 +23,35 @@ public class Scorer {
 	private double computeWorkScore() {
 	    double duration = 0;
 	    double workExpScore = 0;
-	    double jobTitleScore = 0;
+	    double jobCount = 0;
 	    
-	    if(jobDesc.getWorkDuration() != 0) {
-		    for (WorkExp work : result.getWorkExp()) {
-		        duration += work.getDuration();
-		    }
-		    workExpScore = (duration / jobDesc.getWorkDuration()) * jobDesc.getWorkWeightage() / 10;
-		    
-		//	    for (WorkExp work : result.getWorkExp()) {
-		//	    	if()
-		//	    }
-		    
-		    return workExpScore + jobTitleScore;
+	    if (jobDesc.getWorkDuration() != 0) {
+	    	for (WorkExp work : result.getWorkExp()) {
+	    		if (work.getTitle().equalsIgnoreCase(jobDesc.getJobTitle())) {
+	    			duration += work.getDuration();
+	    		} else {
+	    			duration += work.getDuration() / 2;
+	    		}
+	    	}
+	    	workExpScore = duration / jobDesc.getWorkDuration() * jobDesc.getWorkWeightage() / 10;
+	    	
+	    	if (workExpScore > (jobDesc.getWorkWeightage()/10)) 
+	    		workExpScore = jobDesc.getWorkWeightage() / 10;
+	    	return workExpScore;
 	    } else {
-	    	return jobDesc.getWorkWeightage();
+	    	for (WorkExp work : result.getWorkExp()) {
+	    		if (work.getTitle().equalsIgnoreCase(jobDesc.getJobTitle())) {
+	    			jobCount ++;
+	    		} 
+	    	}
+	    	
+	    	if(jobCount > 0) {
+	    		workExpScore = jobDesc.getWorkWeightage() / 10;
+	    	}
+	    	
+	    	return workExpScore;
 	    }
+	    
 	}
 	
 	public double computeScore(){
