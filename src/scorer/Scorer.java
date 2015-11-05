@@ -1,6 +1,7 @@
 package scorer;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import job.JobDesc;
 import main.ParseResultStorage;
@@ -69,11 +70,11 @@ public class Scorer {
 	private double computeSkillsScore() {
 		double score= 0;
 		int numOfSkills = 0;
-		ArrayList<String> skills = result.getSkills();
+		Set<String> skills = result.getSkills();
 
 		// Loop through to find the number of languages that matches the Job Description
-		for (int i = 0; i < skills.size(); i++) {
-			if (jobDesc.getskillSets().contains(skills.get(i).toLowerCase())){
+		for (String s : skills) {
+			if (jobDesc.getskillSets().contains(s.toLowerCase())){
 				numOfSkills ++;
 			}
 		}
@@ -87,11 +88,11 @@ public class Scorer {
 	private double computeLanguageScore() {
 		double score = 0;
 		int numOfLanguage = 0;
-		ArrayList<String> lang = result.getLanguages();
+		Set<String> lang = result.getLanguages();
 
 		// Loop through to find the number of languages that matches the Job Description
-		for (int i = 0; i < lang.size(); i++) {
-			if (jobDesc.getLanguages().contains(lang.get(i).toLowerCase())){
+		for (String s : lang) {
+			if (jobDesc.getLanguages().contains(s.toLowerCase())){
 				numOfLanguage++;
 			}
 		}
