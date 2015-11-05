@@ -65,10 +65,6 @@ public class Scorer {
 		return score;
 	}
 
-	private double computeWorkExpScore(JobDesc jobDesc, double workExp, double expectedExp){
-		return workExp / expectedExp * jobDesc.getWorkWeightage() / 10;
-	}
-
 	private double computeSkillsScore() {
 		double score= 0;
 		int numOfSkills = 0;
