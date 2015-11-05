@@ -50,8 +50,6 @@ communication
 comparing
 compiling
 compiling statistics
-computer
-computer skills list
 computing
 concision
 conducting meetings
@@ -64,7 +62,6 @@ construction
 consultation
 content management
 content management systems (cms)
-content managment
 content strategy
 convincing
 corel draw
@@ -102,9 +99,6 @@ dispensing information
 displaying ideas
 document management
 documentation
-editing
-email
-emailing
 emotional control
 empathy
 employee relations
@@ -135,7 +129,6 @@ graphic design
 greeting clients
 greeting employees
 greeting visitors
-h - m
 handling complaints
 hardware
 help desk
@@ -196,8 +189,6 @@ multi-tasking
 multilingual
 multitasking
 mysql
-n - s
-n – s
 negotiating
 negotiation
 networking
@@ -290,7 +281,6 @@ surveying
 swot
 synthesizing
 systems administration
-t - z
 taking inventory
 team building
 teamwork
@@ -316,7 +306,6 @@ updating files
 verbal communication
 videoconference preparation
 visualizing
-voicemail
 web page design
 windows
 word processing
