@@ -1,6 +1,8 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import qualification.Education;
 import qualification.WorkExp;
@@ -10,14 +12,14 @@ public class ParseResultStorage {
     String id = "";
     ArrayList<Education> education;
     ArrayList<WorkExp> workExp;
-    ArrayList<String> languages;
-    ArrayList<String> skills;
+    Set<String> languages;
+    Set<String> skills;
     
     public ParseResultStorage() {
         education = new ArrayList<>();
         workExp = new ArrayList<>();
-        languages = new ArrayList<>();
-        skills = new ArrayList<>();
+        languages = new HashSet<>();
+        skills = new HashSet<>();
     }
     
     public void storeEducation(ArrayList<Education> education) {
@@ -28,12 +30,12 @@ public class ParseResultStorage {
         this.workExp = new ArrayList<>(workExp);
     }
     
-    public void storeLanguage(ArrayList<String> languages) {
-        this.languages = new ArrayList<>(languages);
+    public void storeLanguage(Set<String> languages) {
+        this.languages = languages;
     }
     
-    public void storeSkills(ArrayList<String> skills) {
-        this.skills = new ArrayList<>(skills);
+    public void storeSkills(Set<String> skills) {
+        this.skills = skills;
     }
     
     public String getId() {
@@ -75,7 +77,7 @@ public class ParseResultStorage {
     	System.out.println("=============================================");
     }
 
-	public ArrayList<String> getLanguages() {
+	public Set<String> getLanguages() {
 		return languages;
 	}
 	
@@ -87,7 +89,7 @@ public class ParseResultStorage {
 		return workExp;
 	}
 
-	public ArrayList<String> getSkills() {
+	public Set<String> getSkills() {
 		return skills;
 	}
 }

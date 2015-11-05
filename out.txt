@@ -1,0 +1,91 @@
+  CS3219 – Software Principles and Patterns    
+1 | P a g e  
+ 
+Assignments 3 : Extend CodeCraft   
+# Previously in CS3219 Assignment 2 
+ 
+You are now a summer intern in PonyTech. You are assigned to extend CodeCraft. 
+CodeCraft has a huge code base and it is an open source project contributed by many 
+people. You decided to begin with making a table, showing web socket communication 
+protocols between clients and server.  
+ 
+# Understanding CodeCraft 
+ 
+After making the table, you gained some degree of understanding of the code structure 
+and coding style. Some part of the code is well documented but some of them are 
+disastrous. You spent long time understanding the pattern and idea behind the code.  
+ 
+CodeCraft is different, or unconventional. HTML and CSS do not play big roles in its front 
+end. It is JavaScript that created everything you see. A simple dialog box is purely written 
+in JavaScript. No HTML, no CSS. JavaScript is not only used to write app logic, it is also 
+used to style the front end. 
+ 
+ 
+Figure 1 
+ 
+Code that creates such a dialog box (Figure 1) can be found in gui.js (line 2753 - 2823). 
+ 
+After a week of source code reading, you realise that reading it aimlessly won’t get you 
+anywhere. You decided to do some hacking.  
+ 
+  CS3219 – Software Principles and Patterns    
+2 | P a g e  
+ 
+You wanted to add an announcement feature on top of Sharebox’s existing feature.  
+ 
+Here is the announcement feature requirement: 
+ 
+ 
+# Tasks 
+TASK 1 
+Implement an announcement feature as per the requirements given above. You may use 
+JavaScript native popup boxes. (http://www.w3schools.com/js/js_popup.asp) 
+TASK 2 
+Implement CodeCraft style GUI (similar to Figure 1) for the announcement feature. 
+  
+? Creator of the Sharebox should be able to broadcast announcement to the 
+rest of the sharebox members. 
+ 
+? Creator of the sharebox should be notified when all members have closed 
+(read) the announcement. 
+ 
+? Sharebox members should be able to receive announcement from the 
+creator of the sharebox. 
+ 
+? Sharebox members should be able to close announcement dialog box. 
+ 
+  CS3219 – Software Principles and Patterns    
+3 | P a g e  
+ 
+# Weightage 
+Assignment 3 is worth 10% of your final grade. Each task is worth 5% 
+ 
+# Due Date 
+Friday 30 October 5pm 
+ 
+# Submission Guidelines 
+1. This is a team task. 
+ 
+2. Upload <Team-Number>_A3.zip (eg. Team08_A3.zip) to A3-CodeCraft folder in 
+the IVLE Workbin. 
+<Team-Number>_A3.zip should contain following content: 
+ 
+Task 1 
+  gui.js 
+  www  
+  other files you have modified, if any 
+  … 
+Task 2 
+  gui.js 
+  www 
+  other files you have modified, if any 
+  … 
+readme.txt 
+ 
+In readme.txt, you should write a short note on the changes (which file and which 
+line) that you have made to the source code.  
+ 
+3. (Optional) You are encouraged to fork the original repository and submit a pull 
+request if you have completed both TASK 1 and TASK 2. 
+ 
+ 

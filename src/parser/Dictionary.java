@@ -26,7 +26,7 @@ public class Dictionary {
         int size = words.size();
         
         for (int i = size; i > 0; i--) {
-            for (int j = 0; (j+i) < size; j++) {
+            for (int j = 0; (j+i) <= size; j++) {
                 String sub = "";
                 for (int k = j; k < j+i; k++) {
                     sub = sub.concat(words.get(k)).concat(" ");
@@ -41,6 +41,29 @@ public class Dictionary {
         }
         //System.out.println("Not found");
         return "UNKNOWN";
+    }
+    
+    public ArrayList<String> containsMultiple(String line) {
+    	line = line.toLowerCase();
+        ArrayList<String> words = new ArrayList<String>(Arrays.asList(line.split("[,\\s]+")));
+        ArrayList<String> result = new ArrayList<String>();
+        int size = words.size();
+        
+        for (int i = size; i > 0; i--) {
+            for (int j = 0; (j+i) <= size; j++) {
+                String sub = "";
+                for (int k = j; k < j+i; k++) {
+                    sub = sub.concat(words.get(k)).concat(" ");
+                }
+                sub = sub.substring(0, sub.length()-1);
+                if (dictionary.containsKey(sub)) {
+                    //System.out.println("Found " + dictionary.get(sub));
+                    result.add(sub);
+                }
+            }
+        }
+        //System.out.println("Not found");
+        return result;
     }
     
 	public String containsSingle(String line) {

@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import job.JobDesc;
@@ -17,21 +19,20 @@ public class SkillParser {
         this.skillsDictionary = skillsDictionary;
     }
     
-    public ArrayList<String> parseSkillsSection(Section section) {
+    public Set<String> parseSkillsSection(Section section) {
         ArrayList<String> lines = new ArrayList<>(section.getLines()); // contains lines relevant to work exp ONLY
         int lineCount = section.getLineCount();
-        ArrayList<String> skills = new ArrayList<>();
+        Set<String> skills = new HashSet<String>();
         
         for (int i = 0; i < lineCount; i++) {
-            String skill = getSkill(lines.get(i));
-            if (!skill.equals("UNKNOWN"))
-            	skills.add(skill);
+            ArrayList<String> skill = getSkill(lines.get(i));
+            skills.addAll(skill);
         }
         
         return skills;
     }
     
-    private String getSkill(String line) {        
-        return skillsDictionary.containsSingle(line.toLowerCase());
+    private ArrayList<String> getSkill(String line) {        
+        return skillsDictionary.containsMultiple(line.toLowerCase());
     }
 }
