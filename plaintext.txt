@@ -1,80 +1,46 @@
- Kim Hyung Jon 
-9 Bukit Batok Central, The Jade Condominium, #14-07, Singapore, 658074 
-Telephone: 65 9207 8192 
-Email: hyungjon.kim@gmail.com 
-a0115864@u.nus.edu 
-Profile 
-I am a highly motivated student with passion in software development. Equipped with good working habits such as 
-thoroughness and a willingness to go beyond fulfilling the minimum requirements of my assignments, I have the 
-experience and ability of handling group software projects, even with very high level or using unfamiliar tools. 
-Having lived abroad for more than half my life, I am also capable of thriving overseas and cooperating with 
-teammates of any nationality. I excel at logical thinking and explaining the reasoning to others, as well as listening 
-to others¡¯ reasoning with healthy respect. 
-Objective 
-I seek an opportunity to experience business strategies and actions in a startup business, to learn skills such as 
-designing payment models that turn just well-made software products to actually successful products, for both the 
-company¡¯s profit and my aspiration of becoming a successful software entrepreneur. 
-Key skills 
-? Java programming with 2 years of experience. 
-? Software engineering, having achieved A- in relevant module. 
-? Team working ability and group discussion skill, with eagerness to share ideas, often leading discussions. 
-Work Experience 
-HubTurbo June 2015 ~ ongoing 
-Role: Development team member 
-GitHub issue tracker project led by Professor Damith Rajapakse. 
-Developed various functions including major features spanning both front-end 
-user interface and back-end data storage in a project using very high-level 
-functions and new libraries. 
-Promoted from contributor to regular member. 
- 
-Private tuition Mid 2013 ~ Mid 2014 
-Unofficially taught physics and chemistry to an O-level student, raising his 
-grades in both subjects from E to B through an education heavily emphasizing 
-comprehension and application, thus contributing to his admission in Anderson 
-Junior College in 2013. 
- 
- Education 
-? National University  
-of Singapore 
-August 2013 ~ ongoing, projected graduation May 2017 
-Computer Science, year 3. 
-CAP 3.79 (after 2014-2015 Special Term, not yet reflected in unofficial transcript) 
-Relevant modules include: 
-? CS2103T Software Engineering (A-) 
-? CS2107 Introduction to Information Security (A-) 
-? CS2020 Data Structures and Algorithms, Accelerated (B) 
-? CS1010 Programming Methodology (A-) 
-? CS3230 Design and Analysis of Algorithms (B) 
-? IS1103 Computing and Society (A) 
-? CS2101 Effective Communication for Computing Professionals (B) 
-? GEM2027 Introduction to Public Speaking (B) 
- 
-? A-level 
-Temasek Junior College 
-January 2011 ~ December 2012 
-? Physics H2 (B) 
-? Mathematics H2 (B) 
-? Knowledge and Inquiry H2 (B) 
-? Economics H2 (E) 
-? Chemistry H1 (C) 
-? Project Work (B) 
-CCA Experience 
-Temasek Junior College 
-Entrepreneur Club 
-February 2011 ~ June 2012 
-Attended talks by successful entrepreneurs such as Mr. Joseph Wong.  
-Led students as facilitator in entrepreneurship experience events held by the 
-school and NUS, such as LEAD and Youth Entrepreneurship Symposium.  
-Other Details 
-? Lived in India from 2004 to 2010, staying in Singapore from 2010. 
- 
-Interests 
-? Philosophy of learning, reasoning and ethics. 
-? Imagination and creativity. 
-o Works of creativity in literature, cinema and games. 
-? Various business models of successful software products. 
- 
-Hobbies 
-? Practicing simple software development. 
-? Experiencing successful computer games, particularly thinking games. 
-? Licensed open water diving as a form of experiencing challenges. 
+Page1
+Desmond Lim
+Senior Software Engineer at Continental Automotive Group
+Summary
+Strong interest in android app/game development.
+Experience
+Senior Software Engineer  at   Continental Automotive Group
+February 2008  -  Present (7 years 9 months)
+Windows application developement
+Senior Associate Engineer  at   SingTel
+January 2000  -  July 2007  (7 years 7 months)
+Mobile (GSM/3G) network optimization and enhancement
+Publications
+Apps/Games in Google Play
+Google Play Store   January 1, 2010
+Authors: Desmond L.
+Optimized for Android version 2.3.3 and above. Suitable for small to large screen size.
+Projects
+Published app/games in Google Play
+2010 to Present
+Members:Desmond L.
+Demonstrating skills: Multi-threading, Camera API, MySQL, UI, Android Animation
+Languages
+English
+Chinese
+Skills & Expertise
+Android Development
+Mobile Devices
+Web Development
+Software Engineering
+Android
+Software Development
+Page2
+Software Design
+Eclipse
+Embedded Software
+Objective-C
+Object Oriented Design
+Debugging
+Education
+Oxford Brookes University
+Bachelor of Science (BSc), Computer Software Engineering, 2010 - 2012
+Page3
+Desmond Lim
+Senior Software Engineer at Continental Automotive Group
+Contact Desmond on LinkedIn
