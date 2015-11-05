@@ -14,6 +14,7 @@ public class JobDesc {
 	private int educationLevel;
 	private String educationTitle;
 	private String jobTitle;
+	
 	private HashSet<String> languages;
 	private HashSet<String> skillSets;
 	private ArrayList<String> others;
@@ -30,71 +31,6 @@ public class JobDesc {
 		languages = new HashSet<String>();
 		skillSets = new HashSet<String>();
 		this.parserFactory = parserFactory;
-	}
-
-	public void workExp(String workExp) {
-		String[] work = workExp.split("[,\\s]+");
-		StringBuilder sb = new StringBuilder();
-		String yearString;
-		boolean numFlag = false;
-		double years = 0;
-		boolean found = false;
-
-		//To determine work experience
-		for (int i = 0; i<work.length; i++) {
-			if (Pattern.compile("year|years").matcher(work[i]).find()) { //Located year or years in word[i]
-				for (char c : work[i].toCharArray()) {
-					if (Character.isDigit(c)) {
-						sb.append(c);
-						found = true;
-						numFlag = true;
-					} else if (found) {
-						sb.append(" ");
-						found = false;
-					}
-
-					if (numFlag) {
-						yearString = sb.toString().trim();
-
-						//years of experience if only 1 number provided. Eg 2years
-						if (yearString.split("[,\\s]+").length == 1) {
-							years = Double.parseDouble(yearString); 
-						} else if (yearString.split("[,\\s]+").length > 1) {       //Average years of experience if 2 numbers are provided. Eg 2or3years
-							String [] yearStringArray =yearString.split("[,\\s]+");
-							for (int j = 0; j<yearStringArray.length; j++) {
-								years += Double.parseDouble(yearStringArray[j]);
-							}
-							years /= yearStringArray.length;
-						}
-					} else {
-						for (char ch : work[i-1].toCharArray()) {
-							if (Character.isDigit(ch)) {
-								sb.append(ch);
-								found = true;
-								numFlag = true;
-							} else if (found) {
-								sb.append(" ");
-								found = false;
-							}
-						}
-						yearString = sb.toString().trim();
-						//years of experience if only 1 number provided. Eg 2years
-						if (yearString.split("[,\\s]+").length == 1) {
-							years = Double.parseDouble(yearString); 
-						} else if (yearString.split("[,\\s]+").length > 1) {       //Average years of experience if 2 numbers are provided. Eg 2or3years
-							String [] yearStringArray =yearString.split("[,\\s]+");
-							for (int j = 0; j<yearStringArray.length; j++) {
-								years += Double.parseDouble(yearStringArray[j]);
-							}
-							years /= yearStringArray.length;
-						}
-					}
-				}
-			}
-			
-			setWorkDuration (years);
-		}
-
 	}
 
 	public double getWorkDuration() {
@@ -119,14 +55,14 @@ public class JobDesc {
 		return educationTitle;
 	}
 	public void setEducationTitle(String educationTitle) {
-		this.educationTitle = educationTitle;
+		this.educationTitle = educationTitle.toLowerCase();
 	}
 	public String getJobTitle() {
 		return jobTitle;
 	}
 	public void setJobTitle(String jobTitle) {
-		jobTitle = jobTitle.toLowerCase();
-		this.jobTitle = parserFactory.getJobTitleDictionary().contains(jobTitle);
+//		jobTitle = jobTitle.toLowerCase();
+		this.jobTitle = parserFactory.getJobTitleDictionary().contains(jobTitle.toLowerCase());
 	}
 	public HashSet<String> getLanguages() {
 		return languages;
@@ -136,7 +72,7 @@ public class JobDesc {
 		language = language.toLowerCase();
 		String[] languageList = language.split("[,\\s]+");
 		for(String lang : languageList) {
-			languages.add(lang);
+			languages.add(lang.toLowerCase());
 		}
 	}
 	public HashSet<String> getskillSets() {
@@ -146,7 +82,7 @@ public class JobDesc {
 		skillset = skillset.toLowerCase();
 		String[] skills = skillset.split("[,\\s]+");
 		for(String skill : skills) {
-			skillSets.add(skill);
+			skillSets.add(skill.toLowerCase());
 		}
 	}
 	public ArrayList<String> getOthers() {
@@ -156,7 +92,7 @@ public class JobDesc {
 		//		this.others = others;
 		String[] otherList = other.split("[,\\s]+");
 		for(String random : otherList) {
-			others.add(random);
+			others.add(random.toLowerCase());
 		}
 	}
 	public int getEduWeightage() {
@@ -189,5 +125,70 @@ public class JobDesc {
 	public void setSkillsetWeightage(String skillsetWeightage) {
 		this.skillsetWeightage = Integer.parseInt(skillsetWeightage);
 	}
+	
+//	public void workExp(String workExp) {
+//	String[] work = workExp.split("[,\\s]+");
+//	StringBuilder sb = new StringBuilder();
+//	String yearString;
+//	boolean numFlag = false;
+//	double years = 0;
+//	boolean found = false;
+//
+//	//To determine work experience
+//	for (int i = 0; i<work.length; i++) {
+//		if (Pattern.compile("year|years").matcher(work[i]).find()) { //Located year or years in word[i]
+//			for (char c : work[i].toCharArray()) {
+//				if (Character.isDigit(c)) {
+//					sb.append(c);
+//					found = true;
+//					numFlag = true;
+//				} else if (found) {
+//					sb.append(" ");
+//					found = false;
+//				}
+//
+//				if (numFlag) {
+//					yearString = sb.toString().trim();
+//
+//					//years of experience if only 1 number provided. Eg 2years
+//					if (yearString.split("[,\\s]+").length == 1) {
+//						years = Double.parseDouble(yearString); 
+//					} else if (yearString.split("[,\\s]+").length > 1) {       //Average years of experience if 2 numbers are provided. Eg 2or3years
+//						String [] yearStringArray =yearString.split("[,\\s]+");
+//						for (int j = 0; j<yearStringArray.length; j++) {
+//							years += Double.parseDouble(yearStringArray[j]);
+//						}
+//						years /= yearStringArray.length;
+//					}
+//				} else {
+//					for (char ch : work[i-1].toCharArray()) {
+//						if (Character.isDigit(ch)) {
+//							sb.append(ch);
+//							found = true;
+//							numFlag = true;
+//						} else if (found) {
+//							sb.append(" ");
+//							found = false;
+//						}
+//					}
+//					yearString = sb.toString().trim();
+//					//years of experience if only 1 number provided. Eg 2years
+//					if (yearString.split("[,\\s]+").length == 1) {
+//						years = Double.parseDouble(yearString); 
+//					} else if (yearString.split("[,\\s]+").length > 1) {       //Average years of experience if 2 numbers are provided. Eg 2or3years
+//						String [] yearStringArray =yearString.split("[,\\s]+");
+//						for (int j = 0; j<yearStringArray.length; j++) {
+//							years += Double.parseDouble(yearStringArray[j]);
+//						}
+//						years /= yearStringArray.length;
+//					}
+//				}
+//			}
+//		}
+//		
+//		setWorkDuration (years);
+//	}
+//
+//}
 
 }

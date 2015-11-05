@@ -54,7 +54,7 @@ public class Scorer {
 		
 		// Loop through to find the number of languages that matches the Job Description
 		for (int i = 0; i < skills.size(); i++) {
-			if (jobDesc.getskillSets().contains(skills.get(i))){
+			if (jobDesc.getskillSets().contains(skills.get(i).toLowerCase())){
 				numOfSkills ++;
 			}
 		}
@@ -72,7 +72,7 @@ public class Scorer {
 
 		// Loop through to find the number of languages that matches the Job Description
 		for (int i = 0; i < lang.size(); i++) {
-			if (jobDesc.getLanguages().contains(lang.get(i))){
+			if (jobDesc.getLanguages().contains(lang.get(i).toLowerCase())){
 				numOfLanguage++;
 			}
 		}
