@@ -8,27 +8,36 @@ import java.util.HashSet;
 public class JobDesc {
     private double workDuration;
     private double educationCap;
-    private int educationLevel;
+    private double educationLevel;
     private String educationTitle;
     private String jobTitle;
 
-    private HashSet<String> languages;
-    private HashSet<String> skillSets;
-    private ArrayList<String> others;
+    private HashSet<String> languages = new HashSet<String>();
+    private HashSet<String> skillSets = new HashSet<String>();
 
-    private int eduWeightage;
-    private int workWeightage;
-    private int languageWeightage;
-    private int otherWeightage;
-    private int skillsetWeightage;
+    private double eduWeightage;
+    private double workWeightage;
+    private double languageWeightage;
+    private double skillsetWeightage;
 
-    private ParserFactory parserFactory;
+    private ParserFactory parserFactory = new ParserFactory();
+    
+    public JobDesc(String jobTitle, String jobIndustry, String jobExperience,
+            String educationLevel, String educationField, String languageSkills, String workSkills,
+            String description, double mutiplierJob, double mutiplierEdu, double mutiplierLang,
+            double mutiplierSkill) {
 
-    public JobDesc(ParserFactory parserFactory) {
-        languages = new HashSet<String>();
-        skillSets = new HashSet<String>();
-        this.parserFactory = parserFactory;
-    }
+    		this.setJobTitle(jobTitle);
+    		this.setWorkDuration(jobExperience);
+    		this.setEducationLevel(educationLevel);
+    		this.setEducationTitle(educationField);
+    		this.setLanguages(languageSkills);
+    		this.setSkillSets(workSkills);
+    		this.setWorkWeightage(mutiplierJob);
+    		this.setEduWeightage(mutiplierEdu);
+    		this.setLanguageWeightage(mutiplierLang);
+    		this.setSkillsetWeightage(mutiplierSkill);
+	}
 
     public double getWorkDuration() {
         return workDuration;
@@ -74,7 +83,7 @@ public class JobDesc {
         this.educationCap = Double.parseDouble(educationCap);
     }
 
-    public int getEducationLevel() {
+    public double getEducationLevel() {
         return educationLevel;
     }
 
@@ -125,56 +134,35 @@ public class JobDesc {
         }
     }
 
-    public ArrayList<String> getOthers() {
-        return others;
-    }
-
-    //To set any other requirements needed for the job -- Not in use now
-    public void setOthers(String other) {
-        //		this.others = others;
-        String[] otherList = other.split("[,\\s]+");
-        for (String random : otherList) {
-            others.add(random.toLowerCase());
-        }
-    }
-
-    public int getEduWeightage() {
+    public double getEduWeightage() {
         return eduWeightage;
     }
 
-    public void setEduWeightage(String eduWeightage) {
-        this.eduWeightage = Integer.parseInt(eduWeightage);
+    public void setEduWeightage(double eduWeightage) {
+        this.eduWeightage = eduWeightage;
     }
 
-    public int getWorkWeightage() {
+    public double getWorkWeightage() {
         return workWeightage;
     }
 
-    public void setWorkWeightage(String workWeightage) {
-        this.workWeightage = Integer.parseInt(workWeightage);
+    public void setWorkWeightage(double workWeightage) {
+        this.workWeightage = workWeightage;
     }
 
-    public int getLanguageWeightage() {
+    public double getLanguageWeightage() {
         return languageWeightage;
     }
 
-    public void setLanguageWeightage(String languageWeightage) {
-        this.languageWeightage = Integer.parseInt(languageWeightage);
+    public void setLanguageWeightage(double languageWeightage) {
+        this.languageWeightage = languageWeightage;
     }
 
-    public int getOtherWeightage() {
-        return otherWeightage;
-    }
-
-    public void setOtherWeightage(String otherWeightage) {
-        this.otherWeightage = Integer.parseInt(otherWeightage);
-    }
-
-    public int getSkillsetWeightage() {
+    public double getSkillsetWeightage() {
         return skillsetWeightage;
     }
 
-    public void setSkillsetWeightage(String skillsetWeightage) {
-        this.skillsetWeightage = Integer.parseInt(skillsetWeightage);
+    public void setSkillsetWeightage(double skillsetWeightage) {
+        this.skillsetWeightage = skillsetWeightage;
     }
 }
