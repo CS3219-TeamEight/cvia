@@ -14,6 +14,11 @@ public class WorkExpParser implements SectionParser {
         this.jobTitleDictionary = jobTitleDictionary;
     }
     
+    /**
+     * To parse in each work experience found under the Work experience section
+     * Parse in the following: Job Title
+     *                         Duration of the job
+     */
     public ArrayList<WorkExp> parseWorkSection(Section section) {
         ArrayList<String> lines = new ArrayList<>(section.getLines()); // contains lines relevant to work exp ONLY
         int lineCount = section.getLineCount();

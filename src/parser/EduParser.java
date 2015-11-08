@@ -16,6 +16,13 @@ public class EduParser implements SectionParser {
         this.lvlDictionary = lvlDictionary;      
     }
     
+    /**
+     * To parse in each education found under the education section
+     * Parse in the following: Level of Education
+     *                         Grad or non-grad for that level
+     *                         Field of Studies
+     *                         Duration of studies
+     */
     public ArrayList<Education> parseEducation(Section section) {
         ArrayList<String> lines = new ArrayList<>(section.getLines());
         int lineCount = section.getLineCount();
@@ -59,6 +66,9 @@ public class EduParser implements SectionParser {
         return fosDictionary.contains(info.toLowerCase());
     }
     
+    /**
+     * To store the education identified 
+     */
     private Education storeEduExperience(ArrayList<String> lines, ArrayList<Duration> durations, int index, int start, int end, int offset) {
         Duration duration = durations.get(index);
         String degree = "UNKNOWN";

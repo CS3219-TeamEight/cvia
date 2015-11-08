@@ -1,5 +1,8 @@
 package parser;
 
+/**
+ * To store the duration information for respective sections in the resume
+ */
 public class Duration {
 
     private double duration;

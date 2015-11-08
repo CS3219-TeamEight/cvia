@@ -36,6 +36,8 @@ public class JobDesc {
 	public double getWorkDuration() {
 		return workDuration;
 	}
+	
+	//To parse in the number of years of work experience required for the job
 	public void setWorkDuration(String workDuration) {
 		String [] duration = workDuration.split("[,\\s]+");
 		String durationString;
@@ -70,6 +72,7 @@ public class JobDesc {
 	public double getEducationCap() {
 		return educationCap;
 	}
+	
 	public void setEducationCap(String educationCap) {
 		this.educationCap = Double.parseDouble(educationCap);
 	}
@@ -88,15 +91,17 @@ public class JobDesc {
 	public String getJobTitle() {
 		return jobTitle;
 	}
+	
+	//To parse in the field of the job
 	public void setJobTitle(String jobTitle) {
-//		jobTitle = jobTitle.toLowerCase();
 		this.jobTitle = parserFactory.getJobTitleDictionary().contains(jobTitle.toLowerCase());
 	}
 	public HashSet<String> getLanguages() {
 		return languages;
 	}
+	
+	//To parse in the language required for the job
 	public void setLanguages(String language) {
-		// this.languages = languages;
 		language = language.toLowerCase();
 		String[] languageList = language.split("[,\\s]+");
 		for(String lang : languageList) {
@@ -106,6 +111,8 @@ public class JobDesc {
 	public HashSet<String> getskillSets() {
 		return skillSets;
 	}
+	
+	//To parse in the skillsets required for the job
 	public void setSkillSets(String skillset) {
 		skillset = skillset.toLowerCase();
 		String[] skills = skillset.split("[,\\s]+");
@@ -116,6 +123,8 @@ public class JobDesc {
 	public ArrayList<String> getOthers() {
 		return others;
 	}
+	
+	//To set any other requirements needed for the job -- Not in use now
 	public void setOthers(String other) {
 		//		this.others = others;
 		String[] otherList = other.split("[,\\s]+");
@@ -153,70 +162,4 @@ public class JobDesc {
 	public void setSkillsetWeightage(String skillsetWeightage) {
 		this.skillsetWeightage = Integer.parseInt(skillsetWeightage);
 	}
-	
-//	public void workExp(String workExp) {
-//	String[] work = workExp.split("[,\\s]+");
-//	StringBuilder sb = new StringBuilder();
-//	String yearString;
-//	boolean numFlag = false;
-//	double years = 0;
-//	boolean found = false;
-//
-//	//To determine work experience
-//	for (int i = 0; i<work.length; i++) {
-//		if (Pattern.compile("year|years").matcher(work[i]).find()) { //Located year or years in word[i]
-//			for (char c : work[i].toCharArray()) {
-//				if (Character.isDigit(c)) {
-//					sb.append(c);
-//					found = true;
-//					numFlag = true;
-//				} else if (found) {
-//					sb.append(" ");
-//					found = false;
-//				}
-//
-//				if (numFlag) {
-//					yearString = sb.toString().trim();
-//
-//					//years of experience if only 1 number provided. Eg 2years
-//					if (yearString.split("[,\\s]+").length == 1) {
-//						years = Double.parseDouble(yearString); 
-//					} else if (yearString.split("[,\\s]+").length > 1) {       //Average years of experience if 2 numbers are provided. Eg 2or3years
-//						String [] yearStringArray =yearString.split("[,\\s]+");
-//						for (int j = 0; j<yearStringArray.length; j++) {
-//							years += Double.parseDouble(yearStringArray[j]);
-//						}
-//						years /= yearStringArray.length;
-//					}
-//				} else {
-//					for (char ch : work[i-1].toCharArray()) {
-//						if (Character.isDigit(ch)) {
-//							sb.append(ch);
-//							found = true;
-//							numFlag = true;
-//						} else if (found) {
-//							sb.append(" ");
-//							found = false;
-//						}
-//					}
-//					yearString = sb.toString().trim();
-//					//years of experience if only 1 number provided. Eg 2years
-//					if (yearString.split("[,\\s]+").length == 1) {
-//						years = Double.parseDouble(yearString); 
-//					} else if (yearString.split("[,\\s]+").length > 1) {       //Average years of experience if 2 numbers are provided. Eg 2or3years
-//						String [] yearStringArray =yearString.split("[,\\s]+");
-//						for (int j = 0; j<yearStringArray.length; j++) {
-//							years += Double.parseDouble(yearStringArray[j]);
-//						}
-//						years /= yearStringArray.length;
-//					}
-//				}
-//			}
-//		}
-//		
-//		setWorkDuration (years);
-//	}
-//
-//}
-
 }

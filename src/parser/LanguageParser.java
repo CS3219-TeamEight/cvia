@@ -12,6 +12,7 @@ public class LanguageParser {
         this.languageDictionary = languageDictionary;
     }
     
+    //To parse the different languages found under the language section
     public Set<String> parseLanguageSection(Section section) {
         ArrayList<String> lines = new ArrayList<>(section.getLines()); // contains lines relevant to work exp ONLY
         int lineCount = section.getLineCount();

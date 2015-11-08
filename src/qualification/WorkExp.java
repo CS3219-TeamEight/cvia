@@ -1,5 +1,8 @@
 package qualification;
 
+/**
+ * Store the work experience in a resume
+ */
 public class WorkExp {
     
     private String jobTitle;

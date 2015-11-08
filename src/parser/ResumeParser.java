@@ -26,11 +26,10 @@ public class ResumeParser {
         
     }
     
+    //To initialize the parsing of the resume
     public void initialize(File resume) {
         this.resume = resume;
         headerDictionary = new Dictionary(FILENAME_DICTIONARY_HEADER);
-        
-        
         findHeaderCandidates();
         determineHeaders();
         extractSections();
@@ -44,6 +43,7 @@ public class ResumeParser {
         return sections;
     }
     
+    //To indentify the possible section headers
     public void findHeaderCandidates() {
         try {
             FileReader fr = new FileReader(resume);
@@ -62,6 +62,7 @@ public class ResumeParser {
         }
     }
     
+    //To evaluate each possible section header present
     private void evaluateCandidate(String line, int lineNum) {
         if (line.endsWith(".")) return;
         String headerType = headerDictionary.matches(line.toLowerCase());
@@ -100,6 +101,7 @@ public class ResumeParser {
         }
     }
     
+    //To identify the correct headers present
     public void determineHeaders() {
         Iterator itr = candidates.entrySet().iterator();
         while (itr.hasNext()) {
@@ -115,6 +117,7 @@ public class ResumeParser {
         }
     }
     
+    //To extract the sections under each header
     public void extractSections(){
         for (int i = 0; i < headers.size(); i++) {
             HeaderCandidate header = headers.get(i);
@@ -137,6 +140,7 @@ public class ResumeParser {
         }
     }
     
+    //To print out all information in the section
     public void printAllSections() {
         for (Section section : sections) {
             System.out.println("Type: " + section.getType());

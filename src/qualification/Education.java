@@ -1,5 +1,8 @@
 package qualification;
 
+/**
+ * Store the Education information of a resume
+ */
 public class Education {
     
     private double duration;

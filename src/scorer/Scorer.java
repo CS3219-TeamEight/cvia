@@ -10,7 +10,7 @@ import qualification.WorkExp;
 import qualification.Education;
 
 public class Scorer {
-	
+
 	Map<String, Double> degreeMultiplyer = new HashMap<String, Double>();
 	ParseResultStorage result;
 	JobDesc jobDesc;
@@ -20,50 +20,16 @@ public class Scorer {
 		this.result = result;
 		setDegreeMultiplyer();
 	}
-	
+
+	//Setup hashmap for education scorer
 	private void setDegreeMultiplyer() {
 		degreeMultiplyer.put("Ph.D", 2.5);
 		degreeMultiplyer.put("Master", 2.0);
 		degreeMultiplyer.put("Honors", 1.5);
 		degreeMultiplyer.put("Bachelor", 1.0);
 	}
-	
-	private double computeWorkScore() {
-	    double duration = 0;
-	    double workExpScore = 0;
-	    double jobCount = 0;
-	    
-	    if (jobDesc.getWorkDuration() != 0) {
-	    	for (WorkExp work : result.getWorkExp()) {
-	    		if (work.getTitle().equalsIgnoreCase(jobDesc.getJobTitle())) {
-	    			duration += work.getDuration();
-	    		} else {
-	    			duration += work.getDuration() / 2;
-	    		}
-	    	}
-	    	workExpScore = duration / jobDesc.getWorkDuration() * jobDesc.getWorkWeightage();
-	    	
-	    	if (workExpScore > (jobDesc.getWorkWeightage()) * 2) 
-	    		workExpScore = jobDesc.getWorkWeightage() * 2;
-	    	return workExpScore;
-	    } else {
-	    	for (WorkExp work : result.getWorkExp()) {
-	    		
-	    		if (work.getTitle().equalsIgnoreCase(jobDesc.getJobTitle())) {
-	    			jobCount ++;
-	    		} 
-	    	}
-	    	
-	    	if(jobCount > 0) {
-	    		workExpScore = jobDesc.getWorkWeightage();
-	    	}
-	    	
-	    	return workExpScore;
-	    }
-	    
 
-	}
-
+	//To compute the total score for a given resume
 	public double computeScore(){
 		double score = 0;
 		System.out.println("Resume Scores");
@@ -80,6 +46,44 @@ public class Scorer {
 		return score;
 	}
 
+	//To compute the work score for a given resume
+	private double computeWorkScore() {
+		double duration = 0;
+		double workExpScore = 0;
+		double jobCount = 0;
+
+		if (jobDesc.getWorkDuration() != 0) {
+			for (WorkExp work : result.getWorkExp()) {
+				if (work.getTitle().equalsIgnoreCase(jobDesc.getJobTitle())) {
+					duration += work.getDuration();
+				} else {
+					duration += work.getDuration() / 2;
+				}
+			}
+			workExpScore = duration / jobDesc.getWorkDuration() * jobDesc.getWorkWeightage();
+
+			if (workExpScore > (jobDesc.getWorkWeightage()) * 2) 
+				workExpScore = jobDesc.getWorkWeightage() * 2;
+			return workExpScore;
+		} else {
+			for (WorkExp work : result.getWorkExp()) {
+
+				if (work.getTitle().equalsIgnoreCase(jobDesc.getJobTitle())) {
+					jobCount ++;
+				} 
+			}
+
+			if(jobCount > 0) {
+				workExpScore = jobDesc.getWorkWeightage();
+			}
+
+			return workExpScore;
+		}
+
+
+	}
+
+	//To compute the skillset score for a given resume
 	private double computeSkillsScore() {
 		double score= 0;
 		int numOfSkills = 0;
@@ -94,7 +98,6 @@ public class Scorer {
 
 		double base = jobDesc.getskillSets().size();
 		score = numOfSkills/base;
-
 		return score * (double) jobDesc.getSkillsetWeightage();
 	}
 
@@ -112,17 +115,17 @@ public class Scorer {
 
 		double base = jobDesc.getLanguages().size();
 		score = numOfLanguage/base;
-
 		return score * (double) jobDesc.getLanguageWeightage();
 	}
 	
+	//To compute the Education Score for a given resume
 	private double computeEduScore() {
 		double eduScore = 0;
 		double tempEduScore;
-			
+
 		for(Education edu : result.getEducation()) {
 			tempEduScore = 0.0;
-			
+
 			if(edu.getField().equalsIgnoreCase(jobDesc.getEducationTitle())) {
 				if (edu.isGraduate()) {
 					tempEduScore = 1.0;
@@ -136,23 +139,14 @@ public class Scorer {
 					tempEduScore = 0.25;
 				}
 			}
-			
+
 			tempEduScore *= degreeMultiplyer.get(edu.getDegree());
-			
+
 			if (tempEduScore > eduScore) {
 				eduScore = tempEduScore;
 			}
-			
-			/** Test Statements
-			System.out.println(edu.getDegree());
-			System.out.println(edu.getField());
-			System.out.println(edu.isGraduate());
-			System.out.println(tempEduScore);
-			**/
 		}
-		
 		eduScore = eduScore * jobDesc.getEduWeightage();
-		
 		return eduScore;
 	}
 }

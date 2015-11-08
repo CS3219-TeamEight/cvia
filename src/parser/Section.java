@@ -2,6 +2,9 @@ package parser;
 
 import java.util.ArrayList;
 
+/**
+ *To store the different sections in the resume 
+ */
 public class Section {
     
     private String type;

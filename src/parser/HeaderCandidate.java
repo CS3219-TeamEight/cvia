@@ -1,5 +1,8 @@
 package parser;
 
+/**
+ * To store the headers of respective sections in the resume
+ */
 public class HeaderCandidate {
     
     private String type;

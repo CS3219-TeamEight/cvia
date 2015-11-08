@@ -42,6 +42,7 @@ public class ParseResultStorage {
         return id;
     }
     
+    //To print out parsed education results
     public void printEduExperience() {
         for (Education edu : education) {
             System.out.println("Degree: " + edu.getDegree() + "\nField: " + edu.getField());
@@ -55,6 +56,7 @@ public class ParseResultStorage {
         System.out.println("=============================================");
     }
     
+    //To print out parsed Work experience results
     public void printWorkExperience() {
         for (WorkExp exp : workExp) {
             System.out.println("Position: " + exp.getTitle() + "\nDuration: " + exp.getDuration() + " years");
@@ -63,6 +65,7 @@ public class ParseResultStorage {
         System.out.println("=============================================");
     }
     
+    //To print out parsed language results
     public void printLanguages() {
     	for (String language : languages){
     		System.out.println("Languages: " + language);
@@ -70,6 +73,7 @@ public class ParseResultStorage {
     	System.out.println("=============================================");
     }
     
+  //To print out parsed skillsets results
     public void printSkills() {
     	for (String skill : skills){
     		System.out.println("Skills: " + skill);

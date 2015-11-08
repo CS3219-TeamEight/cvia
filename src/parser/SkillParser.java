@@ -1,15 +1,8 @@
 package parser;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.regex.Pattern;
-
-import job.JobDesc;
 
 public class SkillParser {
 
@@ -19,6 +12,7 @@ public class SkillParser {
         this.skillsDictionary = skillsDictionary;
     }
     
+    //To parse the skillsets found under the skillset section
     public Set<String> parseSkillsSection(Section section) {
         ArrayList<String> lines = new ArrayList<>(section.getLines()); // contains lines relevant to work exp ONLY
         int lineCount = section.getLineCount();
