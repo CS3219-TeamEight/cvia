@@ -2,8 +2,8 @@ package scorer;
 
 import job.JobDesc;
 import main.ParseResultStorage;
-import qualification.Education;
-import qualification.WorkExp;
+import resume.Education;
+import resume.WorkExp;
 
 import java.util.HashMap;
 import java.util.Map;

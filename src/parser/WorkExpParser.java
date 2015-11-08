@@ -1,6 +1,6 @@
 package parser;
 
-import qualification.WorkExp;
+import resume.WorkExp;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package qualification;
+package resume;
 
 /**
  * Store the work experience in a resume

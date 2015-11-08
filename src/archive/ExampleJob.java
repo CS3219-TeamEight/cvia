@@ -1,6 +1,7 @@
-package main;
+package archive;
 
 import job.JobDesc;
+import main.ParserFactory;
 
 public class ExampleJob {
     JobDesc exampleDesc;

@@ -1,6 +1,6 @@
 package parser;
 
-import qualification.Education;
+import resume.Education;
 
 import java.util.ArrayList;
 

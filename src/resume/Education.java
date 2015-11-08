@@ -1,4 +1,4 @@
-package qualification;
+package resume;
 
 /**
  * Store the Education information of a resume

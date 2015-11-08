@@ -1,5 +1,6 @@
 package main;
 
+import archive.ExampleJob;
 import parser.*;
 import scorer.Scorer;
 import utilities.PDFConverter;
@@ -18,7 +19,6 @@ public class Main {
 
         // global
         ResumeParser parser = new ResumeParser();
-        ;
         ParserFactory factory = new ParserFactory();
         WorkExpParser workParser = factory.getWorkParser();
         EduParser eduParser = factory.getEduParser();

@@ -1,7 +1,7 @@
 package main;
 
-import qualification.Education;
-import qualification.WorkExp;
+import resume.Education;
+import resume.WorkExp;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -42,6 +42,26 @@ public class ParseResultStorage {
         return id;
     }
 
+    public Set<String> getLanguages() {
+        return languages;
+    }
+
+    public ArrayList<Education> getEducation() {
+        return education;
+    }
+
+    public ArrayList<WorkExp> getWorkExp() {
+        return workExp;
+    }
+
+    public Set<String> getSkills() {
+        return skills;
+    }
+
+
+    /* ---------------------- */
+    /* For Debugging Purposes */
+    /* ---------------------- */
     //To print out parsed education results
     public void printEduExperience() {
         for (Education edu : education) {
@@ -82,19 +102,4 @@ public class ParseResultStorage {
         System.out.println("=============================================");
     }
 
-    public Set<String> getLanguages() {
-        return languages;
-    }
-
-    public ArrayList<Education> getEducation() {
-        return education;
-    }
-
-    public ArrayList<WorkExp> getWorkExp() {
-        return workExp;
-    }
-
-    public Set<String> getSkills() {
-        return skills;
-    }
 }
