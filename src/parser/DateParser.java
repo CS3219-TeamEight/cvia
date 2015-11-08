@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
+/**
+ * To parse all the date durations found in the resume
+ */
 public class DateParser {
 
     private ArrayList<String> ongoing;
     private HashMap<String, Integer> months;
-    
+
     public DateParser() {
-        
+
         ongoing = new ArrayList<>();
         ongoing.add("ongoing");
         ongoing.add("current");
@@ -18,7 +21,6 @@ public class DateParser {
         ongoing.add("projected");
         ongoing.add("now");
 
-        // extract to dictionary?
         months = new HashMap<>();
         months.put("jan", 1);
         months.put("january", 1);
@@ -47,7 +49,7 @@ public class DateParser {
         months.put("dec", 12);
         months.put("december", 12);
     }
-    
+
     public Duration identifyDates(String line) {
         double duration = 0;
         int startYear = 0;
@@ -60,7 +62,7 @@ public class DateParser {
                 if (c >= '0' && c <= '9') {
                     int num = Character.getNumericValue(c);
                     int j;
-                    for (j = i+1; j < line.length(); j++) {
+                    for (j = i + 1; j < line.length(); j++) {
                         char c2 = line.charAt(j);
                         if (c2 >= '0' && c2 <= '9') {
                             num = num * 10 + Character.getNumericValue(c2);
@@ -69,13 +71,14 @@ public class DateParser {
                         }
                     }
                     if (num > 1950 && num <= 2050) { // reasonable range
-                     // System.out.println(num);
-                        years.add(new Year(num, j-4)); // reasonable assumption: the year is 4-digits 
+                        // System.out.println(num);
+                        years.add(
+                            new Year(num, j - 4)); // reasonable assumption: the year is 4-digits
                     }
-                    i = j+1;
+                    i = j + 1;
                 }
             }
-            
+
             if (years.size() > 0) {
                 startYear = years.get(0).getYear();
                 startMonth = getMonth(line, years.get(0).getIndex() - 2);
@@ -83,10 +86,10 @@ public class DateParser {
                 for (String s : ongoing) {
                     if (line.toLowerCase().contains(s)) {
                         isOngoing = true;
-                        break; 
+                        break;
                     }
                 }
-                
+
                 if (isOngoing) { // ongoing considered first, since line might include PROJECTED end
                     // System.out.println("Is ongoing");
                     current = true;
@@ -98,12 +101,13 @@ public class DateParser {
                     }
                 } else {
                     if (years.size() == 1) {
-                     // started and ended in same year
-                     // System.out.println("started and ended in same year");
+                        // started and ended in same year
+                        // System.out.println("started and ended in same year");
                         int index = years.get(0).getIndex() - 2;
                         int spaceCount = 0;
                         while (index >= 0 && spaceCount < 2) {
-                            if (line.charAt(index) == ' ' && line.charAt(index+1) != ' ') spaceCount++;
+                            if (line.charAt(index) == ' ' && line.charAt(index + 1) != ' ')
+                                spaceCount++;
                             index--;
                         }
                         int month2 = getMonth(line, index);
@@ -112,7 +116,7 @@ public class DateParser {
                             duration = (startMonth - month2) / 12.0;
                         }
                     } else if (years.size() == 2) {
-                     // System.out.println("Found 2 years");
+                        // System.out.println("Found 2 years");
                         // started and ended in different years, or just wrote same year twice
                         int year2 = years.get(1).getYear();
                         int month2 = getMonth(line, years.get(1).getIndex() - 2);
@@ -128,38 +132,39 @@ public class DateParser {
                 }
             } // no years found, completely disregard
         }
-        
+
         return new Duration(duration, startYear, startMonth, current);
     }
-    
+
     private int getMonth(String line, int index) {
-     // System.out.println(index);
+        // System.out.println(index);
         String month = "";
-        if (index < 2) return -1;
-        for (int i = index; i>=0 && Character.isAlphabetic(line.charAt(i)); i--) {
+        if (index < 2)
+            return -1;
+        for (int i = index; i >= 0 && Character.isAlphabetic(line.charAt(i)); i--) {
             month = line.charAt(i) + month;
         }
         month = month.toLowerCase();
-     // System.out.println(month);
+        // System.out.println(month);
         if (months.containsKey(month)) {
             return months.get(month);
-        } else return -1;
+        } else
+            return -1;
     }
-    
+
     class Year {
-        
         private int year;
         private int index;
-        
+
         public Year(int year, int index) {
             this.year = year;
             this.index = index;
         }
-        
+
         public int getYear() {
             return year;
         }
-        
+
         public int getIndex() {
             return index;
         }

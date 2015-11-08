@@ -1,30 +1,33 @@
 package parser;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LanguageParser {
 
     private Dictionary languageDictionary;
-    
+
     public LanguageParser(Dictionary languageDictionary) {
         this.languageDictionary = languageDictionary;
     }
-    
-    public ArrayList<String> parseLanguageSection(Section section) {
-        ArrayList<String> lines = new ArrayList<>(section.getLines()); // contains lines relevant to work exp ONLY
+
+    //To parse the different languages found under the language section
+    public Set<String> parseLanguageSection(Section section) {
+        ArrayList<String> lines =
+            new ArrayList<>(section.getLines()); // contains lines relevant to work exp ONLY
         int lineCount = section.getLineCount();
-        ArrayList<String> languages = new ArrayList<>();
-        
+        Set<String> languages = new HashSet<String>();
+
         for (int i = 0; i < lineCount; i++) {
-            String language = getLanguage(lines.get(i));
-            if (!language.equals("UNKNOWN"))
-            	languages.add(language);
+            ArrayList<String> language = getLanguage(lines.get(i));
+            languages.addAll(language);
         }
-        
+
         return languages;
     }
-    
-    private String getLanguage(String line) {        
-        return languageDictionary.containsSingle(line.toLowerCase());
+
+    private ArrayList<String> getLanguage(String line) {
+        return languageDictionary.containsMultiple(line.toLowerCase());
     }
 }
