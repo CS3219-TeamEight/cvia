@@ -1,11 +1,6 @@
 package main;
 
-import parser.LanguageParser;
-import parser.SkillParser;
-import parser.ResumeParser;
-import parser.Section;
-import parser.EduParser;
-import parser.WorkExpParser;
+import parser.*;
 import scorer.Scorer;
 import utilities.PDFConverter;
 
@@ -16,32 +11,33 @@ import java.util.Scanner;
 
 public class Main {
 
-	private static PDFConverter converter = new PDFConverter();
-	
-	
-	public static void main(String[] args) {
-	    
-		// global
-		ResumeParser parser = new ResumeParser();;
+    private static PDFConverter converter = new PDFConverter();
+
+
+    public static void main(String[] args) {
+
+        // global
+        ResumeParser parser = new ResumeParser();
+        ;
         ParserFactory factory = new ParserFactory();
         WorkExpParser workParser = factory.getWorkParser();
         EduParser eduParser = factory.getEduParser();
         LanguageParser languageParser = factory.getLanguageParser();
         SkillParser skillParser = factory.getSkillParser();
-        
+
         // To parse in CV and convert it from PDF to plaintext format and saving it to a .txt file
         try {
-            Scanner sc = new Scanner (System.in);
+            Scanner sc = new Scanner(System.in);
             System.out.println("Please enter path for file:");
             String inputPath = sc.nextLine();
             sc.close();
-            
+
             String outputPath = "plaintext.txt";
             converter.convertToText(inputPath, outputPath);
             File file = new File(outputPath);
             parser.initialize(file);
         } catch (IOException e) {
-            
+
         }
 
         //1. To extract the possible sections found in the CV
@@ -49,32 +45,30 @@ public class Main {
         ArrayList<Section> sections = parser.getSections();
         ParseResultStorage storage = new ParseResultStorage();
         System.out.println("=============================================");
-        try { 
-        	for (Section section : sections) {
+        try {
+            for (Section section : sections) {
                 if (section.getType().equals("WORK")) {
                     storage.storeWorkExp(workParser.parseWorkSection(section));
                     storage.printWorkExperience();
                 } else if (section.getType().equals("EDU")) {
                     storage.storeEducation(eduParser.parseEducation(section));
                     storage.printEduExperience();
-                }
-                else if (section.getType().equals("LANGUAGES")) {
+                } else if (section.getType().equals("LANGUAGES")) {
                     storage.storeLanguage(languageParser.parseLanguageSection(section));
                     storage.printLanguages();
-                }
-                else if (section.getType().equals("SKILLS")) {
+                } else if (section.getType().equals("SKILLS")) {
                     storage.storeSkills(skillParser.parseSkillsSection(section));
                     storage.printSkills();
                 }
             }
-        }  catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Error: could not parse your resume."
-                    + "An admin has been notified to manually parse it.");
-        } 
-        
+                + "An admin has been notified to manually parse it.");
+        }
+
         //For testing
         ExampleJob ej = new ExampleJob(factory);
         Scorer scorer = new Scorer(ej.getExample(), storage);
         System.out.println("Total Score: " + scorer.computeScore());
-	}
+    }
 }
