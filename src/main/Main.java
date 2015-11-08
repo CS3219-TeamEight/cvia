@@ -63,10 +63,30 @@ public class Main {
                 storage.printSkills();
             }
         }
+        /**
+        JSONConverter converter = new JSONConverter();
+        System.out.println("=============================================");
+        System.out.println("Testing parsed data -> JSON");
+        String json = converter.getJSONString(storage);
+        System.out.println(json);
+        System.out.println("=============================================");
+        **/
         
         ExampleJob ej = new ExampleJob(factory);
         Scorer scorer = new Scorer(ej.getExample(), storage);
         System.out.println("Total Score: " + scorer.computeScore());
+        
+        /**
+        System.out.println("=============================================");
+        System.out.println("Testing JSON -> parsed data");
+        ParseResultStorage fromJson = converter.getParsedData(json);
+        Scorer jsonscorer = new Scorer(ej.getExample(), fromJson);
+        System.out.println("Total Score from json: " + jsonscorer.computeScore());
+        System.out.println(converter.getJSONString(fromJson));
+        System.out.println("=============================================");
+        **/
+        
+        
         /**
         try {
             
