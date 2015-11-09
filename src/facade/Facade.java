@@ -46,7 +46,9 @@ public class Facade {
 			file = new File(outputPath);
 			parser.initialize(file);
 		} catch (IOException e) {
+			System.out.println("Failed to initialize file");
 		}
+		
 		ArrayList<Section> sections = parser.getSections();
 		ParseResultStorage storage = new ParseResultStorage();
 		try {
