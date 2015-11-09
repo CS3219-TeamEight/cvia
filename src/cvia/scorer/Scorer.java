@@ -11,23 +11,25 @@ import java.util.Set;
 
 public class Scorer {
 
-    Map<String, Double> degreeMultiplier = new HashMap<String, Double>();
+    Map<String, Double> educationMultiplier = new HashMap<String, Double>();
     ParseResultStorage result;
     JobDesc jobDesc;
 
     public Scorer(JobDesc jobDesc, ParseResultStorage result) {
         this.jobDesc = jobDesc;
         this.result = result;
-        setDegreeMutiplier();
+        setEducationMulitiplier();
     }
 
     //Setup hashmap for education scorer
-    private void setDegreeMutiplier() {
-        degreeMultiplier.put("phd", 2.5);
-        degreeMultiplier.put("masters", 2.0);
-        degreeMultiplier.put("degree", 1.5);
-        degreeMultiplier.put("Bachelor", 1.0);
-        degreeMultiplier.put("UNKNOWN", 0.75);
+    private void setEducationMulitiplier() {
+        educationMultiplier.put("ph.d", 2.5);
+        educationMultiplier.put("master", 2.0);
+        educationMultiplier.put("honors", 1.5);
+        educationMultiplier.put("bachelor", 1.0);
+        educationMultiplier.put("diploma", 0.75);
+        educationMultiplier.put("UNKNOWN", 0.50);
+        educationMultiplier.put("none", 0.50);
     }
 
     //To compute the total score for a given resume
@@ -122,24 +124,17 @@ public class Scorer {
         double eduScore = 0;
 
         for (Education edu : result.getEducation()) {
-            double tempEduScore = 0.0;
+            double tempEduScore;
 
             if (edu.getField().equalsIgnoreCase(jobDesc.getEducationTitle())) {
-                if (edu.isGraduate()) {
-                    tempEduScore = 1.0;
-                } else {
-                    tempEduScore = 0.75;
-                }
+                tempEduScore = edu.isGraduated() ? 1.0 : 0.75;
             } else {
-                if (edu.isGraduate()) {
-                    tempEduScore = 0.5;
-                } else {
-                    tempEduScore = 0.25;
-                }
+                tempEduScore = edu.isGraduated() ? 0.5 : 0.25;
             }
 
-            tempEduScore *= degreeMultiplier.get(edu.getDegree());
-
+            double reqMulti = educationMultiplier.get(jobDesc.getEducationLevel());
+            double parsedMulti = educationMultiplier.get(edu.getDegree());
+            tempEduScore *= (parsedMulti < reqMulti) ? 0.5 * parsedMulti : parsedMulti;
             if (tempEduScore > eduScore) {
                 eduScore = tempEduScore;
             }

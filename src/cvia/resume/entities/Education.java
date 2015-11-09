@@ -21,7 +21,7 @@ public class Education {
         return duration;
     }
 
-    public boolean isGraduate() {
+    public boolean isGraduated() {
         return graduated;
     }
 

@@ -66,7 +66,7 @@ public class ParseResultStorage {
     public void printEduExperience() {
         for (Education edu : education) {
             System.out.println("Degree: " + edu.getDegree() + "\nField: " + edu.getField());
-            if (edu.isGraduate()) {
+            if (edu.isGraduated()) {
                 System.out.println("Graduate");
             } else {
                 System.out.println("Undergraduate");
