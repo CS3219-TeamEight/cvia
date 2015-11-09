@@ -1,6 +1,7 @@
 package main;
 
 import archive.ExampleJob;
+import facade.Facade;
 import parser.*;
 import scorer.Scorer;
 import utilities.PDFConverter;
@@ -16,7 +17,9 @@ public class Main {
 
 
     public static void main(String[] args) {
-
+    	
+    	Facade facade = new Facade();
+    	
         // global
         ResumeParser parser = new ResumeParser();
         ParserFactory factory = new ParserFactory();
@@ -76,9 +79,9 @@ public class Main {
         **/
 
         //For testing
-        ExampleJob ej = new ExampleJob(factory);
-        Scorer scorer = new Scorer(ej.getExample(), storage);
-        System.out.println("Total Score: " + scorer.computeScore());
+//        ExampleJob ej = new ExampleJob(factory);
+//        Scorer scorer = new Scorer(ej.getExample(), storage);
+//        System.out.println("Total Score: " + scorer.computeScore());
         
         /**
         System.out.println("=============================================");
