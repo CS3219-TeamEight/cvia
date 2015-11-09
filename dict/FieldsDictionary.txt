@@ -1,0 +1,30 @@
+;
+SCIENCE
+science
+physics
+biology
+chemistry
+mathematics
+astronomy
+;
+BUSINESS
+business
+accounting
+accountancy
+;
+COMPUTING
+computer science
+information technology
+information system
+;
+ENGINEERING
+mechanical engineering
+electronic engineering
+computer engineering
+material engineering
+biomedical engineering
+;
+ART
+history
+art
+;

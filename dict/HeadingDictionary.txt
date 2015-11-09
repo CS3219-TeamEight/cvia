@@ -1,0 +1,77 @@
+;
+SUMMARY
+profile
+about me
+summary
+;
+WORK
+experience
+work experience
+employment history
+employment
+positions held
+past experience
+industry
+industries
+job
+job experience
+;
+PUB
+publications
+;
+LANGUAGES
+languages
+language
+known languages
+;
+SKILLS
+skills
+skill set
+skill sets
+key skills
+skills & expertise
+expertise
+skills and expertise
+;
+CERT
+certifications
+certificates
+;
+EDU
+education
+educations
+schools
+school
+past education
+;
+COURSES
+courses
+;
+VOLUNTEER
+volunteer experience
+volunteer
+volunteer work
+voluntary
+;
+RECOMMENDATIONS
+recommendation
+recommendations
+testimonial
+testimonials
+reference
+references
+referee
+referees
+;
+CCA
+cca experience
+;
+Others
+others
+other details
+trivia
+miscellaneous
+miscellaneous information
+;
+Projects
+projects

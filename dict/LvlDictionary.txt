@@ -18,8 +18,3 @@ bachelor of
 bachelor in
 bachelor's
 bscs
-;
-Diploma
-diploma in
-diploma of
-
