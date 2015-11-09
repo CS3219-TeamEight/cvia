@@ -30,6 +30,8 @@ public class Resume {
     }
 
     public void setScore(double score) {
+        score = score * 2; /* 2x multiplier for better visual feedback */
+        score = (double) Math.round(score * 100) / 100; /* Round to two DP */
         this.score = score;
     }
 }

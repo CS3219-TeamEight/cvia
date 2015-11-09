@@ -49,6 +49,12 @@ public class CVIA {
         return resume;
     }
 
+    public Resume initParsedResume(String parsedInfo) {
+        Resume resume = new Resume("");
+        resume.setParsedContents(parsedInfo);
+        return resume;
+    }
+
     public Resume parseResume(JobDesc job, Resume resume) {
         PDFConverter converter = new PDFConverter();
         ResumeParser parser = new ResumeParser();
@@ -96,7 +102,7 @@ public class CVIA {
         }
     }
 
-    public Resume scoreParsed(Resume resume, JobDesc job) {
+    public Resume scoreParsed(JobDesc job, Resume resume) {
         ParseResultStorage parsedStorage =
             (new JSONConverter().getParsedData(resume.getParsedContents()));
         Scorer score = new Scorer(job, parsedStorage);

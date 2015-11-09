@@ -28,7 +28,7 @@ public class Scorer {
         educationMultiplier.put("honors", 1.5);
         educationMultiplier.put("bachelor", 1.0);
         educationMultiplier.put("diploma", 0.75);
-        educationMultiplier.put("UNKNOWN", 0.50);
+        educationMultiplier.put("unknown", 0.50);
         educationMultiplier.put("none", 0.50);
     }
 
@@ -99,7 +99,7 @@ public class Scorer {
 
         double base = jobDesc.getskillSets().size();
         score = numOfSkills / base;
-        return score * (double) jobDesc.getSkillsetWeightage();
+        return score * jobDesc.getSkillsetWeightage();
     }
 
     private double computeLanguageScore() {
@@ -116,7 +116,7 @@ public class Scorer {
 
         double base = jobDesc.getLanguages().size();
         score = numOfLanguage / base;
-        return score * (double) jobDesc.getLanguageWeightage();
+        return score * jobDesc.getLanguageWeightage();
     }
 
     //To compute the Education Score for a given resume
@@ -132,8 +132,8 @@ public class Scorer {
                 tempEduScore = edu.isGraduated() ? 0.5 : 0.25;
             }
 
-            double reqMulti = educationMultiplier.get(jobDesc.getEducationLevel());
-            double parsedMulti = educationMultiplier.get(edu.getDegree());
+            double reqMulti = educationMultiplier.get(jobDesc.getEducationLevel().toLowerCase());
+            double parsedMulti = educationMultiplier.get(edu.getDegree().toLowerCase());
             tempEduScore *= (parsedMulti < reqMulti) ? 0.5 * parsedMulti : parsedMulti;
             if (tempEduScore > eduScore) {
                 eduScore = tempEduScore;

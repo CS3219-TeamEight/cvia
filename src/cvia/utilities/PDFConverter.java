@@ -11,17 +11,26 @@ public class PDFConverter {
         // To read take in the PDF File
         PDFTextStripper pdfStripper = new PDFTextStripper();
         File inputFile = new File(filePath);
-        PDDocument pdDoc = PDDocument.load(inputFile);
-        System.out.println("Document exist: " + inputFile.exists());
+        PDDocument doc = null;
 
-        //To show the number of pages in the PDF file
-        int numOfPages = pdDoc.getNumberOfPages();
-        System.out.println("Number of pages in the resume: " + numOfPages);
+        try {
+            doc = PDDocument.load(inputFile);
 
-        //To print the text in the PDF file
-        String parsedText = pdfStripper.getText(pdDoc);
+            //To show the number of pages in the PDF file
+            int numOfPages = doc.getNumberOfPages();
 
-        return parsedText;
+            //To print the text in the PDF file
+            String parsedText = pdfStripper.getText(doc);
+
+            //Debug purposes
+            System.out.println("Document exist: " + inputFile.exists());
+            System.out.println("Number of pages in the resume: " + numOfPages);
+
+            return parsedText;
+        } finally {
+            if (doc != null)
+                doc.close();
+        }
     }
 }
 
