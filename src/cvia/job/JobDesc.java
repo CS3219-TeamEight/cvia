@@ -25,6 +25,7 @@ public class JobDesc {
         String educationField, String languageSkills, String workSkills, String description,
         double mutiplierJob, double mutiplierEdu, double mutiplierLang, double mutiplierSkill) {
 
+        this.setJobIndustry(jobIndustry);
         this.setJobTitle(jobTitle);
         this.setWorkDuration(jobExperience);
         this.setEducationLevel(educationLevel);
@@ -35,7 +36,6 @@ public class JobDesc {
         this.setEduWeightage(mutiplierEdu);
         this.setLanguageWeightage(mutiplierLang);
         this.setSkillsetWeightage(mutiplierSkill);
-        this.setJobIndustry(jobIndustry);
     }
 
     public double getWorkDuration() {
