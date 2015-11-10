@@ -9,6 +9,7 @@ public class JobDesc {
     private String educationLevel;
     private String educationTitle;
     private String jobTitle;
+    private String jobIndustry;
 
     private HashSet<String> languages = new HashSet<String>();
     private HashSet<String> skillSets = new HashSet<String>();
@@ -34,6 +35,7 @@ public class JobDesc {
         this.setEduWeightage(mutiplierEdu);
         this.setLanguageWeightage(mutiplierLang);
         this.setSkillsetWeightage(mutiplierSkill);
+        this.setJobIndustry(jobIndustry);
     }
 
     public double getWorkDuration() {
@@ -95,6 +97,8 @@ public class JobDesc {
     //To parse in the field of the job
     public void setJobTitle(String jobTitle) {
         this.jobTitle = parserFactory.getJobTitleDictionary().contains(jobTitle.toLowerCase());
+        if (this.jobTitle.equals("UNKNOWN"))
+        	this.jobTitle = parserFactory.getJobTitleDictionary().contains(jobIndustry.toLowerCase());
     }
 
     public HashSet<String> getLanguages() {
@@ -154,4 +158,13 @@ public class JobDesc {
     public void setSkillsetWeightage(double skillsetWeightage) {
         this.skillsetWeightage = skillsetWeightage;
     }
+
+	public String getJobIndustry() {
+		return jobIndustry;
+	}
+
+	public void setJobIndustry(String jobIndustry) {
+		this.jobIndustry = jobIndustry;
+	}
+    
 }

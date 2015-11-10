@@ -6,6 +6,8 @@ researcher
 research intern
 ;
 IT
+it
+computing
 business analyst
 business-to-business marketer
 computer operator
@@ -40,6 +42,9 @@ technical support specialist
 communications network support technician
 ;
 MANAGEMENT AND BUSINESS
+management
+business
+management and business
 administrative services manager
 advertising manager
 assistant director
@@ -93,6 +98,9 @@ transportation manager
 vice president
 ;
 SALES AND SALES MANAGEMENT
+sales and sales management
+sales
+sales management
 advertising sales agent
 agricultural sales representative
 biotechnical equipment sales represent...
@@ -123,6 +131,9 @@ telemarketer
 vendor
 ;
 ENGINEERING AND ARCHITECTURE
+engineering and architecture
+engineering
+architecture
 aerospace engineer
 agricultural engineer
 architect

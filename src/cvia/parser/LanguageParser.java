@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class LanguageParser {
+public class LanguageParser implements SectionParser {
 
     private Dictionary languageDictionary;
 
